@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -12,6 +12,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
+import { ErrorHandlerException } from './@core/handlers/error-handler-exception.ts.service';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { environment } from 'src/environments/environment';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    {provide: ErrorHandler,useClass: ErrorHandlerException},ErrorHandlerException
   ],
   bootstrap: [AppComponent]
 })
