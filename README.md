@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# guide-tuor
-=======
 # Guide-tuor
 
 # Finalidade 
@@ -21,4 +18,3 @@
 - Mapa de lugares;
 - Notificação quando estiver perto do local da atividade;
 - Favoritar um local;
->>>>>>> 5fdaac2ed33ea5a6c6257571666a9c41a82dc336
