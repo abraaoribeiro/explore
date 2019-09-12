@@ -17,3 +17,4 @@
 - Notificação de tempo de vista;
 - Mapa de lugares;
 - Notificação quando estiver perto do local da atividade;
+- Favoritar um local;
