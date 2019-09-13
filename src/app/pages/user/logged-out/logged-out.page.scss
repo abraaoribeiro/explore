@@ -1,0 +1,77 @@
+ion-content {
+  --background: #00868b;
+  --color: #ffffff;
+  --keyboard-offset: 0px;
+  --offset-bottom: 0px;
+  --offset-top: 0px;
+  --padding-bottom: 0px;
+  --padding-end: 0px;
+  --padding-start: 0px;
+  --padding-top: 0px;
+}
+ion-toolbar {
+  --background: #00868b;
+}
+
+.logo {
+  color: #ffffff;
+  width: 50px;
+  height: 50px;
+  margin-left: 30px;
+  margin-bottom: 30px;
+}
+
+.welcome-text {
+  font-size: 30px;
+  color: #ffffff;
+  font-weight: 300;
+  margin-bottom: 40px;
+  margin-left: 30px;
+}
+
+.button-text {
+  font-weight: 900;
+  color: #00868b;
+  text-transform: none;
+  text-align: center;
+}
+
+.button-text-accout {
+  font-weight: 900;
+  color: #ffffff;
+  text-transform: none;
+  text-align: center;
+}
+
+.button-google {
+  --border-radius: 20px;
+  --border-width: 8px;
+  --box-shadow: 0px 0px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+.button-accout {
+  --border-radius: 20px;
+  margin-top: 10px;
+  margin-left: 30px;
+  margin-right: 30px;
+  border-width: 1px !important;
+}
+.button-option {
+  margin-top: 30px;
+  position: relative;
+  right: 125px;
+}
+
+.button-login {
+  color: #ffffff;
+  text-transform: none;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.icon-button {
+  color: #00868b;
+  position: relative;
+  right: 60px;
+}

@@ -1,11 +1,7 @@
 {
   "name": "guide-tour",
-<<<<<<< HEAD
   "integrations": {
     "cordova": {}
   },
-=======
-  "integrations": {},
->>>>>>> 5fdaac2ed33ea5a6c6257571666a9c41a82dc336
   "type": "angular"
 }
