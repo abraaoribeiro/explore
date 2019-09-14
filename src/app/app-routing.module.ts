@@ -6,7 +6,8 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./layout/tabs/tabs.module').then(m => m.TabsPageModule)
   },
-  { path: 'logged-out', loadChildren: () => import('./pages/user/logged-out/logged-out.module').then(m => m.LoggedOutPageModule) }
+  { path: 'logged-out', loadChildren: () => import('./pages/user/logged-out/logged-out.module').then(m => m.LoggedOutPageModule) },
+  { path: 'login', loadChildren: './pages/user/login/login.module#LoginPageModule' }
 ];
 @NgModule({
   imports: [
