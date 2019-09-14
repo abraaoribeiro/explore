@@ -6,7 +6,7 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./layout/tabs/tabs.module').then(m => m.TabsPageModule)
   },
-  { path: 'logged-out', loadChildren: './pages/user/logged-out/logged-out.module#LoggedOutPageModule' }
+  { path: 'logged-out', loadChildren: () => import('./pages/user/logged-out/logged-out.module').then(m => m.LoggedOutPageModule) }
 ];
 @NgModule({
   imports: [
@@ -14,4 +14,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
