@@ -39,6 +39,7 @@ async show(error) {
       color: 'danger',
       duration: 10000,
       position:'top',
+      mode: 'ios',
       buttons: [{
           icon: 'close',
           role: 'cancel',

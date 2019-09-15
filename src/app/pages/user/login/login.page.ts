@@ -1,4 +1,6 @@
+import { UserModel } from './../../../model/user-model';
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-login',
@@ -6,17 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  passwordType: string;
-  passwordIcon: string;
-
-  constructor() { }
+  userModel: UserModel = new UserModel();
+  constructor(private firebasseAuth: AngularFireAuth) { }
 
   ngOnInit() {
   }
 
-  hideShowPassword() {
-    this.passwordType = this.passwordType === 'text' ? 'password' : 'text';
-    this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
-}
+  login() {
+    this.firebasseAuth.auth.signInWithEmailAndPassword(this.userModel.email, this.userModel.password)
+    .then(res => console.log(res)
+    );
+  }
+  showPassword(input: any): any {
+    input.type = input.type === 'password' ? 'text' : 'password';
+  }
 
 }

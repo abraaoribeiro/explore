@@ -11,12 +11,17 @@
 </ion-header>
 
 <ion-content>
-  <h1 class="text-style">Entrar</h1>
+  <h1 class="text-style">Informe seus dados</h1>
   <form #f="ngForm">
     <div class="box-input">
+      <ion-label position="stacked">NOME</ion-label>
+      <ion-input name="name"
+                 required
+                 [(ngModel)]="userModel.name"></ion-input>
+    </div>
+    <div class="box-input">
       <ion-label position="stacked">ENDERECO DE EMAIL</ion-label>
-      <ion-input type="text"
-                 name="email"
+      <ion-input name="email"
                  required
                  [(ngModel)]="userModel.email"></ion-input>
     </div>
@@ -35,9 +40,8 @@
              slot="fixed">
       <ion-fab-button color="light"
                       [disabled]="!f.valid"
-                      (click)="login()">
-        <ion-icon name="arrow-forward"
-                  mode='ios'></ion-icon>
+                      (click)="createLogin()">
+        <ion-icon name="arrow-forward" mode='ios'></ion-icon>
       </ion-fab-button>
     </ion-fab>
   </form>
