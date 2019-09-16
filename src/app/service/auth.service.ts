@@ -7,8 +7,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  user: UserModel
-  constructor(private firebasseAuth: AngularFireAuth) { }
+  userModel: UserModel
+  messageErro: string;
+  constructor(private firebasseAuth: AngularFireAuth, private feedbackService: FeedbackService) { }
 
 
   public async loginEmail(user: UserModel) {
@@ -18,6 +19,27 @@ export class AuthService {
   public async createLogin(user: UserModel) {
     let result = await this.firebasseAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
     result.additionalUserInfo.username = user.name;
+  }
+
+  public validUser(erro) {
+    switch (erro) {
+      case "auth/invalid-email":
+        this.messageErro = "O endereço de email está mal formatado."
+        break;
+      case "auth/wrong-password":
+        this.messageErro = "A senha é inválida ou o usuário não tem uma senha."
+        break;
+      case "auth/email-already-in-use":
+        this.messageErro = "O endereço de email já está sendo usado por outra conta."
+        break;
+      case "auth/weak-password":
+        this.messageErro = "A senha deve ter pelo menos 6 caracteres."
+        break;
+    }
+  }
+
+  showMessageValid() {
+    this.feedbackService.presentToastWithOptions(this.messageErro).then();
   }
 
 }

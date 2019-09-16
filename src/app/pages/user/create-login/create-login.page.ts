@@ -1,7 +1,7 @@
-import { FeedbackService } from './../../../service/feedback.service';
 import { Component, OnInit } from '@angular/core';
 import { UserModel } from 'src/app/model/user-model';
-import { AuthService } from 'src/app/service/auth.service'
+import { AuthService } from 'src/app/service/auth.service';
+import { FeedbackService } from './../../../service/feedback.service';
 
 
 @Component({
@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/service/auth.service'
 })
 export class CreateLoginPage implements OnInit {
   userModel: UserModel = new UserModel();
+
   constructor(private authService: AuthService, private feedbackService: FeedbackService) { }
 
   ngOnInit() { }
@@ -18,12 +19,18 @@ export class CreateLoginPage implements OnInit {
 
   public async createLogin() {
     await this.authService.createLogin({ email: this.userModel.email, password: this.userModel.password, name: this.userModel.name })
-      .then(() => this.feedbackService.presentToastWithOptions('Usuário cadastrado com sucesso'));
+      .then(() => {
+        //TODO REDIRECIONAR
+      }).catch(erro => {
+        this.authService.validUser(erro.code);
+        this.authService.showMessageValid();
+      })
   }
-
 
   showPassword(input: any): any {
     input.type = input.type === 'password' ? 'text' : 'password';
   }
+
+
 
 }
