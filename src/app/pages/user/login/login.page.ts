@@ -1,6 +1,7 @@
 import { UserModel } from './../../../model/user-model';
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from 'src/app/service/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,15 +10,15 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class LoginPage implements OnInit {
   userModel: UserModel = new UserModel();
-  constructor(private firebasseAuth: AngularFireAuth) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  login() {
-    this.firebasseAuth.auth.signInWithEmailAndPassword(this.userModel.email, this.userModel.password)
-    .then(res => console.log(res)
-    );
+  public async login() {
+   await this.authService.loginEmail({ email: this.userModel.email, password: this.userModel.password }).then();
+    this.router.navigate(['tabs/tab1']);
+
   }
   showPassword(input: any): any {
     input.type = input.type === 'password' ? 'text' : 'password';
