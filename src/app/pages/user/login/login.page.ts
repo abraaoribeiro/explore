@@ -20,7 +20,7 @@ export class LoginPage implements OnInit {
     await this.authService.loginEmail({ email: this.userModel.email, password: this.userModel.password })
       .then(() => this.router.navigate(['tabs/tab1']))
       .catch(erro => {
-        this.authService.validUser(erro.code);
+        this.authService.validCredential(erro.code);
         this.authService.showMessageValid();
       });
 

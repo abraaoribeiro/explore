@@ -1,7 +1,6 @@
-import { AngularFireAuth } from '@angular/fire/auth';
 import { Component, OnInit } from '@angular/core';
-import { auth } from 'firebase';
 import { Router } from '@angular/router';
+import { auth } from 'firebase';
 import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
@@ -17,5 +16,6 @@ export class LoggedOutPage implements OnInit {
   }
 
   public loginGoogle() {
+    this.authService.loginProvider(new auth.GoogleAuthProvider)
   }
 }

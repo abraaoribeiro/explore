@@ -22,7 +22,7 @@ export class CreateLoginPage implements OnInit {
       .then(() => {
         //TODO REDIRECIONAR
       }).catch(erro => {
-        this.authService.validUser(erro.code);
+        this.authService.validCredential(erro.code);
         this.authService.showMessageValid();
       })
   }

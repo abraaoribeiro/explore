@@ -21,7 +21,13 @@ export class AuthService {
     result.additionalUserInfo.username = user.name;
   }
 
-  public validUser(erro) {
+  public async loginProvider(provider) {
+   await this.firebasseAuth.auth.signInWithPopup(provider).then(()=>{
+     return this.firebasseAuth.auth.getRedirectResult();
+   });
+  }
+
+  public validCredential(erro) {
     switch (erro) {
       case "auth/invalid-email":
         this.messageErro = "O endereço de email está mal formatado."
