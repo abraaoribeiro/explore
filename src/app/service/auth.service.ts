@@ -22,9 +22,13 @@ export class AuthService {
   }
 
   public async loginProvider(provider) {
-   await this.firebasseAuth.auth.signInWithPopup(provider).then(()=>{
-     return this.firebasseAuth.auth.getRedirectResult();
-   });
+    await this.firebasseAuth.auth.signInWithPopup(provider).then(() => {
+      return this.firebasseAuth.auth.getRedirectResult();
+    });
+  }
+
+  public async stateUser() {
+    return await this.firebasseAuth.authState.toPromise()
   }
 
   public validCredential(erro) {
@@ -44,7 +48,7 @@ export class AuthService {
     }
   }
 
-  showMessageValid() {
+  public showMessageValid() {
     this.feedbackService.presentToastWithOptions(this.messageErro).then();
   }
 

@@ -14,7 +14,7 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
   ) {
     this.initializeApp();
   }
@@ -22,8 +22,8 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.show();
-      this.statusBar.styleLightContent();
-      this.statusBar.backgroundColorByHexString("#00868b");
+      this.statusBar.styleDefault();
+      this.statusBar.backgroundColorByHexString("#ffffff");
       this.splashScreen.hide();
     });
   }

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { CardPlaceComponent } from './card-place.component';
+import { StarRating } from 'ionic4-star-rating';
 
 @NgModule({
   imports: [
@@ -11,7 +12,7 @@ import { CardPlaceComponent } from './card-place.component';
     FormsModule,
     IonicModule,
   ],
-  declarations: [CardPlaceComponent],
+  declarations: [CardPlaceComponent,StarRating],
   exports: [CommonModule,CardPlaceComponent]
 })
 export class CardPlaceModule { }

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
+
 import { CardPlaceModule } from 'src/app/shared/components/card-place/card-place.module';
 import { PlaceHomePage } from './place-home.page';
 
