@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/service/auth.service';
 import { UserModel } from './../../../model/user-model';
 
@@ -10,22 +11,32 @@ import { UserModel } from './../../../model/user-model';
 })
 export class LoginPage implements OnInit {
   userModel: UserModel = new UserModel();
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, public loadingController: LoadingController) { }
 
   ngOnInit() {
 
   }
 
   public async login() {
+    const loading = await this.loadingController.create({
+      spinner: 'dots',
+      mode: 'ios',
+    });
+    await loading.present();
     await this.authService.loginEmail({ email: this.userModel.email, password: this.userModel.password })
-      .then(() => this.router.navigate(['tabs/tab1']))
-      .catch(erro => {
+      .then(() => {
+        this.router.navigate(['tabs/tab1']);
+        loading.dismiss();
+      }).catch(erro => {
+        console.log(erro);
         this.authService.validCredential(erro.code);
         this.authService.showMessageValid();
+        loading.dismiss();
       });
-
   }
-  showPassword(input: any): any {
+
+  public showPassword(input: any): any {
     input.type = input.type === 'password' ? 'text' : 'password';
   }
+
 }
