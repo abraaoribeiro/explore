@@ -1,0 +1,31 @@
+ion-content {
+  --keyboard-offset: 0px;
+  --offset-bottom: 0px;
+  --offset-top: 0px;
+  --padding-bottom: 0px;
+  --padding-end: 0px;
+  --padding-start: 0px;
+  --padding-top: 20px;
+}
+
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+
+  .card {
+    display: inline-block;
+    width: 150px;
+  }
+}
+.text-title {
+  margin-left: 5px;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+.text-category {
+  font-weight: 900;
+  padding-left: 5px;
+}

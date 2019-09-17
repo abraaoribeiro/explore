@@ -13,7 +13,7 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../../tab1/tab1.module').then(m => m.Tab1PageModule)
+              import('src/app/pages/place/place-home/place-home.module').then(m => m.PlaceHomePageModule)
           }
         ]
       },
@@ -55,4 +55,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }
