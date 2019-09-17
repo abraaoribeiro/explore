@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 
 
@@ -12,10 +13,15 @@ const routes: Routes = [
   { path: 'login', loadChildren: () => import('./pages/user/login/login.module').then(m => m.LoginPageModule) },
   { path: 'create-login', loadChildren: () => import('./pages/user/create-login/create-login.module').then(m => m.CreateLoginPageModule) },
 ];
+
+const PLUGINSIONIC = [
+  Geolocation
+]
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [PLUGINSIONIC]
 })
 export class AppRoutingModule { }

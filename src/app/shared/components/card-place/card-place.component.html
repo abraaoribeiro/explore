@@ -1,77 +1,19 @@
-<ion-card mode="ios">
-  <img src="assets/shapes.svg" />
-  <ion-card-header>
-    <ion-card-subtitle>Destination</ion-card-subtitle>
-    <ion-card-title>Madison, WI</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-      <ionic4-star-rating activeIcon="ios-star"
-                        defaultIcon="ios-star-outline"
-                        activeColor="#ffb400"
-                        readonly="true"
-                        defaultColor="#ffb400"
-                        readonly="false"
-                        fontSize="22px">
-    </ionic4-star-rating>
-    Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin
-    Territory in 1836.
-  </ion-card-content>
-</ion-card>
-
-<ion-card mode="ios">
-  <div>
-    <img src="assets/shapes.svg" />
-  </div>
-  <ion-card-header>
-    <ion-card-subtitle>Destination</ion-card-subtitle>
-    <ion-card-title>Madison, WI</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-      <ionic4-star-rating activeIcon="ios-star"
-                        defaultIcon="ios-star-outline"
-                        activeColor="#ffb400"
-                        defaultColor="#ffb400"
-                        readonly="false"
-                        fontSize="22px">
-    </ionic4-star-rating>
-    Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin
-    Territory in 1836.
-  </ion-card-content>
-</ion-card>
-<ion-card mode="ios">
-  <img src="assets/shapes.svg" />
-  <ion-card-header>
-    <ion-card-subtitle>Destination</ion-card-subtitle>
-    <ion-card-title>Madison, WI</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-      <ionic4-star-rating activeIcon="ios-star"
-                        defaultIcon="ios-star-outline"
-                        activeColor="#ffb400"
-                        defaultColor="#ffb400"
-                        readonly="false"
-                        fontSize="22px">
-    </ionic4-star-rating>
-    Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin
-    Territory in 1836.
-  </ion-card-content>
-</ion-card>
-
-<ion-card mode="ios">
-  <img src="assets/shapes.svg" />
-  <ion-card-header>
-    <ion-card-subtitle>Destination</ion-card-subtitle>
-    <ion-card-title>Madison, WI</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    <ionic4-star-rating activeIcon="ios-star"
-                        defaultIcon="ios-star-outline"
-                        activeColor="#ffb400"
-                        defaultColor="#ffb400"
-                        readonly="false"
-                        fontSize="22px">
-    </ionic4-star-rating>
-    Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin
-    Territory in 1836.
-  </ion-card-content>
-</ion-card>
+  <ion-card mode="ios" *ngFor="let place of places">
+    <img src="{{getImagens(place.photos)}}" />
+    <ion-card-header>
+      <ion-card-subtitle>{{place.vicinity}}</ion-card-subtitle>
+      <ion-card-title>{{place.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+        <ionic4-star-rating activeIcon="ios-star"
+                          defaultIcon="ios-star-outline"
+                          activeColor="#ffb400"
+                          readonly="true"
+                          defaultColor="#ffb400"
+                          [rating]="place.rating"
+                          readonly="false"
+                          fontSize="22px">
+      </ionic4-star-rating>
+    </ion-card-content>
+  </ion-card>
+  
