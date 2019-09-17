@@ -1,19 +1,19 @@
-  <ion-card mode="ios" *ngFor="let place of places">
-    <img src="{{getImagens(place.photos)}}" />
-    <ion-card-header>
-      <ion-card-subtitle>{{place.vicinity}}</ion-card-subtitle>
-      <ion-card-title>{{place.name}}</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-        <ionic4-star-rating activeIcon="ios-star"
-                          defaultIcon="ios-star-outline"
-                          activeColor="#ffb400"
-                          readonly="true"
-                          defaultColor="#ffb400"
-                          [rating]="place.rating"
-                          readonly="false"
-                          fontSize="22px">
-      </ionic4-star-rating>
-    </ion-card-content>
-  </ion-card>
-  
+<ion-card mode="ios"
+          *ngFor="let place of places">
+  <img src="{{getImagens(place.photos)}}" />
+  <ion-card-header>
+    <ion-card-subtitle>{{place.vicinity}}</ion-card-subtitle>
+    <ion-card-title>{{place.name}}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ionic4-star-rating activeIcon="ios-star"
+                        defaultIcon="ios-star-outline"
+                        activeColor="#ffb400"
+                        readonly="true"
+                        defaultColor="#ffb400"
+                        [rating]="place.rating"
+                        readonly="false"
+                        fontSize="22px">
+    </ionic4-star-rating>
+  </ion-card-content>
+</ion-card>
