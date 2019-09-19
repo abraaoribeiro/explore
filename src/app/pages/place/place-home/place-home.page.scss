@@ -16,7 +16,7 @@ ion-content {
 
   .card {
     display: inline-block;
-    width: 150px;
+    width: 180px;
   }
 }
 .text-title {
@@ -28,6 +28,9 @@ ion-content {
 .text-category {
   font-weight: 900;
   padding-left: 5px;
+  word-wrap: break-word; 
+  text-align: center;
+
 }
 
 .user_ratings_total{

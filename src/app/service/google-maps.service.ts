@@ -1,5 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { HttpClient } from '@angular/common/http';
 declare let google: any;
 
 @Injectable({
@@ -7,7 +8,7 @@ declare let google: any;
 })
 export class GoogleMapsService {
   googlePlaces: any;
-  constructor(public zone: NgZone, private geolocation: Geolocation) {
+  constructor(public zone: NgZone, private geolocation: Geolocation, private http: HttpClient) {
     let elem = document.createElement("div");
     this.googlePlaces = new google.maps.places.PlacesService(elem);
   }
@@ -42,6 +43,10 @@ export class GoogleMapsService {
         resolve();
       });
     });
+  }
+
+  public getPlaceTypes() {
+    return this.http.get('assets/data/place_type.json');
   }
 
 

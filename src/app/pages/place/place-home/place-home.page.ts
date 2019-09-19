@@ -9,6 +9,7 @@ import { GoogleMapsService } from 'src/app/service/google-maps.service';
 })
 export class PlaceHomePage implements OnInit {
 
+  placeTypes: any;
   places: [] = [];
   constructor(private googleMapsService: GoogleMapsService, public loadingController: LoadingController) { }
 
@@ -17,6 +18,7 @@ export class PlaceHomePage implements OnInit {
 
   ionViewDidEnter() {
     this.getPlaces();
+    this.getTypes();
   }
 
 
@@ -32,6 +34,10 @@ export class PlaceHomePage implements OnInit {
     console.log(places);
     this.places = places;
     loading.dismiss();
+  }
+
+  getTypes() {
+    this.googleMapsService.getPlaceTypes().subscribe(types => this.placeTypes = types)
   }
 
 }

@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 import { ErrorHandlerException } from './@core/handlers/error-handler-exception.ts.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -24,6 +25,7 @@ registerLocaleData(localePt, 'pt-BR');
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    HttpClientModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)],

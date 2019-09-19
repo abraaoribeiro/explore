@@ -11,41 +11,13 @@
       <span class="text-title">O que você deseja encontrar Maria ?</span>
     </ion-col>
   </ion-row>
-  <div class="scrolling-wrapper">
-    <div class="card">
+  <div class="scrolling-wrapper" >
+    <div class="card" *ngFor="let type of placeTypes">
       <ion-card mode="ios">
         <img src="assets/shapes.svg" />
         <p text-wrap
            class="text-category">
-          Founded in 1829
-        </p>
-      </ion-card>
-    </div>
-    <div class="card">
-      <ion-card mode="ios">
-        <img src="assets/shapes.svg" />
-        <p text-wrap
-           class="text-category">
-          Founded in 1829
-        </p>
-      </ion-card>
-    </div>
-    <div class="card">
-      <ion-card mode="ios">
-        <img src="assets/shapes.svg" />
-        <p text-wrap
-           class="text-category">
-          Founded in 1829
-        </p>
-      </ion-card>
-    </div>
-
-    <div class="card">
-      <ion-card mode="ios">
-        <img src="assets/shapes.svg" />
-        <p text-wrap
-           class="text-category">
-          Founded in 1829
+          {{type.nome}}
         </p>
       </ion-card>
     </div>
