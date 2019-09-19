@@ -37,7 +37,10 @@ export class PlaceHomePage implements OnInit {
   }
 
   getTypes() {
-    this.googleMapsService.getPlaceTypes().subscribe(types => this.placeTypes = types)
+    this.googleMapsService.getPlaceTypes().subscribe(types => {
+      this.placeTypes = types;
+    });
+
   }
 
 }

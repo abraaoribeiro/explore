@@ -41,7 +41,26 @@ ion-card {
 
 }
 
+.icon-cat {
+  background-color: var(--ion-color-white);
+  background-size: cover;
+  background-position: 100%;
+  width: var(--image-width, 100%);
+  height: var(--image-height, 80px);
+  position: relative;
+  opacity: 0.80;
+  -moz-opacity: 0.65;
+  filter: alpha(opacity=65);
+}
+
 .user_ratings_total{
 position: relative;
 left: 50;
 }
+
+/* ion-button{
+   position: absolute;
+    bottom: 88%;
+    margin: auto;
+    right: 2%;
+} */

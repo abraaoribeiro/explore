@@ -9,12 +9,19 @@
     <ion-col size="12">
       <span class="text-title">O que você deseja encontrar Maria ?</span>
     </ion-col>
+    <ion-button  color="secondary"  fill="clear">Ver mais</ion-button>
   </ion-row>
-  <div class="scrolling-wrapper" >
-    <div class="card" *ngFor="let type of placeTypes">
+  <div class="scrolling-wrapper">
+    <div class="card"
+         *ngFor="let type of placeTypes">
       <ion-card mode="ios">
-        <img src="assets/shapes.svg" />
-        <p text-wrap
+        <div>
+          <ion-icon class="icon-cat"
+                    mode="ios"
+                    color="primary"
+                    [name]="type.icon"></ion-icon>
+        </div>
+        <p class="ion-text-wrap"
            class="text-category">
           {{type.nome}}
         </p>
@@ -32,7 +39,7 @@
     <div class="card">
       <ion-card mode="ios">
         <img src="assets/shapes.svg" />
-        <p text-wrap
+        <p class="ion-text-wrap"
            class="text-category">
           Founded in 1829
         </p>
@@ -41,7 +48,7 @@
     <div class="card">
       <ion-card mode="ios">
         <img src="assets/shapes.svg" />
-        <p text-wrap
+        <p class="ion-text-wrap"
            class="text-category">
           Founded in 1829
         </p>
@@ -50,7 +57,7 @@
     <div class="card">
       <ion-card mode="ios">
         <img src="assets/shapes.svg" />
-        <p text-wrap
+        <p class="ion-text-wrap"
            class="text-category">
           Founded in 1829
         </p>
@@ -60,7 +67,7 @@
     <div class="card">
       <ion-card mode="ios">
         <img src="assets/shapes.svg" />
-        <p text-wrap
+        <p class="ion-text-wrap"
            class="text-category">
           Founded in 1829
         </p>
@@ -69,10 +76,10 @@
   </div>
 
   <ion-row>
-      <ion-col size="12">
-        <span class="text-title">Próximo a você</span>
-      </ion-col>
-    </ion-row>
+    <ion-col size="12">
+      <span class="text-title">Próximo a você</span>
+    </ion-col>
+  </ion-row>
   <app-card-place [places]="places"></app-card-place>
 
 </ion-content>

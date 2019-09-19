@@ -7,7 +7,7 @@ declare let google;
 })
 export class SearchPlacesComponent implements OnInit {
   input: string = '';
-  placesResult: [] = [];
+  placesResult = new Array<any>();
   private googleAutocomplete = new google.maps.places.AutocompleteService();
   constructor(private ngZone: NgZone) { }
 

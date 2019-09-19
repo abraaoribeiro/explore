@@ -1,10 +1,9 @@
-<ion-searchbar mode="ios"
-               [(ngModel)]="input"
-               (ionInput)="searchPlaces()"
-               placeholder="Explore"></ion-searchbar>
-
-<ion-list *ngFor="let place of placesResult">
- <ion-item >
-   <ion-label>{{place.description}}</ion-label>
- </ion-item>
-</ion-list>
+  <ion-searchbar mode="ios"
+  [(ngModel)]="input"
+  (ionChange)="searchPlaces()"
+  placeholder="Explore"></ion-searchbar>
+  <ion-list mode="ios" *ngFor="let place of placesResult" [hidden]="!input.length">
+    <ion-item mode="ios">
+      <ion-label class="ion-text-wrap" mode="ios">{{place.description}}</ion-label>
+    </ion-item>
+  </ion-list>
