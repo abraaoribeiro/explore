@@ -7,6 +7,14 @@ ion-content {
   --padding-start: 0px;
   --padding-top: 20px;
 }
+ion-card {
+  margin-left: unset;
+  margin-right: unset;
+  -webkit-margin-start: 16px;
+  margin-inline-start: 16px;
+  -webkit-margin-end: 27px;
+  margin-inline-end: -6px;
+}
 
 .scrolling-wrapper {
   overflow-x: scroll;
@@ -15,8 +23,8 @@ ion-content {
   -webkit-overflow-scrolling: touch;
 
   .card {
-    display: inline-block;
-    width: 180px;
+    display:inline-block;
+    width: 160px;
   }
 }
 .text-title {

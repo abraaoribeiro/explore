@@ -7,12 +7,14 @@ import { IonicModule } from '@ionic/angular';
 
 import { CardPlaceModule } from 'src/app/shared/components/card-place/card-place.module';
 import { PlaceHomePage } from './place-home.page';
+import { SearchPlacesModule } from 'src/app/shared/components/search-places/search-places.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    SearchPlacesModule,
     CardPlaceModule,
     RouterModule.forChild([{ path: '', component: PlaceHomePage }])
   ],

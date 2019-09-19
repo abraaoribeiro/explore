@@ -7,8 +7,9 @@ declare let google: any;
   providedIn: 'root'
 })
 export class GoogleMapsService {
-  googlePlaces: any;
-  constructor(public zone: NgZone, private geolocation: Geolocation, private http: HttpClient) {
+  private googlePlaces: any;
+  
+  constructor(public ngZone: NgZone, private geolocation: Geolocation, private http: HttpClient) {
     let elem = document.createElement("div");
     this.googlePlaces = new google.maps.places.PlacesService(elem);
   }
@@ -33,7 +34,7 @@ export class GoogleMapsService {
       }, (result, status, pagination) => {
         let places = [];
         if (status === "OK") {
-          this.zone.run(() => {
+          this.ngZone.run(() => {
             for (let i = 0; i < result.length; i++) {
               places.push(result[i]);
             }
@@ -45,9 +46,13 @@ export class GoogleMapsService {
     });
   }
 
+
+
+
   public getPlaceTypes() {
     return this.http.get('assets/data/place_type.json');
   }
+
 
 
 }
