@@ -13,7 +13,7 @@ export class GoogleMapsService {
   }
 
 
-  private async getPosition(radius: any, type: any):Promise<any> {
+  private async getPosition(radius: any, type: any): Promise<any> {
     let myLatLog: string;
     const currentPosition = await this.geolocation.getCurrentPosition();
     myLatLog = new google.maps.LatLng(currentPosition.coords.latitude, currentPosition.coords.longitude, currentPosition.coords.accuracy)
@@ -33,12 +33,13 @@ export class GoogleMapsService {
         let places = [];
         if (status === "OK") {
           this.zone.run(() => {
-            for (const place of result) {
-              places.push(place);
+            for (let i = 0; i < result.length; i++) {
+              places.push(result[i]);
             }
             resolve(places);
           });
         }
+        resolve();
       });
     });
   }
