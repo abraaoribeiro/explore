@@ -28,3 +28,8 @@
 ion-loading.spinner {
   --spinner-color: #00868b;
 }
+
+.searchbar-input-container.sc-ion-searchbar-ios {
+  height: 37px;
+  contain: strict;
+}

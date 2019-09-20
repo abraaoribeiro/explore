@@ -9,7 +9,6 @@
     <ion-col size="12">
       <span class="text-title">O que você deseja encontrar Maria ?</span>
     </ion-col>
-    <ion-button  color="secondary"  fill="clear">Ver mais</ion-button>
   </ion-row>
   <div class="scrolling-wrapper">
     <div class="card"
@@ -18,12 +17,27 @@
         <div>
           <ion-icon class="icon-cat"
                     mode="ios"
-                    color="primary"
+                    color="secondary"
                     [name]="type.icon"></ion-icon>
         </div>
         <p class="ion-text-wrap"
            class="text-category">
           {{type.nome}}
+        </p>
+      </ion-card>
+    </div>
+
+    <div class="card">
+      <ion-card mode="ios">
+        <div>
+          <ion-icon class="icon-cat"
+                    mode="ios"
+                    color="primary"
+                    name="arrow-dropright"></ion-icon>
+        </div>
+        <p class="ion-text-wrap"
+           class="text-category">
+          Ver Todos
         </p>
       </ion-card>
     </div>
@@ -66,10 +80,15 @@
 
     <div class="card">
       <ion-card mode="ios">
-        <img src="assets/shapes.svg" />
+        <div>
+          <ion-icon class="icon-cat"
+                    mode="ios"
+                    color="primary"
+                    name="add-circle"></ion-icon>
+        </div>
         <p class="ion-text-wrap"
            class="text-category">
-          Founded in 1829
+          Novo Roteiro
         </p>
       </ion-card>
     </div>
