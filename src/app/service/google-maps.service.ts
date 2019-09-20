@@ -8,7 +8,7 @@ declare let google: any;
 })
 export class GoogleMapsService {
   private googlePlaces: any;
-  
+
   constructor(public ngZone: NgZone, private geolocation: Geolocation, private http: HttpClient) {
     let elem = document.createElement("div");
     this.googlePlaces = new google.maps.places.PlacesService(elem);
@@ -46,11 +46,12 @@ export class GoogleMapsService {
     });
   }
 
-
-
-
   public getPlaceTypes() {
     return this.http.get('assets/data/place_type.json');
+  }
+
+  public getPlaceCategorys() {
+    return this.http.get('assets/data/categorys.json');
   }
 
 

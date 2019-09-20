@@ -1,6 +1,7 @@
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { GoogleMapsService } from 'src/app/service/google-maps.service';
+import { PlaceCategoryPage } from '../place-category/place-category.page';
 
 @Component({
   selector: 'app-place-home',
@@ -11,13 +12,15 @@ export class PlaceHomePage implements OnInit {
 
   placeTypes: any;
   places: [] = [];
-  constructor(private googleMapsService: GoogleMapsService, public loadingController: LoadingController) { }
+  constructor(private googleMapsService: GoogleMapsService,
+    public loadingController: LoadingController,
+    public modalController: ModalController) { }
 
   ngOnInit() {
   }
 
   ionViewDidEnter() {
-    this.getPlaces();
+    //  this.getPlaces();
     this.getTypes();
   }
 
@@ -37,10 +40,18 @@ export class PlaceHomePage implements OnInit {
   }
 
   getTypes() {
-    this.googleMapsService.getPlaceTypes().subscribe(types => {
-      this.placeTypes = types;
-    });
+    this.googleMapsService.getPlaceTypes().subscribe(types => this.placeTypes = types);
+  }
 
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: PlaceCategoryPage,
+      componentProps: { type: this.getPlaces },
+      mode: 'ios',
+      cssClass: 'modal-action-sheet',
+      
+    });
+    await modal.present();
   }
 
 }

@@ -1,8 +1,32 @@
 [
-    { "nome": "Aeroporto", "type": "airport",  "icon":"airplane"},
-    { "nome": "Caixa Eletrônico", "type": "atm", "icon": "card" },
-    { "nome": "Bar", "type": "bar",  "icon":"beer"  },
-    { "nome": "Livraria", "type": "book_store", "icon":"book" },
-    { "nome": "Estação de ônibus", "type": "bus_station", "icon":"train" },
-    { "nome": "Cafeteria", "type": "cafe", "icon":"cafe" }
-  ]
+  {
+    "nome": "Aeroporto",
+    "type": "airport",
+    "icon": "airplane"
+  },
+  {
+    "nome": "Caixa Eletrônico",
+    "type": "atm",
+    "icon": "card"
+  },
+  {
+    "nome": "Bar",
+    "type": "bar",
+    "icon": "beer"
+  },
+  {
+    "nome": "Livraria",
+    "type": "book_store",
+    "icon": "book"
+  },
+  {
+    "nome": "Estação de ônibus",
+    "type": "bus_station",
+    "icon": "train"
+  },
+  {
+    "nome": "Cafeteria",
+    "type": "cafe",
+    "icon": "cafe"
+  }
+]
