@@ -1,6 +1,9 @@
 <ion-card mode="ios"
           *ngFor="let place of places">
-  <img src="{{getImagens(place.photos)}}" />
+  <div class="ion-no-padding ion-no-margin"  lines="none"> 
+    <ion-icon name="heart-empty" color="primary" class="icon-favorite"></ion-icon>
+    <img src="{{getImagens(place.photos)}}" />
+  </div>
   <ion-card-header>
     <ion-card-subtitle>{{place.vicinity}}</ion-card-subtitle>
     <ion-card-title>{{place.name}}</ion-card-title>

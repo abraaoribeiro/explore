@@ -17,7 +17,7 @@ export class PlaceHomePage implements OnInit {
   }
 
   ionViewDidEnter() {
-   // this.getPlaces();
+    this.getPlaces();
     this.getTypes();
   }
 

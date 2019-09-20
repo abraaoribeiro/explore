@@ -16,6 +16,7 @@ ion-card {
   margin-inline-end: -6px;
 }
 
+
 .scrolling-wrapper {
   overflow-x: scroll;
   overflow-y: hidden;
@@ -23,8 +24,8 @@ ion-card {
   -webkit-overflow-scrolling: touch;
 
   .card {
-    display:inline-block;
-    width: 160px;
+    display: inline-block;
+    width: 140px;
   }
 }
 .text-title {
@@ -36,9 +37,8 @@ ion-card {
 .text-category {
   font-weight: 900;
   padding-left: 5px;
-  word-wrap: break-word; 
+  word-wrap: break-word;
   text-align: center;
-
 }
 
 .icon-cat {
@@ -48,19 +48,12 @@ ion-card {
   width: var(--image-width, 100%);
   height: var(--image-height, 80px);
   position: relative;
-  opacity: 0.80;
+  opacity: 0.8;
   -moz-opacity: 0.65;
   filter: alpha(opacity=65);
 }
 
-.user_ratings_total{
-position: relative;
-left: 50;
+.user_ratings_total {
+  position: relative;
+  left: 50;
 }
-
-/* ion-button{
-   position: absolute;
-    bottom: 88%;
-    margin: auto;
-    right: 2%;
-} */
