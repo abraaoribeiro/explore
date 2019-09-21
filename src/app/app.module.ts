@@ -15,17 +15,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PlaceCategoryPage } from './pages/place/place-category/place-category.page';
-import { PlaceCategoryPageModule } from './pages/place/place-category/place-category.module';
 
 
 registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, PlaceCategoryPage],
   entryComponents: [PlaceCategoryPage],
   imports: [
     BrowserModule,
-    PlaceCategoryPageModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,

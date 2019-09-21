@@ -1,7 +1,10 @@
 <ion-card mode="ios"
           *ngFor="let place of places">
-  <div class="ion-no-padding ion-no-margin"  lines="none"> 
-    <ion-icon name="heart-empty" color="primary" class="icon-favorite"></ion-icon>
+  <div class="ion-no-padding ion-no-margin"
+       lines="none">
+    <ion-icon name="heart-empty"
+              color="primary"
+              class="icon-favorite"></ion-icon>
     <img src="{{getImagens(place.photos)}}" />
   </div>
   <ion-card-header>

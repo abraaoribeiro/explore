@@ -20,4 +20,4 @@ import { SearchPlacesModule } from 'src/app/shared/components/search-places/sear
   ],
   declarations: [PlaceHomePage]
 })
-export class PlaceHomePageModule {}
+export class PlaceHomePageModule { }

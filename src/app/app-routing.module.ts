@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+import { Network } from '@ionic-native/network/ngx';
 
 
 const routes: Routes = [
@@ -11,11 +13,12 @@ const routes: Routes = [
   { path: 'logged-out', loadChildren: () => import('./pages/user/logged-out/logged-out.module').then(m => m.LoggedOutPageModule) },
   { path: 'login', loadChildren: () => import('./pages/user/login/login.module').then(m => m.LoginPageModule) },
   { path: 'create-login', loadChildren: () => import('./pages/user/create-login/create-login.module').then(m => m.CreateLoginPageModule) },
-  { path: 'place-category', loadChildren: './pages/place/place-category/place-category.module#PlaceCategoryPageModule' },
 ];
 
 const PLUGINSIONIC = [
-  Geolocation
+  Geolocation,
+  AndroidPermissions,
+  Network
 ]
 @NgModule({
   imports: [

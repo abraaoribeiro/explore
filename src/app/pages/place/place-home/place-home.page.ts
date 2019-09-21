@@ -2,6 +2,8 @@ import { LoadingController, ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { GoogleMapsService } from 'src/app/service/google-maps.service';
 import { PlaceCategoryPage } from '../place-category/place-category.page';
+import { Network } from '@ionic-native/network/ngx';
+import { NetworkService } from 'src/app/service/network.service';
 
 @Component({
   selector: 'app-place-home',
@@ -9,19 +11,25 @@ import { PlaceCategoryPage } from '../place-category/place-category.page';
   styleUrls: ['./place-home.page.scss'],
 })
 export class PlaceHomePage implements OnInit {
-
+  networkType:string;
   placeTypes: any;
   places: [] = [];
   constructor(private googleMapsService: GoogleMapsService,
     public loadingController: LoadingController,
-    public modalController: ModalController) { }
+    public modalController: ModalController,
+    private networkService:NetworkService) { }
 
   ngOnInit() {
   }
 
   ionViewDidEnter() {
-    //  this.getPlaces();
-    this.getTypes();
+    this.networkService.getNewtwork(this.networkType).then((connction) => {
+      this.networkType = connction;
+      if(connction != 'none'){
+        this.getPlaces();
+        this.getTypes();
+      }
+    })
   }
 
 
@@ -49,9 +57,11 @@ export class PlaceHomePage implements OnInit {
       componentProps: { type: this.getPlaces },
       mode: 'ios',
       cssClass: 'modal-action-sheet',
-      
+
     });
     await modal.present();
   }
+
+
 
 }

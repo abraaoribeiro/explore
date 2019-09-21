@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content>
+  <ion-grid [hidden]="networkType == 'none'">
   <ion-row>
     <ion-col size="12">
       <span class="text-title">O que você deseja encontrar Maria ?</span>
@@ -100,5 +101,12 @@
     </ion-col>
   </ion-row>
   <app-card-place [places]="places"></app-card-place>
-
+</ion-grid>
+  <div class="box" *ngIf="networkType == 'none'">
+    <img   class="img-info" src="assets/img/undraw_insert_block_efyb.svg" alt="">
+    <h1> <ion-text color="danger">Erro</ion-text> Você está offline</h1>
+    <ion-button class="button-load"  (click)="ionViewDidEnter()" fill='clear' color="secondary"  >
+      Tentar Novamente 
+    </ion-button>
+  </div>
 </ion-content>

@@ -1,6 +1,5 @@
 <ion-header no-border>
   <ion-toolbar>
-    <ion-title>{{texCatHeader}}</ion-title>
     <ion-buttons slot="start">
       <ion-button (click)="closeModal()">
         <ion-icon slot="start"
@@ -10,9 +9,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [scrollEvents]="true"
-             (ionScroll)="logScrolling($event)">
-  <h1 class="category-text" >{{textCatContent}}</h1>
+<ion-content>
+  <h1 class="category-text">Categorias</h1>
   <ion-list mode="ios"
             *ngFor="let category of categorys"
             lines="lines">
