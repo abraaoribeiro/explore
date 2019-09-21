@@ -2,8 +2,11 @@
   [(ngModel)]="input"
   (ionChange)="searchPlaces()"
   placeholder="Explore"></ion-searchbar>
-  <ion-list mode="ios" *ngFor="let place of placesResult" [hidden]="!input.length">
-    <ion-item mode="ios">
+  <ion-list mode="ios"  [hidden]="!input.length">
+    <ion-item mode="ios" *ngFor="let place of placesResult">
       <ion-label class="ion-text-wrap" mode="ios">{{place.description}}</ion-label>
+    </ion-item>
+    <ion-item style="width: 180px;" lines="none">
+      <img src="assets/img/powered_by_google_on_white.png" >
     </ion-item>
   </ion-list>
