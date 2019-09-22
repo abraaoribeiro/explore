@@ -26,7 +26,7 @@ export class PlaceHomePage implements OnInit {
     this.networkService.getNewtwork(this.networkType).then((connction) => {
       this.networkType = connction;
       if(connction != 'none'){
-        this.getPlaces();
+      //  this.getPlaces();
         this.getTypes();
       }
     })
