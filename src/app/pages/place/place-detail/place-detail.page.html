@@ -46,12 +46,14 @@
                           rating="5"
                           fontSize="22px">
       </ionic4-star-rating>
-      <p> Total de Avaliações: {{place?.user_ratings_total}}</p>
+      <p *ngIf="place?.user_ratings_total"> Total de Avaliações: {{ place?.user_ratings_total}}</p>
+      <p *ngIf="!place?.user_ratings_total"> Total de Avaliações: Sem avaliações</p>
     </ion-card-content>
   </ion-card>
 
   <ion-card mode='ios'>
     <ion-card-content>
+      <!--Link da localizacao-->
       <ion-item button
                 detail
                 href="{{place?.url}}">
@@ -67,6 +69,7 @@
                   mode="ios"
                   name="call"></ion-icon>
       </ion-item>
+      <!--Status Aberto fechado-->
       <ion-item button
                 *ngIf="place?.opening_hours && place?.opening_hours?.open_now">
         <ion-label>Aberto</ion-label>
@@ -81,19 +84,66 @@
                   mode="ios"
                   name="Home"></ion-icon>
       </ion-item>
-      <ion-item button>
-        <ion-label>Dias de Abertura</ion-label>
+      <!--Listagem dos dias da semana-->
+      <ion-item button
+                (click)="toggleGroup(groupR)"
+                [ngClass]="{active: isGroupShown(groupW)}"
+                *ngIf="place?.opening_hours?.weekday_text">
+        <ion-label>Quando</ion-label>
+        <ion-icon item-right
+                  mode="ios"
+                  [name]="isGroupShown(groupW) ? 'arrow-down' : 'arrow-forward'"></ion-icon>
         <ion-icon slot="start"
                   mode="ios"
                   name="calendar"></ion-icon>
       </ion-item>
-      <ion-list *ngFor="let item of place?.opening_hours?.weekday_text">
-        <ion-item style="text-align: right;">
-          <p >{{item}}</p>
-        </ion-item>
-      </ion-list>
 
+      <div *ngIf="isGroupShown(groupW)">
+        <ion-list #groupW
+                  *ngFor="let weekday_text of place?.opening_hours?.weekday_text">
+          <ion-item style="text-align: right;">
+            <p>{{weekday_text}}</p>
+          </ion-item>
+        </ion-list>
+      </div>
+      <!--Listagem de comentarios -->
+      <ion-item button
+                *ngIf="place?.opening_hours?.weekday_text"
+                (click)="toggleGroup(groupR)"
+                [ngClass]="{active: isGroupShown(groupR)}">
+        <ion-label>Reviews</ion-label>
+        <ion-icon item-right
+                  mode="ios"
+                  [name]="isGroupShown(groupR) ? 'arrow-down' : 'arrow-forward'"></ion-icon>
+        <ion-icon slot="start"
+                  mode="ios"
+                  name="person"></ion-icon>
+      </ion-item>
 
+      <div *ngIf="isGroupShown(groupR)">
+        <ion-list #groupR
+                  *ngFor="let review of place?.reviews">
+          <ion-item style="text-align: right;">
+            <ion-avatar slot="start">
+              <img src="{{review.profile_photo_url}}">
+            </ion-avatar>
+            <p style="font-size: 16px">{{review.author_name}}</p>
+            <p style="position: absolute;
+          top: 34px;">{{review.rating}} avaliações</p>
+          </ion-item>
+          <ionic4-star-rating activeIcon="ios-star"
+                              defaultIcon="ios-star-outline"
+                              activeColor="#ffb400"
+                              readonly="true"
+                              [rating]="review?.rating"
+                              defaultColor="#ffb400"
+                              rating="5"
+                              fontSize="12px">
+          </ionic4-star-rating>
+          <p>{{review.relative_time_description}}</p>
+          <p style="font-weight: 800;">{{review.text}}}</p>
+        </ion-list>
+      </div>
     </ion-card-content>
   </ion-card>
 </ion-content>
@@ -103,7 +153,7 @@
     <ion-button mode="ios"
                 color="secondary"
                 expand="block">
-      Click me
+      Adicionar a uma Atividade
     </ion-button>
   </ion-toolbar>
 </ion-footer>
