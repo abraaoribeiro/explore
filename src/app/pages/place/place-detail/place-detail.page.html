@@ -108,7 +108,7 @@
       </div>
       <!--Listagem de comentarios -->
       <ion-item button
-                *ngIf="place?.opening_hours?.weekday_text"
+                *ngIf="place?.reviews"
                 (click)="toggleGroup(groupR)"
                 [ngClass]="{active: isGroupShown(groupR)}">
         <ion-label>Reviews</ion-label>

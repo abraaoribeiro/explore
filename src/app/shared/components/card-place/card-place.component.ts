@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CardPlaceComponent implements OnInit {
 
   @Input() places: [] = [];
-  defaultImage = 'assets/shapes.svg'
+  defaultImage = 'assets/img/undraw_team_work_k80m.svg'
   constructor() { }
 
   ngOnInit() {

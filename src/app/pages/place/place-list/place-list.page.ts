@@ -1,3 +1,4 @@
+import { LoadingController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { PlaceService } from 'src/app/service/place.service';
@@ -12,7 +13,9 @@ export class PlaceListPage implements OnInit {
   places = []
   type: any = ''
   range: any = '500';
-  constructor(private placeService: PlaceService, private route: ActivatedRoute) { }
+  constructor(private placeService: PlaceService,
+    private route: ActivatedRoute,
+    public loadingController: LoadingController) { }
 
   ngOnInit() {
     this.getPlaces();
@@ -20,11 +23,18 @@ export class PlaceListPage implements OnInit {
 
 
   async getPlaces() {
-    const type = this.route.snapshot.params['type'];
-    this.type = type;
+    const loading = await this.loadingController.create({
+      spinner: 'dots',
+      mode: 'ios',
+      cssClass: 'spinner',
+      animated: true
+    })
+    await loading.present();
+    this.route.queryParams.subscribe(params => this.type = params.category);
     let place = await this.placeService.getPlaces(this.range, this.type);
-    this.places = place;
     console.log(place);
+    this.places = place;
+    loading.dismiss();
 
   }
 }

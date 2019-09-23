@@ -15,7 +15,8 @@
             *ngFor="let category of categorys"
             lines="lines">
     <ion-item mode="ios"
-              [routerLink]="['/place-list', { queryParams: { order:  category.type } }]">
+              [routerLink]="['/place-list']"
+              [queryParams]="{ category: category.type }">
       <ion-label class="ion-text-wrap"
                  mode="ios">{{category.nome}}</ion-label>
     </ion-item>
