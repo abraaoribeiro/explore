@@ -3,6 +3,7 @@ import { LoadingController, ModalController } from '@ionic/angular';
 import { NetworkService } from 'src/app/service/network.service';
 import { PlaceService } from 'src/app/service/place.service';
 import { PlaceCategoryPage } from '../place-category/place-category.page';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-place-home',
@@ -17,7 +18,8 @@ export class PlaceHomePage implements OnInit {
     private placeService: PlaceService,
     public loadingController: LoadingController,
     public modalController: ModalController,
-    private networkService: NetworkService) { }
+    private networkService: NetworkService,
+    private router:Router) { }
 
   ngOnInit() {
   }
@@ -62,5 +64,7 @@ export class PlaceHomePage implements OnInit {
     await modal.present();
   }
 
-
+routeCategory(){
+  this.router.navigate(['/place-category'])
+}
 }

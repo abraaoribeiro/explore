@@ -1,6 +1,7 @@
 import { PlaceService } from 'src/app/service/place.service';
 import { Component, OnInit } from '@angular/core';
 import { ModalController, LoadingController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-place-category',
@@ -11,15 +12,11 @@ export class PlaceCategoryPage implements OnInit {
   categorys: any ;
   constructor(
     public loadingController: LoadingController,
-    public modalController: ModalController,
-    private placeService: PlaceService) { }
+    private placeService: PlaceService,
+    private router: Router) { }
 
   ngOnInit() {
     this.placeCategory();
-  }
-
-  closeModal() {
-    this.modalController.dismiss();
   }
 
   public async placeCategory() {
@@ -37,5 +34,9 @@ export class PlaceCategoryPage implements OnInit {
   }
   search(){
     this.categorys
+  }
+
+  buttonBack(){
+    this.router.navigate(['tabs/tab1']);
   }
 }

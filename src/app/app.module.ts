@@ -1,4 +1,5 @@
 import { registerLocaleData } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import localePt from '@angular/common/locales/pt';
 import { ErrorHandler, LOCALE_ID, NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
@@ -13,15 +14,13 @@ import { environment } from 'src/environments/environment';
 import { ErrorHandlerException } from './@core/handlers/error-handler-exception.ts.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
-import { PlaceCategoryPage } from './pages/place/place-category/place-category.page';
 
 
 registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
-  declarations: [AppComponent, PlaceCategoryPage],
-  entryComponents: [PlaceCategoryPage],
+  declarations: [AppComponent],
+  entryComponents: [],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

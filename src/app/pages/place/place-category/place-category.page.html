@@ -1,7 +1,7 @@
 <ion-header no-border>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button (click)="closeModal()">
+      <ion-button (click)="buttonBack()">
         <ion-icon slot="start"
                   name="arrow-back"></ion-icon>
       </ion-button>
@@ -15,8 +15,7 @@
             *ngFor="let category of categorys"
             lines="lines">
     <ion-item mode="ios"
-              [routerLink]="[ '/place-list', category.type ]"
-              (click)="closeModal()">
+              [routerLink]="['/place-list', { queryParams: { order:  category.type } }]">
       <ion-label class="ion-text-wrap"
                  mode="ios">{{category.nome}}</ion-label>
     </ion-item>
