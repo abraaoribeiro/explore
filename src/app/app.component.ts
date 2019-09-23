@@ -32,7 +32,7 @@ export class AppComponent {
         this.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION,
         this.androidPermissions.PERMISSION.WRITE_EXTERNAL_STORAGE,
         this.androidPermissions.PERMISSION.READ_EXTERNAL_STORAGE,
-      ]).then();
+      ]).catch();
     });
 
   }

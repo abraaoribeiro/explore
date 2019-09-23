@@ -6,7 +6,7 @@ declare let google: any;
 @Injectable({
   providedIn: 'root'
 })
-export class GoogleMapsService {
+export class PlaceService {
   private googlePlaces: any;
 
   constructor(public ngZone: NgZone, private geolocation: Geolocation, private http: HttpClient) {

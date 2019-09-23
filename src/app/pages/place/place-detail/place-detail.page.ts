@@ -1,5 +1,5 @@
 import { LoadingController } from '@ionic/angular';
-import { GoogleMapsService } from 'src/app/service/google-maps.service';
+import { PlaceService } from 'src/app/service/place.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -13,7 +13,7 @@ export class PlaceDetailPage implements OnInit {
   place: any;
   shownGroup = null;
 
-  constructor(private googleMapsService: GoogleMapsService,
+  constructor(private placeService: PlaceService,
     public loadingController: LoadingController,
     private route: ActivatedRoute,
     private router: Router) { }
@@ -31,7 +31,7 @@ export class PlaceDetailPage implements OnInit {
     });
     await loading.present();
     let place_id = this.route.snapshot.params['id'];
-    await this.googleMapsService.getPlaceDetail('', place_id).then(placeDetail => {
+    await this.placeService.getPlaceDetail('', place_id).then(placeDetail => {
       console.log(placeDetail);
       this.place = placeDetail;
       loading.dismiss();

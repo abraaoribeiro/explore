@@ -1,4 +1,4 @@
-import { GoogleMapsService } from 'src/app/service/google-maps.service';
+import { PlaceService } from 'src/app/service/place.service';
 import { Component, OnInit } from '@angular/core';
 import { ModalController, LoadingController } from '@ionic/angular';
 
@@ -12,7 +12,7 @@ export class PlaceCategoryPage implements OnInit {
   constructor(
     public loadingController: LoadingController,
     public modalController: ModalController,
-    private googleMapsService: GoogleMapsService) { }
+    private placeService: PlaceService) { }
 
   ngOnInit() {
     this.placeCategory();
@@ -30,7 +30,7 @@ export class PlaceCategoryPage implements OnInit {
       animated: true
     })
     await loading.present();
-    await this.googleMapsService.getPlaceCategorys().subscribe(categorys => {
+    await this.placeService.getPlaceCategorys().subscribe(categorys => {
       this.categorys = categorys
       loading.dismiss();
     });
