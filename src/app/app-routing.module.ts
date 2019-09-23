@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: () => import('./pages/user/login/login.module').then(m => m.LoginPageModule) },
   { path: 'create-login', loadChildren: () => import('./pages/user/create-login/create-login.module').then(m => m.CreateLoginPageModule) },
   { path: 'place-detail/:id', loadChildren: () => import('./pages/place/place-detail/place-detail.module').then(m => m.PlaceDetailPageModule) },
+  { path: 'place-list/:type', loadChildren: './pages/place/place-list/place-list.module#PlaceListPageModule' },
 ];
 
 const PLUGINSIONIC = [

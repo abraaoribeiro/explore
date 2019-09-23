@@ -1,0 +1,19 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <app-search-places></app-search-places>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-card-place [places]="places"></app-card-place>
+
+  <div class="box"
+       *ngIf="!place">
+    <img class="img-info"
+         src="assets/img/undraw_empty_xct9.svg"
+         alt="">
+    <p>
+      Nada encontrado
+    </p>
+  </div>
+</ion-content>

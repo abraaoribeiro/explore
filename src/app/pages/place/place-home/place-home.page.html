@@ -14,7 +14,7 @@
   <div class="scrolling-wrapper">
     <div class="card"
          *ngFor="let type of placeTypes">
-      <ion-card mode="ios">
+      <ion-card mode="ios" [routerLink]="['/place-list', type.type ]">
         <div>
           <ion-icon class="icon-cat"
                     mode="ios"

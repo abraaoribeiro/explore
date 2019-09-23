@@ -14,7 +14,9 @@
   <ion-list mode="ios"
             *ngFor="let category of categorys"
             lines="lines">
-    <ion-item mode="ios">
+    <ion-item mode="ios"
+              [routerLink]="[ '/place-list', category.type ]"
+              (click)="closeModal()">
       <ion-label class="ion-text-wrap"
                  mode="ios">{{category.nome}}</ion-label>
     </ion-item>

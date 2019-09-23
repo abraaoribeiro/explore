@@ -1,8 +1,8 @@
-import { LoadingController, ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
+import { LoadingController, ModalController } from '@ionic/angular';
+import { NetworkService } from 'src/app/service/network.service';
 import { PlaceService } from 'src/app/service/place.service';
 import { PlaceCategoryPage } from '../place-category/place-category.page';
-import { NetworkService } from 'src/app/service/network.service';
 
 @Component({
   selector: 'app-place-home',
@@ -61,7 +61,6 @@ export class PlaceHomePage implements OnInit {
     });
     await modal.present();
   }
-
 
 
 }
