@@ -2,7 +2,6 @@ import { LoadingController, ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { GoogleMapsService } from 'src/app/service/google-maps.service';
 import { PlaceCategoryPage } from '../place-category/place-category.page';
-import { Network } from '@ionic-native/network/ngx';
 import { NetworkService } from 'src/app/service/network.service';
 
 @Component({
@@ -11,13 +10,13 @@ import { NetworkService } from 'src/app/service/network.service';
   styleUrls: ['./place-home.page.scss'],
 })
 export class PlaceHomePage implements OnInit {
-  networkType:string;
+  networkType: string;
   placeTypes: any;
   places: [] = [];
   constructor(private googleMapsService: GoogleMapsService,
     public loadingController: LoadingController,
     public modalController: ModalController,
-    private networkService:NetworkService) { }
+    private networkService: NetworkService) { }
 
   ngOnInit() {
   }
@@ -25,8 +24,8 @@ export class PlaceHomePage implements OnInit {
   ionViewDidEnter() {
     this.networkService.getNewtwork(this.networkType).then((connction) => {
       this.networkType = connction;
-      if(connction != 'none'){
-      //  this.getPlaces();
+      if (connction != 'none') {
+        this.getPlaces();
         this.getTypes();
       }
     })

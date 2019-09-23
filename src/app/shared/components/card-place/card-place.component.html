@@ -1,11 +1,12 @@
 <ion-card mode="ios"
-          *ngFor="let place of places">
+          *ngFor="let place of places"
+          [routerLink]="[ '/place-detail', place.reference]">
   <div class="ion-no-padding ion-no-margin">
     <ion-icon name="heart-empty"
               color="primary"
               mode="ios"
               class="icon-favorite"></ion-icon>
-    <img src="{{getImagens(place.photos)}}" />
+    <img  style="width: 100%; height: 200pt; object-fit: cover;" src="{{getImagens(place.photos)}}"/>
   </div>
   <ion-card-header>
     <ion-card-subtitle>{{place.vicinity}}</ion-card-subtitle>
