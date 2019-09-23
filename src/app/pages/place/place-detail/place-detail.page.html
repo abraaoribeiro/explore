@@ -21,7 +21,7 @@
           <ion-slide *ngFor="let foto of place?.photos">
             <img src="{{foto?.getUrl()}}"
                  style="width: 100%; height: auto; object-fit: cover;">
-            <ion-img *ngIf="foto === null"
+            <ion-img *ngIf="!foto"
                      src="assets/shapes.svg"></ion-img>
           </ion-slide>
         </ion-slides>
