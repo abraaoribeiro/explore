@@ -16,7 +16,7 @@
            *ngFor="let type of placeTypes">
         <ion-card mode="ios"
                   [routerLink]="['/place-list']"
-                  [queryParams]="{ category: type.type }">
+                  [queryParams]="{ category: type.type, name: type.nome }">
           <div>
             <ion-icon class="icon-cat"
                       mode="ios"

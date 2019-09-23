@@ -12,6 +12,7 @@ export class PlaceListPage implements OnInit {
 
   places = []
   type: any = ''
+  typeName: string;
   range: any = '500';
   constructor(private placeService: PlaceService,
     private route: ActivatedRoute,
@@ -30,7 +31,10 @@ export class PlaceListPage implements OnInit {
       animated: true
     })
     await loading.present();
-    this.route.queryParams.subscribe(params => this.type = params.category);
+    this.route.queryParams.subscribe(params => {
+      console.log(params);
+      this.typeName = params.name
+      this.type = params.category});
     let place = await this.placeService.getPlaces(this.range, this.type);
     console.log(place);
     this.places = place;

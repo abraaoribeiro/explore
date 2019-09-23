@@ -2,10 +2,19 @@
   <ion-toolbar>
     <app-search-places></app-search-places>
   </ion-toolbar>
+  <ion-chip color="secondary"
+            mode="ios">
+    <ion-icon name="checkmark-circle"></ion-icon>
+    <ion-label>{{typeName}} - {{range}}m</ion-label>
+    <ion-icon mode="ios"
+              name="arrow-forward"></ion-icon>
+
+  </ion-chip>
 </ion-header>
 
 <ion-content>
-  <app-card-place [hidden]="!places" [places]="places"></app-card-place>
+  <app-card-place [hidden]="!places"
+                  [places]="places"></app-card-place>
 
   <div class="box"
        *ngIf="!places">

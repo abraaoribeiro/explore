@@ -16,7 +16,7 @@
             lines="lines">
     <ion-item mode="ios"
               [routerLink]="['/place-list']"
-              [queryParams]="{ category: category.type }">
+              [queryParams]="{ category: category.type, name: category.nome}">
       <ion-label class="ion-text-wrap"
                  mode="ios">{{category.nome}}</ion-label>
     </ion-item>
