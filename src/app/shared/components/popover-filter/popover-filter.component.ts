@@ -26,8 +26,8 @@ export class PopoverFilterComponent implements OnInit {
   ngOnInit() {
     this.categoryModel.name = this.name;
     this.categoryModel.range = this.range;
-    this.categoryModel.type = this.category;
     this.categorySelected = {name: this.categoryModel.name};
+    this.categorySelected.type = {type: this.categoryModel.type};
 
     this.placeService.getPlaceCategorys().subscribe(category => {
       this.categorys = category;
@@ -37,6 +37,8 @@ export class PopoverFilterComponent implements OnInit {
 
   okPopover() {
     this.categoryModel.name = this.categorySelected.name;
+    this.categoryModel.type =  this.categorySelected.type;
+
     this.router.navigate(['/place-list'], { queryParams: { 'category': this.categoryModel.type, 'range': this.categoryModel.range, 'name': this.categoryModel.name }, queryParamsHandling: 'merge' });
     this.popoverController.dismiss('verifid');
   }
