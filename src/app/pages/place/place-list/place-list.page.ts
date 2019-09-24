@@ -14,7 +14,7 @@ export class PlaceListPage implements OnInit {
   places = []
   type: string = ''
   typeName: string = '';
-  range: any = '500';
+  range: any = '200';
   constructor(private placeService: PlaceService,
     private route: ActivatedRoute,
     public loadingController: LoadingController,
@@ -34,29 +34,34 @@ export class PlaceListPage implements OnInit {
     })
     await loading.present();
     this.route.queryParams.subscribe(params => {
-        console.log(params);
-        this.typeName = params.name
-        this.type = params.category
-        if(params.range){
-          this.range = params.range
-        }
+      console.log(params);
+      this.typeName = params.name
+      this.type = params.category
+      if (params.range) {
+        this.range = params.range
+      }
     });
-      let place = await this.placeService.getPlaces(this.range, this.type);
-      console.log(place);
-      this.places = place;
-      loading.dismiss();
+    let place = await this.placeService.getPlaces(this.range, this.type);
+    console.log(place);
+    this.places = place;
+    loading.dismiss();
   }
 
   public async openPopoverFiler() {
     const popover = await this.popoverController.create({
       component: PopoverFilterComponent,
+      componentProps: {
+        'category': this.type,
+        'range': this.range,
+        'name': this.typeName
+      },
       mode: 'ios',
-      animated: true
+      animated: true,
+      cssClass: 'stylePopover'
     })
     await popover.present();
     const data = await popover.onDidDismiss();
-    console.log(data);
-    if(data.data == 'verifid'){
+    if (data.data == 'verifid') {
       this.getPlaces();
     }
   }

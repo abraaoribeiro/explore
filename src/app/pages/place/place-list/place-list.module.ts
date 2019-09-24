@@ -22,6 +22,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    RouterModule,
     CardPlaceModule,
     SearchPlacesModule,
     RouterModule.forChild(routes)

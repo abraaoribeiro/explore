@@ -1,7 +1,7 @@
 import { PlaceService } from 'src/app/service/place.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CategoryModel } from 'src/app/model/category-model'
 
 @Component({
@@ -11,12 +11,24 @@ import { CategoryModel } from 'src/app/model/category-model'
 })
 export class PopoverFilterComponent implements OnInit {
 
+  @Input() range:string;
+  @Input() category:string;
+  @Input() name: string;
   categoryModel: CategoryModel = new CategoryModel();
   categorys: any;
-  constructor(private placeService: PlaceService, public popoverController: PopoverController, private router: Router) { }
+  constructor(
+    private placeService: PlaceService,
+    public popoverController: PopoverController,
+    private router: Router) { }
 
   ngOnInit() {
-    this.placeService.getPlaceCategorys().subscribe(category => this.categorys = category);
+    
+    this.placeService.getPlaceCategorys().subscribe(category => {
+      this.categorys = category;
+      this.categoryModel.name = this.name;
+      this.categoryModel.range = this.range;
+      this.categoryModel.type = this.category;
+    });
   }
 
   closePopover() {
@@ -24,7 +36,7 @@ export class PopoverFilterComponent implements OnInit {
     this.popoverController.dismiss('verifid');
   }
 
-  cancelPopover(){
+  cancelPopover() {
     this.popoverController.dismiss();
   }
 

@@ -3,16 +3,24 @@
             mode="ios">
     <ion-list-header>
       <ion-label style="font-size: 18px;
-      font-family: Cereal-Light;">Categorias</ion-label>
+      font-family: Cereal-Light;  font-weight: 900;">Categorias</ion-label>
     </ion-list-header>
     <ion-select okText="Ok"
                 cancelText="Cencelar"
                 mode="ios"
+                [selectedText]="categoryModel.name"
                 placeholder="Selecionar"
-                [(ngModel)]="categoryModel">
+                [(ngModel)]="categoryModel"
+                style="color: #FF5A5F;
+                font-size: 14px;
+                white-space: normal;">
       <ion-select-option *ngFor="let category of categorys"
                          [value]="category">{{category.name}}</ion-select-option>
     </ion-select>
+    <ion-item lines="none">
+      <ion-label style="font-size: 18px;
+      font-family: Cereal-Light; font-weight: 900;">Alcance - {{categoryModel.range}} m</ion-label>
+    </ion-item>
     <ion-range min="200"
                max="5000"
                pin
@@ -28,7 +36,7 @@
                 name="add"></ion-icon>
     </ion-range>
   </ion-list>
-  <ion-item>
+  <ion-item lines="none">
     <ion-button color=" primary"
                 fill="clear"
                 size="small"
