@@ -1,8 +1,8 @@
-import { PlaceService } from 'src/app/service/place.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
-import { Router, ActivatedRoute } from '@angular/router';
-import { CategoryModel } from 'src/app/model/category-model'
+import { CategoryModel } from 'src/app/model/category-model';
+import { PlaceService } from 'src/app/service/place.service';
 
 @Component({
   selector: 'app-popover-filter',
@@ -22,7 +22,6 @@ export class PopoverFilterComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    
     this.placeService.getPlaceCategorys().subscribe(category => {
       this.categorys = category;
       this.categoryModel.name = this.name;
@@ -31,7 +30,7 @@ export class PopoverFilterComponent implements OnInit {
     });
   }
 
-  closePopover() {
+  okPopover() {
     this.router.navigate(['/place-list'], { queryParams: { 'category': this.categoryModel.type, 'range': this.categoryModel.range, 'name': this.categoryModel.name }, queryParamsHandling: 'merge' });
     this.popoverController.dismiss('verifid');
   }
