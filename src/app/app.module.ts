@@ -14,6 +14,7 @@ import { environment } from 'src/environments/environment';
 import { ErrorHandlerException } from './@core/handlers/error-handler-exception.ts.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 registerLocaleData(localePt, 'pt-BR');
@@ -23,6 +24,7 @@ registerLocaleData(localePt, 'pt-BR');
   entryComponents: [],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
@@ -35,7 +37,7 @@ registerLocaleData(localePt, 'pt-BR');
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: ErrorHandler, useClass: ErrorHandlerException }, ErrorHandlerException,
     { provide: LOCALE_ID, useValue: "pt-BR" },
-    {provide: ErrorHandler,useClass: ErrorHandlerException},ErrorHandlerException
+    { provide: ErrorHandler, useClass: ErrorHandlerException }, ErrorHandlerException
   ],
   bootstrap: [AppComponent]
 })

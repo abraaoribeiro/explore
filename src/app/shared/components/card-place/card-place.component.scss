@@ -1,13 +1,19 @@
-.icon-favorite {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    margin: 0;
-    right: 15px;
-    padding: 0;
-    z-index: 9998;
-    list-style: none;
-    color: white;
-    width: var(--image-width, 22px);
-    height: var(--image-height, 40px);
-  }
+/* .icon-favorite {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  margin: 0;
+  right: 15px;
+  padding: 0;
+  z-index: 9998;
+  list-style: none;
+  color: white;
+  width: var(--image-width, 22px);
+  height: var(--image-height, 40px);
+}
+ */
+ .icon-favorite {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-place',
@@ -9,7 +10,7 @@ export class CardPlaceComponent implements OnInit {
 
   @Input() places: [] = [];
   defaultImage = 'assets/img/undraw_team_work_k80m.svg'
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
@@ -25,5 +26,9 @@ export class CardPlaceComponent implements OnInit {
       return this.defaultImage
     }
     return url;
+  }
+
+  forward(place){
+    this.router.navigate(['/place-detail',place.reference])
   }
 }

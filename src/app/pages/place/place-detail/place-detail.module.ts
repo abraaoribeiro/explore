@@ -1,3 +1,4 @@
+import { AnimatedFavoriteModule } from './../../../shared/components/animated-favorite/animated-favorite.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -21,6 +22,7 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     CardPlaceModule,
+    AnimatedFavoriteModule,
     RouterModule.forChild(routes)
   ],
   declarations: [PlaceDetailPage]
