@@ -41,15 +41,10 @@ export class PlaceListPage implements OnInit {
           this.range = params.range
         }
     });
-    try {
       let place = await this.placeService.getPlaces(this.range, this.type);
       console.log(place);
       this.places = place;
       loading.dismiss();
-    } catch (error) {
-      loading.dismiss();
-    }
-
   }
 
   public async openPopoverFiler() {
@@ -59,7 +54,10 @@ export class PlaceListPage implements OnInit {
       animated: true
     })
     await popover.present();
-    const data = await popover.onDidDismiss()
-    this.getPlaces();
+    const data = await popover.onDidDismiss();
+    console.log(data);
+    if(data.data == 'verifid'){
+      this.getPlaces();
+    }
   }
 }

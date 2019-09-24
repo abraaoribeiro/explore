@@ -16,14 +16,16 @@ export class PopoverFilterComponent implements OnInit {
   constructor(private placeService: PlaceService, public popoverController: PopoverController, private router: Router) { }
 
   ngOnInit() {
-    this.placeService.getPlaceCategorys().subscribe(category => {
-      this.categorys = category;
-    })
+    this.placeService.getPlaceCategorys().subscribe(category => this.categorys = category);
   }
 
   closePopover() {
     this.router.navigate(['/place-list'], { queryParams: { 'category': this.categoryModel.type, 'range': this.categoryModel.range, 'name': this.categoryModel.name }, queryParamsHandling: 'merge' });
-    this.popoverController.dismiss()
+    this.popoverController.dismiss('verifid');
+  }
+
+  cancelPopover(){
+    this.popoverController.dismiss();
   }
 
 }
