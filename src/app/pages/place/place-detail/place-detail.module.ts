@@ -1,3 +1,4 @@
+import { intersectionObserverPreset, LazyLoadImageModule } from 'ng-lazyload-image';
 import { AnimatedFavoriteModule } from './../../../shared/components/animated-favorite/animated-favorite.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -22,6 +23,9 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     CardPlaceModule,
+    LazyLoadImageModule.forRoot({
+      preset: intersectionObserverPreset // <-- tell LazyLoadImage that you want to use IntersectionObserver
+    }),
     AnimatedFavoriteModule,
     RouterModule.forChild(routes)
   ],

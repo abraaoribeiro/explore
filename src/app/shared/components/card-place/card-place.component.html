@@ -1,6 +1,5 @@
 <ion-card mode="ios"
-          *ngFor="let place of places"
-          >
+          *ngFor="let place of places">
   <!-- <div class="ion-no-padding ion-no-margin">
     <ion-icon name="heart-empty"
               color="primary"
@@ -9,7 +8,8 @@
             </div> -->
   <app-animated-favorite class="icon-favorite"></app-animated-favorite>
   <img style="width: 100%; height: 200pt; object-fit: cover;"
-       src="{{getImagens(place.photos)}}" />
+       [defaultImage]="defaultImage"
+       [lazyLoad]="getImagens(place.photos)" />
   <ion-card-header (click)="forward(place)">
     <ion-card-subtitle>{{place.vicinity}}</ion-card-subtitle>
     <ion-card-title>{{place.name}}</ion-card-title>

@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { StarRating } from 'ionic4-star-rating';
 import { AnimatedFavoriteModule } from '../animated-favorite/animated-favorite.module';
 import { CardPlaceComponent } from './card-place.component';
+import { intersectionObserverPreset, LazyLoadImageModule } from 'ng-lazyload-image';
 @NgModule({
   imports: [
     CommonModule,
@@ -13,6 +14,9 @@ import { CardPlaceComponent } from './card-place.component';
     FormsModule,
     IonicModule,
     RouterModule,
+    LazyLoadImageModule.forRoot({
+      preset: intersectionObserverPreset
+    }),
     AnimatedFavoriteModule,
   ],
   declarations: [CardPlaceComponent,StarRating],

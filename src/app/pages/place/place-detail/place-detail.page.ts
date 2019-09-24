@@ -12,7 +12,7 @@ export class PlaceDetailPage implements OnInit {
 
   place: any;
   shownGroup = null;
-
+  defaultImage = 'assets/img/undraw_empty_xct9.svg'
   constructor(private placeService: PlaceService,
     public loadingController: LoadingController,
     private route: ActivatedRoute,
@@ -35,7 +35,7 @@ export class PlaceDetailPage implements OnInit {
       console.log(placeDetail);
       this.place = placeDetail;
       loading.dismiss();
-    })
+    }).catch(err => loading.dismiss())
   }
 
   public toggleGroup(group) {

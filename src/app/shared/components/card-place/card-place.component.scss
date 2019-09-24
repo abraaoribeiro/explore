@@ -3,3 +3,11 @@
   top: 5px;
   right: 5px;
 }
+
+img{
+  transition: opacity 1s;
+  opacity: 0;
+}
+img.ng-lazyloaded {
+  opacity: 1;
+}

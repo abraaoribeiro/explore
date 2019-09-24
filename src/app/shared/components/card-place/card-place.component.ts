@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class CardPlaceComponent implements OnInit {
 
   @Input() places: [] = [];
-  defaultImage = 'assets/img/undraw_team_work_k80m.svg'
+  defaultImage = 'assets/img/undraw_empty_xct9.svg'
   constructor(private router:Router) { }
 
   ngOnInit() {
@@ -22,8 +22,6 @@ export class CardPlaceComponent implements OnInit {
         url = image.getUrl();
         return
       });
-    } else {
-      return this.defaultImage
     }
     return url;
   }

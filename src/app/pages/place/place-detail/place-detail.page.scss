@@ -31,3 +31,11 @@
   width: var(--image-width, 22px);
   height: var(--image-height, 40px);
 }
+
+img{
+  transition: opacity 1s;
+  opacity: 0;
+}
+img.ng-lazyloaded {
+  opacity: 1;
+}

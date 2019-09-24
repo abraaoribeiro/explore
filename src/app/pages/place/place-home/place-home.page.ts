@@ -14,12 +14,13 @@ export class PlaceHomePage implements OnInit {
   networkType: string;
   placeTypes: any;
   places: [] = [];
+  erroNotGoogleApi:any;
   constructor(
     private placeService: PlaceService,
     public loadingController: LoadingController,
     public modalController: ModalController,
     private networkService: NetworkService,
-    private router:Router) { }
+    private router: Router) { }
 
   ngOnInit() {
   }
@@ -43,10 +44,16 @@ export class PlaceHomePage implements OnInit {
       animated: true
     });
     await loading.present();
-    let places = await this.placeService.getPlaces('500', '');
-    console.log(places);
-    this.places = places;
-    loading.dismiss();
+    await this.placeService.getPlaces('500', '').then(places => {
+      this.places = places;
+      console.log(places);
+      loading.dismiss();
+    }).catch(err => {
+      this.erroNotGoogleApi = err;
+      console.log(err);
+      
+      loading.dismiss();
+    });
   }
 
   getTypes() {
@@ -64,7 +71,7 @@ export class PlaceHomePage implements OnInit {
     await modal.present();
   }
 
-routeCategory(){
-  this.router.navigate(['/place-category'])
-}
+  routeCategory() {
+    this.router.navigate(['/place-category'])
+  }
 }

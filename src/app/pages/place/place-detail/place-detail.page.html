@@ -16,10 +16,10 @@
         <ion-slides pager="true"
                     style="height: 230px !important; width: 100% !important; ">
           <ion-slide *ngFor="let foto of place?.photos">
-            <img src="{{foto?.getUrl()}}"
+            <img [defaultImage]="defaultImage"
+                 [lazyLoad]="foto.getUrl()"
                  style="width: 100%; height: auto; object-fit: cover;">
-            <ion-img *ngIf="!foto"
-                     src="assets/shapes.svg"></ion-img>
+                 <img *ngIf="!foto.getUrl()" [src]="defaultImage" alt="">
           </ion-slide>
         </ion-slides>
 
@@ -122,7 +122,7 @@
                   *ngFor="let review of place?.reviews">
           <ion-item style="text-align: right;">
             <ion-avatar slot="start">
-              <img src="{{review.profile_photo_url}}">
+              <img [lazyLoad]="review.profile_photo_url" >
             </ion-avatar>
             <p style="font-size: 16px">{{review.author_name}}</p>
             <p style="position: absolute;
@@ -143,6 +143,7 @@
       </div>
     </ion-card-content>
   </ion-card>
+  
 </ion-content>
 <ion-footer mode="ios"
             no-border>
