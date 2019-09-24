@@ -1,7 +1,8 @@
-import { LoadingController } from '@ionic/angular';
-import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { LoadingController, PopoverController } from '@ionic/angular';
 import { PlaceService } from 'src/app/service/place.service';
+import { PopoverFilterComponent } from './../../../shared/components/popover-filter/popover-filter.component';
 
 @Component({
   selector: 'app-place-list',
@@ -11,12 +12,13 @@ import { PlaceService } from 'src/app/service/place.service';
 export class PlaceListPage implements OnInit {
 
   places = []
-  type: any = ''
-  typeName: string;
+  type: string = ''
+  typeName: string = '';
   range: any = '500';
   constructor(private placeService: PlaceService,
     private route: ActivatedRoute,
-    public loadingController: LoadingController) { }
+    public loadingController: LoadingController,
+    public popoverController: PopoverController) { }
 
   ngOnInit() {
     this.getPlaces();
@@ -32,13 +34,32 @@ export class PlaceListPage implements OnInit {
     })
     await loading.present();
     this.route.queryParams.subscribe(params => {
-      console.log(params);
-      this.typeName = params.name
-      this.type = params.category});
-    let place = await this.placeService.getPlaces(this.range, this.type);
-    console.log(place);
-    this.places = place;
-    loading.dismiss();
+        console.log(params);
+        this.typeName = params.name
+        this.type = params.category
+        if(params.range){
+          this.range = params.range
+        }
+    });
+    try {
+      let place = await this.placeService.getPlaces(this.range, this.type);
+      console.log(place);
+      this.places = place;
+      loading.dismiss();
+    } catch (error) {
+      loading.dismiss();
+    }
 
+  }
+
+  public async openPopoverFiler() {
+    const popover = await this.popoverController.create({
+      component: PopoverFilterComponent,
+      mode: 'ios',
+      animated: true
+    })
+    await popover.present();
+    const data = await popover.onDidDismiss()
+    this.getPlaces();
   }
 }

@@ -8,7 +8,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   animations: [
     trigger('heart', [
       state('unliked', style({
-        color: '#fff',
+        color: '#FF5A5F',
         opacity: '0.5',
         transform: 'scale(1)'
       })),

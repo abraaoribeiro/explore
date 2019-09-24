@@ -3,7 +3,8 @@
     <app-search-places></app-search-places>
   </ion-toolbar>
   <ion-chip color="secondary"
-            mode="ios">
+            mode="ios" 
+            (click)="openPopoverFiler()">
     <ion-icon name="checkmark-circle"></ion-icon>
     <ion-label>{{typeName}} - {{range}}m</ion-label>
     <ion-icon mode="ios"

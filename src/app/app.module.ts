@@ -6,6 +6,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouteReuseStrategy } from '@angular/router';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -14,14 +15,15 @@ import { environment } from 'src/environments/environment';
 import { ErrorHandlerException } from './@core/handlers/error-handler-exception.ts.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PopoverFilterComponent } from './shared/components/popover-filter/popover-filter.component';
+import { PopoverFilterModule } from './shared/components/popover-filter/popover-filter.module';
 
 
 registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [],
+  entryComponents: [PopoverFilterComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -29,6 +31,7 @@ registerLocaleData(localePt, 'pt-BR');
     AppRoutingModule,
     HttpClientModule,
     AngularFireAuthModule,
+    PopoverFilterModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)],
   providers: [

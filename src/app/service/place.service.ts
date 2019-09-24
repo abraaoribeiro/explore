@@ -1,6 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { HttpClient } from '@angular/common/http';
+import { LoadingController } from '@ionic/angular';
 declare let google: any;
 
 @Injectable({
@@ -9,7 +10,7 @@ declare let google: any;
 export class PlaceService {
   private googlePlaces: any;
 
-  constructor(public ngZone: NgZone, private geolocation: Geolocation, private http: HttpClient) {
+  constructor(public ngZone: NgZone, private geolocation: Geolocation, private http: HttpClient, public loadingController: LoadingController) {
     let elem = document.createElement("div");
     this.googlePlaces = new google.maps.places.PlacesService(elem);
   }
@@ -25,7 +26,7 @@ export class PlaceService {
 
   public async getPlaces(radius?: any, type?: any): Promise<any> {
     const userLocation = await this.getPosition(radius, type);
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       this.googlePlaces.nearbySearch({
         location: userLocation,
         radius: radius,
@@ -43,7 +44,7 @@ export class PlaceService {
         }
         resolve();
       });
-    });
+    })
   }
 
 

@@ -1,358 +1,358 @@
 [
     {
-        "nome": "Contabilidade",
+        "name": "Contabilidade",
         "type": "accounting"
     },
     {
-        "nome": "Aeroporto",
+        "name": "Aeroporto",
         "type": "airport"
     },
     {
-        "nome": "Parque de diversões",
+        "name": "Parque de diversões",
         "type": "amusement_park"
     },
     {
-        "nome": "Aquário",
+        "name": "Aquário",
         "type": "aquarium"
     },
     {
-        "nome": "Galeria de Arte",
+        "name": "Galeria de Arte",
         "type": "art_gallery"
     },
     {
-        "nome": "Caixa Eletrônico",
+        "name": "Caixa Eletrônico",
         "type": "atm"
     },
     {
-        "nome": "Padaria",
+        "name": "Padaria",
         "type": "bakery"
     },
     {
-        "nome": "Banco",
+        "name": "Banco",
         "type": "bank"
     },
     {
-        "nome": "Bar",
+        "name": "Bar",
         "type": "bar"
     },
     {
-        "nome": "Salão de beleza",
+        "name": "Salão de beleza",
         "type": "beauty_salon"
     },
     {
-        "nome": "Loja de Bicicleta",
+        "name": "Loja de Bicicleta",
         "type": "bicycle_store"
     },
     {
-        "nome": "Livraria",
+        "name": "Livraria",
         "type": "book_store"
     },
     {
-        "nome": "Bowling",
+        "name": "Bowling",
         "type": "bowling_alley"
     },
     {
-        "nome": "Estação de onibus",
+        "name": "Estação de onibus",
         "type": "bus_station"
     },
     {
-        "nome": "Café",
+        "name": "Café",
         "type": "cafe"
     },
     {
-        "nome": "Área de camping",
+        "name": "Área de camping",
         "type": "campground"
     },
     {
-        "nome": "Vendedor de carros",
+        "name": "Vendedor de carros",
         "type": "car_dealer"
     },
     {
-        "nome": "Alugeul de Carro",
+        "name": "Alugeul de Carro",
         "type": "car_rental"
     },
     {
-        "nome": "Reparo do carro",
+        "name": "Reparo do carro",
         "type": "car_repair"
     },
     {
-        "nome": "Lava-jato",
+        "name": "Lava-jato",
         "type": "car_wash"
     },
     {
-        "nome": "Cassino",
+        "name": "Cassino",
         "type": "casino"
     },
     {
-        "nome": "Cemitério",
+        "name": "Cemitério",
         "type": "cemetery"
     },
     {
-        "nome": "Igreja",
+        "name": "Igreja",
         "type": "church"
     },
     {
-        "nome": "Prefeitura",
+        "name": "Prefeitura",
         "type": "city_hall"
     },
     {
-        "nome": "Loja de roupas",
+        "name": "Loja de roupas",
         "type": "clothing_store"
     },
     {
-        "nome": "Loja de conveniência",
+        "name": "Loja de conveniência",
         "type": "convenience_store"
     },
     {
-        "nome": "Tribunal",
+        "name": "Tribunal",
         "type": "courthouse"
     },
     {
-        "nome": "Dentista",
+        "name": "Dentista",
         "type": "dentist"
     },
     {
-        "nome": "Loja de departamento",
+        "name": "Loja de departamento",
         "type": "department_store"
     },
     {
-        "nome": "Médico",
+        "name": "Médico",
         "type": "doctor"
     },
     {
-        "nome": "Eletricista",
+        "name": "Eletricista",
         "type": "electrician"
     },
     {
-        "nome": "Loja de eletrônicos",
+        "name": "Loja de eletrônicos",
         "type": "electronics_store"
     },
     {
-        "nome": "Embaixada",
+        "name": "Embaixada",
         "type": "embassy"
     },
     {
-        "nome": "Corpo de Bombeiros",
+        "name": "Corpo de Bombeiros",
         "type": "fire_station"
     },
     {
-        "nome": "Florista",
+        "name": "Florista",
         "type": "florist"
     },
     {
-        "nome": "Funerária",
+        "name": "Funerária",
         "type": "funeral_home"
     },
     {
-        "nome": "Loja de móveis",
+        "name": "Loja de móveis",
         "type": "furniture_store"
     },
     {
-        "nome": "Posto de gasolina",
+        "name": "Posto de gasolina",
         "type": "gas_station"
     },
     {
-        "nome": "Academia",
+        "name": "Academia",
         "type": "gym"
     },
     {
-        "nome": "Cuidado capilar",
+        "name": "Cuidado capilar",
         "type": "hair_care"
     },
     {
-        "nome": "Loja de Hardware",
+        "name": "Loja de Hardware",
         "type": "hardware_store"
     },
     {
-        "nome": "hindu_temple",
+        "name": "hindu_temple",
         "type": "hindu_temple"
     },
     {
-        "nome": "home_goods_store",
+        "name": "home_goods_store",
         "type": "home_goods_store"
     },
     {
-        "nome": "hospital",
+        "name": "hospital",
         "type": "hospital"
     },
     {
-        "nome": "Agência de seguros",
+        "name": "Agência de seguros",
         "type": "insurance_agency"
     },
     {
-        "nome": "jewelry_store",
+        "name": "jewelry_store",
         "type": "jewelry_store"
     },
     {
-        "nome": "Lavanderia",
+        "name": "Lavanderia",
         "type": "laundry"
     },
     {
-        "nome": "Advogado",
+        "name": "Advogado",
         "type": "lawyer"
     },
     {
-        "nome": "Biblioteca",
+        "name": "Biblioteca",
         "type": "library"
     },
     {
-        "nome": "Liquor_store",
+        "name": "Liquor_store",
         "type": "liquor_store"
     },
     {
-        "nome": "Local_government_office",
+        "name": "Local_government_office",
         "type": "local_government_office"
     },
     {
-        "nome": "Chaveiro",
+        "name": "Chaveiro",
         "type": "locksmith"
     },
     {
-        "nome": "Alojamento",
+        "name": "Alojamento",
         "type": "lodging"
     },
     {
-        "nome": "meal_delivery",
+        "name": "meal_delivery",
         "type": "meal_delivery"
     },
     {
-        "nome": "meal_takeaway",
+        "name": "meal_takeaway",
         "type": "meal_takeaway"
     },
     {
-        "nome": "Mesquita",
+        "name": "Mesquita",
         "type": "mosque"
     },
     {
-        "nome": "movie_rental",
+        "name": "movie_rental",
         "type": "movie_rental"
     },
     {
-        "nome": "Cinema",
+        "name": "Cinema",
         "type": "movie_theater"
     },
     {
-        "nome": "moving_company",
+        "name": "moving_company",
         "type": "moving_company"
     },
     {
-        "nome": "Museu",
+        "name": "Museu",
         "type": "museum"
     },
     {
-        "nome": "Boate",
+        "name": "Boate",
         "type": "night_club"
     },
     {
-        "nome": "Pintor",
+        "name": "Pintor",
         "type": "painter"
     },
     {
-        "nome": "Parque",
+        "name": "Parque",
         "type": "park"
     },
     {
-        "nome": "Estacionamento",
+        "name": "Estacionamento",
         "type": "parking"
     },
     {
-        "nome": "Loja de animais",
+        "name": "Loja de animais",
         "type": "pet_store"
     },
     {
-        "nome": "Farmacia",
+        "name": "Farmacia",
         "type": "pharmacy"
     },
     {
-        "nome": "Fisioterapeuta",
+        "name": "Fisioterapeuta",
         "type": "physiotherapist"
     },
     {
-        "nome": "Encanador",
+        "name": "Encanador",
         "type": "plumber"
     },
     {
-        "nome": "Polícia",
+        "name": "Polícia",
         "type": "police"
     },
     {
-        "nome": "Agência dos Correios",
+        "name": "Agência dos Correios",
         "type": "post_office"
     },
     {
-        "nome": "Agência imobiliária",
+        "name": "Agência imobiliária",
         "type": "real_estate_agency"
     },
     {
-        "nome": "Restaurante",
+        "name": "Restaurante",
         "type": "restaurant"
     },
     {
-        "nome": "roofing_contractor",
+        "name": "roofing_contractor",
         "type": "roofing_contractor"
     },
     {
-        "nome": "rv_park",
+        "name": "rv_park",
         "type": "rv_park"
     },
     {
-        "nome": "Escola",
+        "name": "Escola",
         "type": "school"
     },
     {
-        "nome": "Loja de sapatos",
+        "name": "Loja de sapatos",
         "type": "shoe_store"
     },
     {
-        "nome": "Centro de compras",
+        "name": "Centro de compras",
         "type": "shopping_mall"
     },
     {
-        "nome": "Estádio",
+        "name": "Estádio",
         "type": "stadium"
     },
     {
-        "nome": "Armazenamento",
+        "name": "Armazenamento",
         "type": "storage"
     },
     {
-        "nome": "Loja",
+        "name": "Loja",
         "type": "store"
     },
     {
-        "nome": "Estação de metrô",
+        "name": "Estação de metrô",
         "type": "subway_station"
     },
     {
-        "nome": "Supermercado",
+        "name": "Supermercado",
         "type": "supermarket"
     },
     {
-        "nome": "Sinagoga",
+        "name": "Sinagoga",
         "type": "synagogue"
     },
     {
-        "nome": "Ponto de taxi",
+        "name": "Ponto de taxi",
         "type": "taxi_stand"
     },
     {
-        "nome": "Estação de trem",
+        "name": "Estação de trem",
         "type": "train_station"
     },
     {
-        "nome": "Estação de trânsito",
+        "name": "Estação de trânsito",
         "type": "transit_station"
     },
     {
-        "nome": "Agência de viagens",
+        "name": "Agência de viagens",
         "type": "travel_agency"
     },
     {
-        "nome": "Cuidados veterinários",
+        "name": "Cuidados veterinários",
         "type": "veterinary_care"
     },
     {
-        "nome": "Zoológico",
+        "name": "Zoológico",
         "type": "zoo"
     }
 ]

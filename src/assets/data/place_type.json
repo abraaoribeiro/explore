@@ -1,31 +1,31 @@
 [
   {
-    "nome": "Aeroporto",
+    "name": "Aeroporto",
     "type": "airport",
     "icon": "airplane"
   },
   {
-    "nome": "Caixa Eletrônico",
+    "name": "Caixa Eletrônico",
     "type": "atm",
     "icon": "card"
   },
   {
-    "nome": "Bar",
+    "name": "Bar",
     "type": "bar",
     "icon": "beer"
   },
   {
-    "nome": "Livraria",
+    "name": "Livraria",
     "type": "book_store",
     "icon": "book"
   },
   {
-    "nome": "Estação de ônibus",
+    "name": "Estação de ônibus",
     "type": "bus_station",
     "icon": "train"
   },
   {
-    "nome": "Cafeteria",
+    "name": "Cafeteria",
     "type": "cafe",
     "icon": "cafe"
   }
