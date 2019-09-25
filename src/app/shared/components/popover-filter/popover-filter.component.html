@@ -31,9 +31,11 @@
                  padding: 0;">
       <ion-icon slot="start"
                 size="small"
-                name="remove"></ion-icon>
+                name="remove"
+                (click)="buttonRemoveRange('rangeRemove')"></ion-icon>
       <ion-icon slot="end"
-                name="add"></ion-icon>
+                name="add" 
+                (click)="buttonAddRange('rangeAdd')"></ion-icon>
     </ion-range>
   </ion-list>
   <ion-item lines="none">

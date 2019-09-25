@@ -11,8 +11,8 @@ import { PlaceService } from 'src/app/service/place.service';
 })
 export class PopoverFilterComponent implements OnInit {
 
-  @Input() range:string;
-  @Input() category:string;
+  @Input() range: any;
+  @Input() category: string;
   @Input() name: string;
   categoryModel: CategoryModel = new CategoryModel();
   categorys: any;
@@ -26,25 +26,34 @@ export class PopoverFilterComponent implements OnInit {
   ngOnInit() {
     this.categoryModel.name = this.name;
     this.categoryModel.range = this.range;
-    this.categorySelected = {name: this.categoryModel.name};
-    this.categorySelected.type = {type: this.categoryModel.type};
-
-    this.placeService.getPlaceCategorys().subscribe(category => {
-      this.categorys = category;
-    });
-
+    this.categoryModel.type = this.category;
+    this.categorySelected = { name: this.categoryModel.name };
+    this.categorySelected.type = { type: this.categoryModel.type };
+    this.placeService.getPlaceCategorys().subscribe(category => this.categorys = category);
   }
 
   okPopover() {
     this.categoryModel.name = this.categorySelected.name;
-    this.categoryModel.type =  this.categorySelected.type;
-
+    this.categoryModel.type = this.categorySelected.type;
+    console.log("OkPopover", this.categorySelected.type);
     this.router.navigate(['/place-list'], { queryParams: { 'category': this.categoryModel.type, 'range': this.categoryModel.range, 'name': this.categoryModel.name }, queryParamsHandling: 'merge' });
     this.popoverController.dismiss('verifid');
   }
 
   cancelPopover() {
     this.popoverController.dismiss();
+  }
+
+  buttonAddRange(val) {
+    if (val == 'rangeAdd') {
+      this.categoryModel.range++;
+    }
+  }
+
+  buttonRemoveRange(val) {
+    if (val == 'rangeRemove') {
+      this.categoryModel.range--;
+    }
   }
 
 }
