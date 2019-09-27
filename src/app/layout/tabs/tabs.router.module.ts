@@ -33,6 +33,16 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
+              import('src/app/pages/guide/guide-list/guide-list.module').then(m => m.GuideListPageModule)
+          }
+        ]
+      },
+      {
+        path: 'tab4',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
               import('../../tab3/tab3.module').then(m => m.Tab3PageModule)
           }
         ]

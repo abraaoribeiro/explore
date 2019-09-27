@@ -14,7 +14,7 @@ export class PlaceHomePage implements OnInit {
   networkType: string;
   placeTypes: any;
   places: [] = [];
-  erroNotGoogleApi:any;
+  erroNotGoogleApi: any;
   constructor(
     private placeService: PlaceService,
     public loadingController: LoadingController,
@@ -34,8 +34,6 @@ export class PlaceHomePage implements OnInit {
       }
     })
   }
-
-
   public async getPlaces() {
     const loading = await this.loadingController.create({
       spinner: 'dots',
@@ -50,8 +48,6 @@ export class PlaceHomePage implements OnInit {
       loading.dismiss();
     }).catch(err => {
       this.erroNotGoogleApi = err;
-      console.log(err);
-      
       loading.dismiss();
     });
   }
@@ -66,12 +62,11 @@ export class PlaceHomePage implements OnInit {
       componentProps: { type: this.getPlaces },
       mode: 'ios',
       cssClass: 'modal-action-sheet',
-
     });
     await modal.present();
   }
 
   routeCategory() {
-    this.router.navigate(['/place-category'])
+    this.router.navigate(['/place-category']);
   }
 }
