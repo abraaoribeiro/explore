@@ -23,5 +23,7 @@
                         [rating]="place.rating"
                         fontSize="22px">
     </ionic4-star-rating>
+    <p *ngIf="place.user_ratings_total"> Total de Avaliações: {{place.user_ratings_total}}</p>
+    <p *ngIf="!place.user_ratings_total"> Total de Avaliações: 0 </p>
   </ion-card-content>
 </ion-card>
