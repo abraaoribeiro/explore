@@ -94,8 +94,8 @@ header {
       padding: 40px 30px 20px 30px;
 
       .date {
-        right: auto;
-        left: 0;
+        right: 9px;
+        left: auto;
       }
       &::after {
         content: "";
@@ -218,9 +218,11 @@ a {
   padding: 10px;
   border-radius: 5px;
   position: absolute;
-  top: 0;
-  right: auto;
-  left: 0;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  right: 9px;
+  left: auto;
+  top: 8px;
 }
 
 @media screen and (max-width: 768px) {
