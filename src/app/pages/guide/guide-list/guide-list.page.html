@@ -1,18 +1,19 @@
 <ion-header no-border>
   <ion-toolbar>
-    <ion-title>Title</ion-title>
+    <ion-title>Roteiros</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <h1 class="category-text">Roteiros</h1>
   <section class="timeline">
     <div class="container">
       <div class="timeline-item">
         <ion-avatar>
-          <img class="timeline-img"  [lazyLoad]="img" />
+          <img class="timeline-img"
+               [lazyLoad]="img" />
         </ion-avatar>
         <div class="timeline-content timeline-card js--fadeInRight">
+          <p class="title-card">Hotel Portas da Amazônia</p>
           <div class="date">30 05 2019 às 5hrs</div>
           <div class="reviwes-start">
             <ionic4-star-rating activeIcon="ios-star"
@@ -35,9 +36,11 @@
       </div>
       <div class="timeline-item">
         <ion-avatar>
-          <img class="timeline-img"  [lazyLoad]="img" />
+          <img class="timeline-img"
+               [lazyLoad]="img" />
         </ion-avatar>
         <div class="timeline-content timeline-card js--fadeInRight">
+          <p class="title-card">Hotel Portas da Amazônia</p>
           <div class="date">30 05 2019 às 5hrs</div>
           <div class="reviwes-start">
             <ionic4-star-rating activeIcon="ios-star"
@@ -58,12 +61,40 @@
           </ion-button>
         </div>
       </div>
-
       <div class="timeline-item">
         <ion-avatar>
-          <img class="timeline-img"  [lazyLoad]="img" />
+          <img class="timeline-img"
+               [lazyLoad]="img" />
         </ion-avatar>
         <div class="timeline-content timeline-card js--fadeInRight">
+          <p class="title-card">Hotel Portas da Amazônia</p>
+          <div class="date">30 05 2019 às 5hrs</div>
+          <div class="reviwes-start">
+            <ionic4-star-rating activeIcon="ios-star"
+                                defaultIcon="ios-star-outline"
+                                activeColor="#ffb400"
+                                readonly="true"
+                                defaultColor="#ffb400"
+                                rating="5"
+                                fontSize="12px">
+            </ionic4-star-rating>
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          </p>
+          <ion-button class="btn-more"
+                      color="secondary"
+                      fill="clear">
+            Ver mais
+          </ion-button>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <ion-avatar>
+          <img class="timeline-img"
+               [lazyLoad]="img" />
+        </ion-avatar>
+        <div class="timeline-content timeline-card js--fadeInRight">
+          <p class="title-card ">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
           <div class="date">30 05 2019 às 5hrs</div>
           <div class="reviwes-start">
             <ionic4-star-rating activeIcon="ios-star"
@@ -86,9 +117,11 @@
       </div>
     </div>
   </section>
-  <ion-fab  vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button>
-        <ion-icon name="add"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
+  <ion-fab vertical="bottom"
+           horizontal="end"
+           slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
