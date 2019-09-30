@@ -19,7 +19,7 @@ export class PlaceDetailPage implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.getPlaceDetail()
+    this.getPlaceDetail();
   }
 
   public async getPlaceDetail() {
