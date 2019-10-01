@@ -3,7 +3,6 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Network } from '@ionic-native/network/ngx';
-import { StarRating } from 'ionic4-star-rating';
 
 
 const routes: Routes = [
@@ -17,6 +16,7 @@ const routes: Routes = [
   { path: 'place-detail/:id', loadChildren: () => import('./pages/place/place-detail/place-detail.module').then(m => m.PlaceDetailPageModule) },
   { path: 'place-list', loadChildren: () => import('./pages/place/place-list/place-list.module').then(m => m.PlaceListPageModule) },
   { path: 'place-category', loadChildren: () => import('./pages/place/place-category/place-category.module').then(m => m.PlaceCategoryPageModule) },
+  { path: 'guide-edit', loadChildren: './pages/guide/guide-edit/guide-edit.module#GuideEditPageModule' },
 ];
 
 const PLUGINSIONIC = [

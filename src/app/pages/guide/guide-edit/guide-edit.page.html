@@ -1,0 +1,43 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-title>Adicionar roteiro</ion-title>
+    <ion-buttons slot="end">
+      <ion-button style="text-transform: none">
+        Salvar
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-button style="text-transform: none">
+        <ion-icon slot="start"
+                  name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <ion-slides>
+      <ion-slide>
+        <div class="slide-inner ion-padding">
+          <ion-item lines="inset">
+            <ion-label position="stacked">Descricão</ion-label>
+            <ion-icon name="checkmark-circle"
+                      color="secondary"
+                      slot="end"></ion-icon>
+            <ion-input name="descricao"></ion-input>
+          </ion-item>
+
+          <ion-item lines="inset">
+            <ion-label position="stacked">Data e hora</ion-label>
+            <ion-icon name="checkmark-circle"
+                      color="secondary"
+                      slot="end"></ion-icon>
+            <ion-input name="data"></ion-input>
+          </ion-item>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </form>
+  <div class="ocean"></div>
+</ion-content>

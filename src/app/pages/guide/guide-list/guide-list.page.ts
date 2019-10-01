@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-guide-list',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GuideListPage implements OnInit {
   img = "https://picsum.photos/1000/800/?random"
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
 
+
+  routerAddGuide(){
+    this.router.navigate(['/guide-edit']);
+  }
 }
