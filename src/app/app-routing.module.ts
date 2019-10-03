@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Network } from '@ionic-native/network/ngx';
+import { DatePicker } from '@ionic-native/date-picker/ngx';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
 const PLUGINSIONIC = [
   Geolocation,
   AndroidPermissions,
-  Network
+  Network,
+  DatePicker
 ]
 @NgModule({
   imports: [
