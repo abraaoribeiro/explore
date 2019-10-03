@@ -6,11 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./guide-edit.page.scss'],
 })
 export class GuideEditPage implements OnInit {
-
+  footerHidden:boolean = false;
   constructor() { }
 
   ngOnInit() {
     
   }
- 
+
 }

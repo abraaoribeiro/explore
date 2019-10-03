@@ -3,9 +3,6 @@
   position: relative;
 }
 
-ion-content {
-  --offset-top: -40px !important;
-}
 
 ion-input {
   border: 1px solid lightgrey;
@@ -23,3 +20,12 @@ ion-input.has-focus {
   border: 2px solid #00868b;
 }
  */
+
+ ion-content {
+  --offset-top: -40px !important;
+}
+
+ion-label {
+  font-size: 14px !important;
+  position: relative;
+}
