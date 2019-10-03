@@ -17,4 +17,5 @@ export class GuideListPage implements OnInit {
   routerAddGuide(){
     this.router.navigate(['/guide-edit']);
   }
+
 }

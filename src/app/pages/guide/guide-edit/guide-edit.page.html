@@ -15,49 +15,50 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [scrollEvents]="true" (ionScroll)="onScroll($event)">
   <form>
-          <ion-item lines="none">
-            <ion-label position="floating">Título</ion-label>
-            <ion-input name="titulo"></ion-input>
-          </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Título</ion-label>
+      <ion-input name="titulo"></ion-input>
+    </ion-item>
 
-          <ion-item lines="none">
-            <ion-label position="floating">Local</ion-label>
-            <ion-input name="data"></ion-input>
-          </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Local</ion-label>
+      <ion-input name="data"></ion-input>
+    </ion-item>
 
-          <ion-item lines="none">
-            <ion-label position="floating">Data</ion-label>
-            <ion-input name="data"></ion-input>
-          </ion-item>
-          <ion-row>
-            <ion-col size="6">
-              <ion-item lines="none">
-                <ion-label position="floating">Início</ion-label>
-                <ion-icon name="arrow-dropdown"
-                          color="dark"
-                          slot="end"
-                          style="position: relative;top: 10px;left: -45px;"></ion-icon>
-                <ion-input name="timestart"></ion-input>
-              </ion-item>
-            </ion-col>
-            <ion-col size="6">
-              <ion-item lines="none">
-                <ion-label position="floating">Fim</ion-label>
-                <ion-icon name="arrow-dropdown"
-                          color="dark"
-                          slot="end" style="position: relative;top: 10px;left: -45px;"></ion-icon>
-                <ion-input name="timeend"></ion-input>
-              </ion-item>
-            </ion-col>
-          </ion-row>
+    <ion-item lines="none">
+      <ion-label position="floating">Data</ion-label>
+      <ion-input name="data"></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item lines="none">
+          <ion-label position="floating">Início</ion-label>
+          <ion-icon name="arrow-dropdown"
+                    color="dark"
+                    slot="end"
+                    style="position: relative;top: 10px;left: -45px;"></ion-icon>
+          <ion-input name="timestart"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item lines="none">
+          <ion-label position="floating">Fim</ion-label>
+          <ion-icon name="arrow-dropdown"
+                    color="dark"
+                    slot="end"
+                    style="position: relative;top: 10px;left: -45px;"></ion-icon>
+          <ion-input name="timeend"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
 
 
-          <ion-item lines="none">
-            <ion-label position="floating">Anotações</ion-label>
-            <ion-input name="descricao"></ion-input>
-          </ion-item>
+    <ion-item lines="none">
+      <ion-label position="floating">Anotações</ion-label>
+      <ion-input name="descricao"></ion-input>
+    </ion-item>
   </form>
 </ion-content>

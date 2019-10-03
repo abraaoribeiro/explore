@@ -1,5 +1,6 @@
 <ion-header no-border>
   <ion-toolbar>
+    <ion-title [hidden]="footerHidden == false">Categorias</ion-title>
     <ion-buttons slot="start">
       <ion-button (click)="buttonBack()">
         <ion-icon slot="start"
@@ -9,8 +10,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <h1 class="category-text">Categorias</h1>
+<ion-content [scrollEvents]="true"
+             (ionScroll)="onScroll($event)">
+  <h1 class="category-text" *ngIf="footerHidden == false">Categorias</h1>
   <ion-list mode="ios"
             *ngFor="let category of categorys"
             lines="lines">

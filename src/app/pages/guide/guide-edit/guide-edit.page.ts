@@ -10,6 +10,7 @@ export class GuideEditPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
-
+ 
 }

@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./place-category.page.scss'],
 })
 export class PlaceCategoryPage implements OnInit {
-  categorys: any ;
+  categorys: any;
+  footerHidden: boolean = false;
+
   constructor(
     public loadingController: LoadingController,
     private placeService: PlaceService,
@@ -32,11 +34,21 @@ export class PlaceCategoryPage implements OnInit {
       loading.dismiss();
     });
   }
-  search(){
+  search() {
     this.categorys
   }
 
-  buttonBack(){
+  buttonBack() {
     this.router.navigate(['tabs/tab1']);
+  }
+
+  onScroll(event) {
+    if (event.detail.deltaY > 0 && this.footerHidden) return;
+    if (event.detail.deltaY < 0 && !this.footerHidden) return;
+    if (event.detail.deltaY > 0) {
+      this.footerHidden = true;
+    } else {
+      this.footerHidden = false;
+    };
   }
 }
