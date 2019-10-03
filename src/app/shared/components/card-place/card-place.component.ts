@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-card-place',
@@ -10,7 +10,7 @@ export class CardPlaceComponent implements OnInit {
 
   @Input() places: [] = [];
   defaultImage = 'assets/img/undraw_empty_xct9.svg'
-  constructor(private router:Router) { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
@@ -26,7 +26,23 @@ export class CardPlaceComponent implements OnInit {
     return url;
   }
 
-  forward(place){
-    this.router.navigate(['/place-detail',place.reference])
+  forward(place) {
+    if(this.validRouterQuary() != 'valid'){
+      this.router.navigate(['/place-detail', place.reference]);
+    }
+  }
+
+  setPlaceGuide(place) {
+    if (this.validRouterQuary() == 'valid') {
+      this.router.navigate(['/guide-edit'], { queryParams: { place: place.name } });
+    }
+  }
+
+  validRouterQuary() {
+    let valid = '';
+    this.route.queryParams.subscribe(query => {
+      valid = query.validRoute;
+    })
+    return valid;
   }
 }

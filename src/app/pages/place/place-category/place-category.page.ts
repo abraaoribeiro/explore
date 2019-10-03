@@ -1,7 +1,7 @@
-import { PlaceService } from 'src/app/service/place.service';
 import { Component, OnInit } from '@angular/core';
-import { ModalController, LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
+import { PlaceService } from 'src/app/service/place.service';
 
 @Component({
   selector: 'app-place-category',
@@ -33,9 +33,6 @@ export class PlaceCategoryPage implements OnInit {
       this.categorys = categorys
       loading.dismiss();
     });
-  }
-  search() {
-    this.categorys
   }
 
   buttonBack() {

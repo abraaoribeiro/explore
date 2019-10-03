@@ -1,5 +1,5 @@
 <ion-card mode="ios"
-          *ngFor="let place of places">
+          *ngFor="let place of places" (click)="setPlaceGuide(place)">
   <!-- <div class="ion-no-padding ion-no-margin">
     <ion-icon name="heart-empty"
               color="primary"

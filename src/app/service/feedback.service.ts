@@ -10,7 +10,6 @@ export class FeedbackService {
 
   async presentToastWithOptions(messge: string) {
     const toast = await this.toastController.create({
-      color: 'primary',
       duration: 4000,
       message: messge,
       mode: 'ios',
@@ -18,9 +17,7 @@ export class FeedbackService {
       buttons: [{
         icon: 'close',
         role: 'cancel',
-        handler: () => {
-
-        }
+        handler: () => {}
       }]
     });
     toast.present();
