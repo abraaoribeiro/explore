@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import { CategoryModel } from 'src/app/model/category-model';
 import { PlaceService } from 'src/app/service/place.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-popover-filter',
@@ -17,6 +19,7 @@ export class PopoverFilterComponent implements OnInit {
   categoryModel: CategoryModel = new CategoryModel();
   categorys: any;
   categorySelected: any;
+  destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(
     private placeService: PlaceService,
@@ -29,7 +32,12 @@ export class PopoverFilterComponent implements OnInit {
     this.categoryModel.type = this.category;
     this.categorySelected = { name: this.categoryModel.name };
     this.categorySelected.type = { type: this.categoryModel.type };
-    this.placeService.getPlaceCategorys().subscribe(category => this.categorys = category);
+    this.placeService.getPlaceCategorys().pipe(takeUntil(this.destroy$)).subscribe(category => this.categorys = category);
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
   }
 
   okPopover() {

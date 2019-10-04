@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DatePicker } from '@ionic-native/date-picker/ngx';
 import { Guide } from 'src/app/model/guide';
 import { GuideService } from 'src/app/service/guide.service';
 import { FeedbackService } from './../../../service/feedback.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'app-guide-edit',
   templateUrl: './guide-edit.page.html',
@@ -11,22 +13,31 @@ import { FeedbackService } from './../../../service/feedback.service';
 })
 export class GuideEditPage implements OnInit {
   guide: Guide = new Guide();
+  destroy$: Subject<boolean> = new Subject<boolean>();
+
   constructor(
     private guideService: GuideService,
     private feedbackService: FeedbackService,
     private route: ActivatedRoute,
+    private router: Router,
     private datePicker: DatePicker) { }
 
   ngOnInit() {
 
   }
 
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }
+
+
   ionViewDidEnter() {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
       console.log(params);
       this.guide.place = params.place;
-      this.guide.rating = params.rating;
       this.guide.reference = params.reference;
+      if (params.ranting) { this.guide.rating = params.rating }
     });
   }
 
@@ -34,6 +45,7 @@ export class GuideEditPage implements OnInit {
   createGuide() {
     this.guideService.create(this.guide);
     this.feedbackService.presentToastWithOptions('Roteiro criado com sucesso');
+    this.router.navigate(['/tabs/tab3']);
   }
 
 

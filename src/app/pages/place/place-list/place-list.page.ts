@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { LoadingController, PopoverController } from '@ionic/angular';
 import { PlaceService } from 'src/app/service/place.service';
 import { PopoverFilterComponent } from './../../../shared/components/popover-filter/popover-filter.component';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-place-list',
@@ -15,6 +17,8 @@ export class PlaceListPage implements OnInit {
   type: string = ''
   typeName: string = '';
   range: any = '200';
+  destroy$: Subject<boolean> = new Subject<boolean>();
+
   constructor(private placeService: PlaceService,
     private route: ActivatedRoute,
     public loadingController: LoadingController,
@@ -24,6 +28,10 @@ export class PlaceListPage implements OnInit {
     this.getPlaces();
   }
 
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }
 
   async getPlaces() {
     const loading = await this.loadingController.create({
@@ -33,7 +41,7 @@ export class PlaceListPage implements OnInit {
       animated: true
     })
     await loading.present();
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
       console.log(params);
       this.typeName = params.name
       this.type = params.category

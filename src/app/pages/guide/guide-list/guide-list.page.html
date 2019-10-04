@@ -6,108 +6,26 @@
 
 <ion-content>
   <section class="timeline">
-    <div class="container">
+    <div class="container" *ngFor="let guide of guides">
       <div class="timeline-item">
         <ion-avatar>
           <img class="timeline-img"
                [lazyLoad]="img" />
         </ion-avatar>
         <div class="timeline-content timeline-card js--fadeInRight">
-          <p class="title-card">Hotel Portas da Amazônia</p>
-          <div class="date">30 05 2019 às 5hrs</div>
+          <p class="title-card">{{guide.title}}</p>
+          <div class="date">{{guide.date.toDate() | date: 'dd MMMM'}} às {{guide.timeStart.toDate() | date: 'HH:mm'}}</div>
           <div class="reviwes-start">
             <ionic4-star-rating activeIcon="ios-star"
                                 defaultIcon="ios-star-outline"
                                 activeColor="#ffb400"
                                 readonly="true"
                                 defaultColor="#ffb400"
-                                rating="5"
+                                [rating]="guide.rating"
                                 fontSize="12px">
             </ionic4-star-rating>
           </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          </p>
-          <ion-button class="btn-more"
-                      color="secondary"
-                      fill="clear">
-            Ver mais
-          </ion-button>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <ion-avatar>
-          <img class="timeline-img"
-               [lazyLoad]="img" />
-        </ion-avatar>
-        <div class="timeline-content timeline-card js--fadeInRight">
-          <p class="title-card">Hotel Portas da Amazônia</p>
-          <div class="date">30 05 2019 às 5hrs</div>
-          <div class="reviwes-start">
-            <ionic4-star-rating activeIcon="ios-star"
-                                defaultIcon="ios-star-outline"
-                                activeColor="#ffb400"
-                                readonly="true"
-                                defaultColor="#ffb400"
-                                rating="5"
-                                fontSize="12px">
-            </ionic4-star-rating>
-          </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          </p>
-          <ion-button class="btn-more"
-                      color="secondary"
-                      fill="clear">
-            Ver mais
-          </ion-button>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <ion-avatar>
-          <img class="timeline-img"
-               [lazyLoad]="img" />
-        </ion-avatar>
-        <div class="timeline-content timeline-card js--fadeInRight">
-          <p class="title-card">Hotel Portas da Amazônia</p>
-          <div class="date">30 05 2019 às 5hrs</div>
-          <div class="reviwes-start">
-            <ionic4-star-rating activeIcon="ios-star"
-                                defaultIcon="ios-star-outline"
-                                activeColor="#ffb400"
-                                readonly="true"
-                                defaultColor="#ffb400"
-                                rating="5"
-                                fontSize="12px">
-            </ionic4-star-rating>
-          </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          </p>
-          <ion-button class="btn-more"
-                      color="secondary"
-                      fill="clear">
-            Ver mais
-          </ion-button>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <ion-avatar>
-          <img class="timeline-img"
-               [lazyLoad]="img" />
-        </ion-avatar>
-        <div class="timeline-content timeline-card js--fadeInRight">
-          <p class="title-card ">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          <div class="date">30 05 2019 às 5hrs</div>
-          <div class="reviwes-start">
-            <ionic4-star-rating activeIcon="ios-star"
-                                defaultIcon="ios-star-outline"
-                                activeColor="#ffb400"
-                                readonly="true"
-                                defaultColor="#ffb400"
-                                rating="5"
-                                fontSize="12px">
-            </ionic4-star-rating>
-          </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          </p>
+          <p class="ion-text-wrap">{{guide.anotation}}</p>
           <ion-button class="btn-more"
                       color="secondary"
                       fill="clear">

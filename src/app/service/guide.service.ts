@@ -29,7 +29,7 @@ export class GuideService {
         })
       );
   }
-  
+
   public create(guide: Guide) {
     const id = this.angularFireStore.createId();
     const item: Guide = {

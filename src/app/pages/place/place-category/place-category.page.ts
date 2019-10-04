@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { PlaceService } from 'src/app/service/place.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-place-category',
@@ -11,6 +13,7 @@ import { PlaceService } from 'src/app/service/place.service';
 export class PlaceCategoryPage implements OnInit {
   categorys: any;
   footerHidden: boolean = false;
+  destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(
     public loadingController: LoadingController,
@@ -21,6 +24,11 @@ export class PlaceCategoryPage implements OnInit {
     this.placeCategory();
   }
 
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }
+  
   public async placeCategory() {
     const loading = await this.loadingController.create({
       spinner: 'dots',
@@ -29,7 +37,7 @@ export class PlaceCategoryPage implements OnInit {
       animated: true
     })
     await loading.present();
-    await this.placeService.getPlaceCategorys().subscribe(categorys => {
+    await this.placeService.getPlaceCategorys().pipe(takeUntil(this.destroy$)).subscribe(categorys => {
       this.categorys = categorys
       loading.dismiss();
     });
