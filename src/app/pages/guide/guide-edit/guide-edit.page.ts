@@ -26,6 +26,7 @@ export class GuideEditPage implements OnInit {
       console.log(params);
       this.guide.place = params.place;
       this.guide.rating = params.rating;
+      this.guide.reference = params.reference;
     });
   }
 
