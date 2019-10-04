@@ -2,13 +2,16 @@
   <ion-toolbar>
     <ion-title>Adicionar roteiro</ion-title>
     <ion-buttons slot="end">
-      <ion-button style="text-transform: none" (click)="createGuide()">
+      <ion-button style="text-transform: none"
+                  (click)="createGuide()"
+                  [disabled]="!f.form.valid">
         Salvar
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="start">
       <ion-button style="text-transform: none"
-                  [routerLink]="[ '/tabs/tab3']">
+                  [routerLink]="[ '/tabs/tab3']"
+                  (click)="f.reset()">
         <ion-icon slot="start"
                   name="close"></ion-icon>
       </ion-button>
@@ -17,50 +20,75 @@
 </ion-header>
 
 <ion-content [scrollEvents]="true">
-  <form>
+  <form #f="ngForm">
+    <!--Título-->
     <ion-item lines="inset">
       <ion-label position="floating">Título</ion-label>
-      <ion-input name="title" required [(ngModel)]="guide.title"></ion-input>
+      <ion-input name="title"
+                 required
+                 [(ngModel)]="guide.title"></ion-input>
     </ion-item>
 
-    <ion-item lines="inset" [routerLink]="[ '/place-list']"  [queryParams]="{ validRoute: 'valid'}">
+    <!--Local Seleciondo-->
+    <ion-item lines="inset"
+              [routerLink]="[ '/place-list']"
+              [queryParams]="{ validRoute: 'valid'}">
       <ion-label position="floating">Local</ion-label>
-      <ion-input name="place" required [(ngModel)]="guide.place"></ion-input>
+      <ion-input name="place"
+                 class="ion-text-wrap"
+                 required
+                 [(ngModel)]="guide.place"></ion-input>
     </ion-item>
 
-    <ion-item lines="inset">
+    <!--Data do roteiro-->
+    <ion-item lines="inset"
+              (click)="getDate()">
       <ion-label position="floating">Data</ion-label>
       <ion-icon name="arrow-dropdown"
                 color="dark"
                 slot="end"
                 style="position: relative;top: 10px;left: 15px;"></ion-icon>
-      <ion-input name="date"  required (click)="getDate()" [value]="guide.date | date: 'dd MMMM'"></ion-input>
+      <ion-input name="date"
+                 required
+                 [value]="guide.date | date: 'dd MMMM'"></ion-input>
     </ion-item>
     <ion-row>
-      <ion-col size="6">
+      <!--Hora de entrada do roteiro-->
+      <ion-col size="6"
+               (click)="getTimeStart()">
         <ion-item lines="inset">
           <ion-label position="floating">Início</ion-label>
           <ion-icon name="arrow-dropdown"
                     color="dark"
                     slot="end"
                     style="position: relative;top: 10px;left: 20px;"></ion-icon>
-          <ion-input name="timestart" required  [(ngModel)]="guide.timeStart"></ion-input>
+          <ion-input name="timestart"
+                     required
+                     [value]="guide.timeStart | date: 'HH:mm'"></ion-input>
         </ion-item>
       </ion-col>
+
+      <!--Hora de saída do roteiro-->
       <ion-col size="6">
-        <ion-item lines="inset">
+        <ion-item lines="inset"
+                  (click)="getTimeEnd()">
           <ion-label position="floating">Fim</ion-label>
           <ion-icon name="arrow-dropdown"
                     color="dark"
                     slot="end"
                     style="position: relative;top: 10px;left: 20px;"></ion-icon>
-          <ion-input name="timeend" required [(ngModel)]="guide.timeEnd"></ion-input>
+          <ion-input name="timeend"
+                     required
+                     [value]="guide.timeEnd  | date: 'HH:mm'"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
+
+    <!--Anotações do roteiro-->
     <ion-item lines="inset">
       <ion-label position="floating">Anotações</ion-label>
-      <ion-input name="anotation" [(ngModel)]="guide.anotation"></ion-input>
+      <ion-input name="anotation"
+                 [(ngModel)]="guide.anotation"></ion-input>
     </ion-item>
   </form>
 </ion-content>

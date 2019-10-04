@@ -35,11 +35,27 @@ export class GuideEditPage implements OnInit {
   }
 
 
-  getDate() {
+  getDate(){
     this.datePicker.show({
       date: new Date,
       mode: 'date',
       androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
-    }).then(res => this.guide.date = res);
+    }).then(date => this.guide.date = date);
+  }
+
+  getTimeStart(){
+    this.datePicker.show({
+      date:new Date,
+      mode: 'time',
+      androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
+    }).then(time=> this.guide.timeStart = time);
+  }
+
+  getTimeEnd(){
+    this.datePicker.show({
+      date:new Date,
+      mode: 'time',
+      androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
+    }).then(time=> this.guide.timeEnd = time);
   }
 }

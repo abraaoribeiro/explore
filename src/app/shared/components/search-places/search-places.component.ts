@@ -1,4 +1,5 @@
 import { Component, OnInit, NgZone } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 declare let google;
 @Component({
   selector: 'app-search-places',
@@ -9,7 +10,7 @@ export class SearchPlacesComponent implements OnInit {
   input: string = '';
   placesResult = new Array<any>();
   private googleAutocomplete = new google.maps.places.AutocompleteService();
-  constructor(private ngZone: NgZone) { }
+  constructor(private ngZone: NgZone, private router:Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
@@ -23,5 +24,21 @@ export class SearchPlacesComponent implements OnInit {
         console.log(predictions);
       })
     })
+  }
+
+  routeNavegation(place){
+    if (this.validRouterQuary() == 'valid') {
+      this.router.navigate(['/guide-edit'], { queryParams: { place: place.terms[0].value } });
+    }else{
+      this.router.navigate(['/place-detail', place.reference])
+    }
+  }
+
+  validRouterQuary() {
+    let valid = '';
+    this.route.queryParams.subscribe(query => {
+      valid = query.validRoute;
+    })
+    return valid;
   }
 }
