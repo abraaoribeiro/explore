@@ -1,9 +1,9 @@
-import { ActivatedRoute } from '@angular/router';
-import { FeedbackService } from './../../../service/feedback.service';
 import { Component, OnInit } from '@angular/core';
-import { GuideService } from 'src/app/service/guide.service';
-import { Guide } from 'src/app/model/guide';
+import { ActivatedRoute } from '@angular/router';
 import { DatePicker } from '@ionic-native/date-picker/ngx';
+import { Guide } from 'src/app/model/guide';
+import { GuideService } from 'src/app/service/guide.service';
+import { FeedbackService } from './../../../service/feedback.service';
 @Component({
   selector: 'app-guide-edit',
   templateUrl: './guide-edit.page.html',
@@ -25,7 +25,8 @@ export class GuideEditPage implements OnInit {
     this.route.queryParams.subscribe(params => {
       console.log(params);
       this.guide.place = params.place;
-    })
+      this.guide.rating = params.rating;
+    });
   }
 
 
@@ -35,7 +36,7 @@ export class GuideEditPage implements OnInit {
   }
 
 
-  getDate(){
+  getDate() {
     this.datePicker.show({
       date: new Date,
       mode: 'date',
@@ -43,19 +44,19 @@ export class GuideEditPage implements OnInit {
     }).then(date => this.guide.date = date);
   }
 
-  getTimeStart(){
+  getTimeStart() {
     this.datePicker.show({
-      date:new Date,
+      date: new Date,
       mode: 'time',
       androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
-    }).then(time=> this.guide.timeStart = time);
+    }).then(time => this.guide.timeStart = time);
   }
 
-  getTimeEnd(){
+  getTimeEnd() {
     this.datePicker.show({
-      date:new Date,
+      date: new Date,
       mode: 'time',
       androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
-    }).then(time=> this.guide.timeEnd = time);
+    }).then(time => this.guide.timeEnd = time);
   }
 }

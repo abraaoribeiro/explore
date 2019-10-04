@@ -22,7 +22,9 @@ export class GuideService {
       date: guide.date,
       timeStart: guide.timeStart,
       timeEnd: guide.timeEnd,
-      anotation: guide.anotation
+      anotation: guide.anotation,
+      rating: guide.rating,
+      reference: guide.reference
     }
     this.getFireCollection()
       .doc(id)

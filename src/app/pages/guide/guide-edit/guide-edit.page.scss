@@ -21,11 +21,17 @@ ion-input.has-focus {
 }
  */
 
- ion-content {
+ion-content {
   --offset-top: -40px !important;
 }
 
 ion-label {
   font-size: 14px !important;
   position: relative;
+}
+ion-input {
+  font-family: "Cereal-Book";
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap !important;
 }

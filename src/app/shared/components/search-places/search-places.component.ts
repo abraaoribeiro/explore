@@ -28,7 +28,7 @@ export class SearchPlacesComponent implements OnInit {
 
   routeNavegation(place){
     if (this.validRouterQuary() == 'valid') {
-      this.router.navigate(['/guide-edit'], { queryParams: { place: place.terms[0].value } });
+      this.router.navigate(['/guide-edit'], { queryParams: { place: place.terms[0].value,rating: place.rating, reference: place.reference } });
     }else{
       this.router.navigate(['/place-detail', place.reference])
     }

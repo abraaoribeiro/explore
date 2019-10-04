@@ -32,7 +32,8 @@
     <!--Local Seleciondo-->
     <ion-item lines="inset"
               [routerLink]="[ '/place-list']"
-              [queryParams]="{ validRoute: 'valid'}">
+              [queryParams]="{ validRoute: 'valid'}"
+              routerDirection="forward">
       <ion-label position="floating">Local</ion-label>
       <ion-input name="place"
                  class="ion-text-wrap"
@@ -47,7 +48,7 @@
       <ion-icon name="arrow-dropdown"
                 color="dark"
                 slot="end"
-                style="position: relative;top: 10px;left: 15px;"></ion-icon>
+                style="position: relative;top: 10px;left: 15px; opacity: 0.5;"></ion-icon>
       <ion-input name="date"
                  required
                  [value]="guide.date | date: 'dd MMMM'"></ion-input>
@@ -61,7 +62,7 @@
           <ion-icon name="arrow-dropdown"
                     color="dark"
                     slot="end"
-                    style="position: relative;top: 10px;left: 20px;"></ion-icon>
+                    style="position: relative;top: 10px;left: 20px; opacity: 0.5;"></ion-icon>
           <ion-input name="timestart"
                      required
                      [value]="guide.timeStart | date: 'HH:mm'"></ion-input>
@@ -76,7 +77,7 @@
           <ion-icon name="arrow-dropdown"
                     color="dark"
                     slot="end"
-                    style="position: relative;top: 10px;left: 20px;"></ion-icon>
+                    style="position: relative;top: 10px;left: 20px; opacity: 0.5;"></ion-icon>
           <ion-input name="timeend"
                      required
                      [value]="guide.timeEnd  | date: 'HH:mm'"></ion-input>

@@ -27,14 +27,14 @@ export class CardPlaceComponent implements OnInit {
   }
 
   forward(place) {
-    if(this.validRouterQuary() != 'valid'){
+    if (this.validRouterQuary() != 'valid') {
       this.router.navigate(['/place-detail', place.reference]);
     }
   }
 
   setPlaceGuide(place) {
     if (this.validRouterQuary() == 'valid') {
-      this.router.navigate(['/guide-edit'], { queryParams: { place: place.name } });
+      this.router.navigate(['/guide-edit'], { queryParams: { place: place.name, rating: place.rating, reference: place.reference } });
     }
   }
 
