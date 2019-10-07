@@ -22,7 +22,7 @@ export class GuideEditPage implements OnInit {
     private router: Router,
     private datePicker: DatePicker) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngOnDestroy() {
     this.destroy$.next(true);
@@ -50,10 +50,16 @@ export class GuideEditPage implements OnInit {
     }
   }
 
-  createGuide() {
-    this.guideService.create(this.guide);
-    this.feedbackService.presentToastWithOptions('Roteiro criado com sucesso');
-    this.router.navigate(['/tabs/tab3']);
+  async createGuide() {
+    if (this.guide.id) {
+      await this.guideService.update(this.guide);
+      this.feedbackService.presentToastWithOptions('Roteiro atualizado com sucesso');
+      this.router.navigate(['/tabs/tab3']);
+    }else{
+      await this.guideService.create(this.guide);
+      this.feedbackService.presentToastWithOptions('Roteiro criado com sucesso');
+      this.router.navigate(['/tabs/tab3']);
+    }
   }
 
 

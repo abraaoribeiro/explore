@@ -12,6 +12,7 @@ export class FeedbackService {
     const toast = await this.toastController.create({
       duration: 4000,
       message: messge,
+      color:'medium',
       mode: 'ios',
       position: 'top',
       buttons: [{

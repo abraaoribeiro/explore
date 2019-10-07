@@ -19,11 +19,10 @@ export class GuideListPage implements OnInit {
 
   constructor(private router: Router, private guideService: GuideService, public modalController: ModalController) { }
 
-  ngOnInit() {
-    this.guideService.list().pipe(takeUntil(this.destroy$)).subscribe(guides => {
-      this.guides = guides;
-      console.log(guides);
-    });
+  ngOnInit() { }
+
+  ionViewDidEnter() {
+    this.guideService.list().pipe(takeUntil(this.destroy$)).subscribe(guides => this.guides = guides);
   }
 
   ngOnDestroy() {
@@ -31,15 +30,13 @@ export class GuideListPage implements OnInit {
     this.destroy$.unsubscribe();
   }
 
-  routerAddGuide() {
-    this.router.navigate(['/guide-edit']);
-  }
+  public routerAddGuide() {this.router.navigate(['/guide-edit']);}
 
   public async openSelectCardGuide(guide: Guide) {
     const modal = await this.modalController.create({
       component: GuideSelectCardPage,
       componentProps: {
-        'id':guide.id,
+        'id': guide.id,
         'title': guide.title,
         'date': guide.date,
         'timeStart': guide.timeStart,
