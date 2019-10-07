@@ -7,7 +7,7 @@
 <ion-content>
 
   <ion-card mode="ios"
-            *ngFor="let guide of guides" (click)="openSelectCardGuide()">
+            *ngFor="let guide of guides" (click)="openSelectCardGuide(guide)">
     <ion-card-header color="primary">
       <ion-card-subtitle class="ion-text-center">{{guide.date.toDate() | date: 'dd MMM'}} às {{guide.timeStart.toDate() | date: 'HH:mm'}}</ion-card-subtitle>
     </ion-card-header>

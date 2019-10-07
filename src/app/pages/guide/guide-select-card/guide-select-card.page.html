@@ -1,21 +1,27 @@
-<ion-backdrop></ion-backdrop>
 <ion-content>
   <ion-item lines="none"
-            class="ion-text-center">
-    Belém
+            class="ion-text-center ion-text-wrap" >
+    <ion-icon name="trash"
+              slot="end"></ion-icon>
+    <ion-icon name="create"
+              slot="end"></ion-icon>
+    {{title}}
+  </ion-item>
+  <ion-item lines="none">
+    <ion-icon slot="start"
+              name="calendar"
+              mode="ios"></ion-icon>
+    <p>Programação para {{date.toDate() | date: 'dd MMM'}} às {{timeStart.toDate() | date: 'HH:mm'}}</p>
   </ion-item>
 </ion-content>
 <ion-footer no-border>
-  <div class="button-right">
-    <ion-button fill="clear">
-      <ion-icon slot="start"
-                name="add"></ion-icon>
+  <div style="text-align: center;">
+    <ion-button fill="clear"
+                class="ion-text-center"
+                style="text-transform: none;">
+      <ion-icon name="alert"
+                slot="start"></ion-icon>
+      Ver detalhes
     </ion-button>
-    <p>Clique</p>
   </div>
-    <ion-button fill="clear">
-      <ion-icon slot="start"
-                name="add"></ion-icon>
-    </ion-button>
-    <p>Clique</p>
 </ion-footer>

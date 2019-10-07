@@ -35,13 +35,17 @@ export class GuideListPage implements OnInit {
     this.router.navigate(['/guide-edit']);
   }
 
-  public async openSelectCardGuide() {
+  public async openSelectCardGuide(guide: Guide) {
     const modal = await this.modalController.create({
       component: GuideSelectCardPage,
-      componentProps: { value: 123 },
+      componentProps: {
+        'title': guide.title,
+        'date': guide.date,
+        'timeStart': guide.timeStart,
+        'timeEnd': guide.timeEnd
+      },
       cssClass: 'modal-select-guide'
     });
-
     await modal.present();
   }
 
