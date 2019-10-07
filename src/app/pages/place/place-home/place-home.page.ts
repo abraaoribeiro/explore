@@ -1,9 +1,13 @@
+import { Subject } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoadingController, ModalController } from '@ionic/angular';
+import { GuideService } from 'src/app/service/guide.service';
 import { NetworkService } from 'src/app/service/network.service';
 import { PlaceService } from 'src/app/service/place.service';
 import { PlaceCategoryPage } from '../place-category/place-category.page';
-import { Router } from '@angular/router';
+import { Guide } from 'src/app/model/guide';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-place-home',
@@ -15,12 +19,15 @@ export class PlaceHomePage implements OnInit {
   placeTypes: any;
   places: [] = [];
   erroNotGoogleApi: any;
+  guides: Guide[];
+  destroy$: Subject<boolean> = new Subject<boolean>();
   constructor(
     private placeService: PlaceService,
     public loadingController: LoadingController,
     public modalController: ModalController,
     private networkService: NetworkService,
-    private router: Router) { }
+    private router: Router,
+    private guideService: GuideService) { }
 
   ngOnInit() {
   }
@@ -31,8 +38,20 @@ export class PlaceHomePage implements OnInit {
       if (connction != 'none') {
         this.getPlaces();
         this.getTypes();
+        this.getGuides();
       }
     })
+  }
+
+  getGuides() {
+    this.guideService.list().pipe(takeUntil(this.destroy$)).subscribe(guides => {
+      this.guides = guides;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
   }
   public async getPlaces() {
     const loading = await this.loadingController.create({

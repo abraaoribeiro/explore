@@ -54,34 +54,16 @@
     </ion-row>
 
     <div class="scrolling-wrapper">
-      <div class="card">
+      <div class="card"
+           *ngFor="let guide of guides">
         <ion-card mode="ios">
           <img src="assets/shapes.svg" />
           <p class="ion-text-wrap"
              class="text-category">
-            Founded in 1829
+            {{guide.title}}
           </p>
         </ion-card>
       </div>
-      <div class="card">
-        <ion-card mode="ios">
-          <img src="assets/shapes.svg" />
-          <p class="ion-text-wrap"
-             class="text-category">
-            Founded in 1829
-          </p>
-        </ion-card>
-      </div>
-      <div class="card">
-        <ion-card mode="ios">
-          <img src="assets/shapes.svg" />
-          <p class="ion-text-wrap"
-             class="text-category">
-            Founded in 1829
-          </p>
-        </ion-card>
-      </div>
-
       <div class="card">
         <ion-card mode="ios">
           <div>
