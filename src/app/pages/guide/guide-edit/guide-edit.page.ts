@@ -22,7 +22,25 @@ export class GuideEditPage implements OnInit {
     private router: Router,
     private datePicker: DatePicker) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }
+
+
+
+  ionViewDidEnter() {
+    this.findOneGuide();
+    this.route.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
+      this.guide.place = params.place;
+      this.guide.reference = params.reference;
+      this.guide.rating = params.rating
+    });
+  }
+
+  findOneGuide() {
     let id = this.route.snapshot.params['id'];
     if (id) {
       this.guideService.findOne(id).pipe(takeUntil(this.destroy$))
@@ -31,23 +49,6 @@ export class GuideEditPage implements OnInit {
         });
     }
   }
-
-  ngOnDestroy() {
-    this.destroy$.next(true);
-    this.destroy$.unsubscribe();
-  }
-
-
-  ionViewDidEnter() {
-    this.route.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
-      console.log(params);
-      this.guide.place = params.place;
-      this.guide.reference = params.reference;
-      // TODO Verificar porque não está passando o ranting
-      if (params.ranting) { this.guide.rating = params.rating }
-    });
-  }
-
 
   createGuide() {
     this.guideService.create(this.guide);

@@ -14,7 +14,7 @@ export class GuideService {
   constructor(private angularFireStore: AngularFirestore) { }
 
   private getFireCollection(): AngularFirestoreCollection<Guide> {
-    return this.angularFireStore.collection<Guide>("guide");
+    return this.angularFireStore.collection<Guide>("guide", ref => ref.orderBy('timeStart', 'asc'));
   }
 
   public list(): Observable<Guide[]> {
@@ -26,8 +26,7 @@ export class GuideService {
           const id = a.payload.doc.id;
           return { id, ...data };
         });
-      })
-      );
+      }));
   }
 
 
