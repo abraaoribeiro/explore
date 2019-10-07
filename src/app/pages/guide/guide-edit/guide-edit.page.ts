@@ -23,7 +23,13 @@ export class GuideEditPage implements OnInit {
     private datePicker: DatePicker) { }
 
   ngOnInit() {
-
+    let id = this.route.snapshot.params['id'];
+    if (id) {
+      this.guideService.findOne(id).pipe(takeUntil(this.destroy$))
+        .subscribe(guide => {
+          this.guide = guide;
+        });
+    }
   }
 
   ngOnDestroy() {

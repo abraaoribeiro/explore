@@ -2,9 +2,9 @@
   <ion-item lines="none"
             class="ion-text-center ion-text-wrap" >
     <ion-icon name="trash"
-              slot="end"></ion-icon>
+              slot="end" (click)="deleteGuide()"></ion-icon>
     <ion-icon name="create"
-              slot="end"></ion-icon>
+              slot="end" (click)="routerUpdateGuide()"></ion-icon>
     {{title}}
   </ion-item>
   <ion-item lines="none">
@@ -18,7 +18,8 @@
   <div style="text-align: center;">
     <ion-button fill="clear"
                 class="ion-text-center"
-                style="text-transform: none;">
+                style="text-transform: none;"
+                (click)="routerNavegationDetail()">
       <ion-icon name="alert"
                 slot="start"></ion-icon>
       Ver detalhes

@@ -17,8 +17,8 @@ const routes: Routes = [
   { path: 'place-detail/:id', loadChildren: () => import('./pages/place/place-detail/place-detail.module').then(m => m.PlaceDetailPageModule) },
   { path: 'place-list', loadChildren: () => import('./pages/place/place-list/place-list.module').then(m => m.PlaceListPageModule) },
   { path: 'place-category', loadChildren: () => import('./pages/place/place-category/place-category.module').then(m => m.PlaceCategoryPageModule) },
-  { path: 'guide-edit', loadChildren: './pages/guide/guide-edit/guide-edit.module#GuideEditPageModule' },
-  { path: 'guide-select-card', loadChildren: './pages/guide/guide-select-card/guide-select-card.module#GuideSelectCardPageModule' },
+  { path: 'guide-edit', loadChildren: () => import('./pages/guide/guide-edit/guide-edit.module').then(m => m.GuideEditPageModule) },
+  { path: 'guide-edit/:id', loadChildren: () => import('./pages/guide/guide-edit/guide-edit.module').then(m => m.GuideEditPageModule) },
 ];
 
 const PLUGINSIONIC = [

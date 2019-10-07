@@ -39,10 +39,12 @@ export class GuideListPage implements OnInit {
     const modal = await this.modalController.create({
       component: GuideSelectCardPage,
       componentProps: {
+        'id':guide.id,
         'title': guide.title,
         'date': guide.date,
         'timeStart': guide.timeStart,
-        'timeEnd': guide.timeEnd
+        'timeEnd': guide.timeEnd,
+        'reference': guide.reference
       },
       cssClass: 'modal-select-guide'
     });

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from "@angular/fire/firestore";
 import { Observable } from 'rxjs';
-import { map } from "rxjs/operators";
+import { map, take } from "rxjs/operators";
 import { Guide } from "./../model/guide";
 
 
@@ -17,17 +17,26 @@ export class GuideService {
     return this.angularFireStore.collection<Guide>("guide");
   }
 
- public list(): Observable<Guide[]> {
+  public list(): Observable<Guide[]> {
     return this.getFireCollection()
       .snapshotChanges()
       .pipe(map(actions => {
-          return actions.map(a => {
-            const data = a.payload.doc.data();
-            const id = a.payload.doc.id;
-            return { id, ...data };
-          });
-        })
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
       );
+  }
+
+
+  public findOne(id: string): Observable<Guide> {
+    return this.getFireCollection().doc<Guide>(id).valueChanges()
+      .pipe(take(1), map(guide => {
+        guide.id = id;
+        return guide;
+      }));
   }
 
   public create(guide: Guide) {
@@ -43,6 +52,22 @@ export class GuideService {
       reference: guide.reference
     }
     this.getFireCollection().doc(id).set(item);
+  }
+
+  public update(guide: Guide): Promise<void> {
+    return this.getFireCollection().doc(guide.id)
+      .update({
+        title: guide.title,
+        place: guide.place,
+        date: guide.date,
+        timeStart: guide.timeStart,
+        timeEnd: guide.timeEnd,
+        anotation: guide.anotation,
+      });
+  }
+
+  public delete(id) {
+    return this.getFireCollection().doc<Guide>(id).delete();
   }
 
 }
