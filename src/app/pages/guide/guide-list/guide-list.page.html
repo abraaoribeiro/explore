@@ -5,40 +5,35 @@
 </ion-header>
 
 <ion-content>
-  <section class="timeline">
-    <div class="container" *ngFor="let guide of guides">
-      <div class="timeline-item">
-        <ion-avatar>
-          <img class="timeline-img"
-               [lazyLoad]="img" />
-        </ion-avatar>
-        <div class="timeline-content timeline-card js--fadeInRight">
-          <p class="title-card">{{guide.title}}</p>
-          <div class="date">{{guide.date.toDate() | date: 'dd MMMM'}} às {{guide.timeStart.toDate() | date: 'HH:mm'}}</div>
-          <div class="reviwes-start">
-            <ionic4-star-rating activeIcon="ios-star"
-                                defaultIcon="ios-star-outline"
-                                activeColor="#ffb400"
-                                readonly="true"
-                                defaultColor="#ffb400"
-                                [rating]="guide.rating"
-                                fontSize="12px">
-            </ionic4-star-rating>
-          </div>
-          <p class="ion-text-wrap">{{guide.anotation}}</p>
-          <ion-button class="btn-more"
-                      color="secondary"
-                      fill="clear">
-            Ver mais
-          </ion-button>
-        </div>
+
+  <ion-card mode="ios"
+            *ngFor="let guide of guides">
+    <ion-card-header color="primary">
+      <ion-card-subtitle class="ion-text-center">{{guide.date.toDate() | date: 'dd MMM'}} às {{guide.timeStart.toDate() | date: 'HH:mm'}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="box">
+        <p class="text-card-title ion-text-wrap">{{guide.title}}</p>
+        <p class="text-card-place ion-text-wrap">{{guide.place}}</p>
       </div>
-    </div>
-  </section>
+      <div class="reviwes-start">
+        <ionic4-star-rating activeIcon="ios-star"
+                            defaultIcon="ios-star-outline"
+                            activeColor="#ffb400"
+                            readonly="true"
+                            defaultColor="#ffb400"
+                            [rating]="guide.rating"
+                            fontSize="12px">
+        </ionic4-star-rating>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
   <ion-fab vertical="bottom"
            horizontal="end"
            slot="fixed">
-    <ion-fab-button (click)="routerAddGuide()">
+    <ion-fab-button (click)="routerAddGuide()"
+                    color="primary">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
