@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription, Subject } from 'rxjs';
+import { PopoverController, ModalController } from '@ionic/angular';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { Guide } from 'src/app/model/guide';
 import { GuideService } from 'src/app/service/guide.service';
-import { takeUntil } from 'rxjs/operators';
+import { GuideSelectCardPage } from '../guide-select-card/guide-select-card.page';
 
 @Component({
   selector: 'app-guide-list',
@@ -15,7 +17,7 @@ export class GuideListPage implements OnInit {
   public guides = new Array<Guide>();
   private destroy$: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private router: Router, private guideService: GuideService) { }
+  constructor(private router: Router, private guideService: GuideService, public modalController: ModalController) { }
 
   ngOnInit() {
     this.guideService.list().pipe(takeUntil(this.destroy$)).subscribe(guides => {
@@ -27,11 +29,20 @@ export class GuideListPage implements OnInit {
   ngOnDestroy() {
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
-
   }
 
   routerAddGuide() {
     this.router.navigate(['/guide-edit']);
+  }
+
+  public async openSelectCardGuide() {
+    const modal = await this.modalController.create({
+      component: GuideSelectCardPage,
+      componentProps: { value: 123 },
+      cssClass: 'modal-select-guide'
+    });
+
+    await modal.present();
   }
 
 }

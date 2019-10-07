@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'place-list', loadChildren: () => import('./pages/place/place-list/place-list.module').then(m => m.PlaceListPageModule) },
   { path: 'place-category', loadChildren: () => import('./pages/place/place-category/place-category.module').then(m => m.PlaceCategoryPageModule) },
   { path: 'guide-edit', loadChildren: './pages/guide/guide-edit/guide-edit.module#GuideEditPageModule' },
+  { path: 'guide-select-card', loadChildren: './pages/guide/guide-select-card/guide-select-card.module#GuideSelectCardPageModule' },
 ];
 
 const PLUGINSIONIC = [

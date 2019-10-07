@@ -16,6 +16,8 @@ import { environment } from 'src/environments/environment';
 import { ErrorHandlerException } from './@core/handlers/error-handler-exception.ts.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { GuideSelectCardPageModule } from './pages/guide/guide-select-card/guide-select-card.module';
+import { GuideSelectCardPage } from './pages/guide/guide-select-card/guide-select-card.page';
 import { PopoverFilterComponent } from './shared/components/popover-filter/popover-filter.component';
 import { PopoverFilterModule } from './shared/components/popover-filter/popover-filter.module';
 
@@ -24,13 +26,14 @@ registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [PopoverFilterComponent],
+  entryComponents: [PopoverFilterComponent,GuideSelectCardPage],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
+    GuideSelectCardPageModule,
     PopoverFilterModule,
     AngularFireAuthModule,
     AngularFireStorageModule,

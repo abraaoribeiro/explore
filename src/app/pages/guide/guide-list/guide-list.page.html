@@ -7,7 +7,7 @@
 <ion-content>
 
   <ion-card mode="ios"
-            *ngFor="let guide of guides">
+            *ngFor="let guide of guides" (click)="openSelectCardGuide()">
     <ion-card-header color="primary">
       <ion-card-subtitle class="ion-text-center">{{guide.date.toDate() | date: 'dd MMM'}} às {{guide.timeStart.toDate() | date: 'HH:mm'}}</ion-card-subtitle>
     </ion-card-header>
@@ -33,7 +33,7 @@
            horizontal="end"
            slot="fixed">
     <ion-fab-button (click)="routerAddGuide()"
-                    color="primary">
+                    color="secondary">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
