@@ -43,6 +43,7 @@ export class GuideEditPage implements OnInit {
       console.log(params);
       this.guide.place = params.place;
       this.guide.reference = params.reference;
+      // TODO Verificar porque não está passando o ranting
       if (params.ranting) { this.guide.rating = params.rating }
     });
   }
