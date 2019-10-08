@@ -53,9 +53,9 @@ export class GuideEditPage implements OnInit {
       cssClass: 'spinner',
       animated: true
     });
-    await loading.present();
     let id = this.route.snapshot.params['id'];
     if (id) {
+      await loading.present();
       this.guideService.findOne(id).pipe(takeUntil(this.destroy$))
         .subscribe(guide => {
           guide.date = this.guideService.formatDateFirestore(guide.date);
