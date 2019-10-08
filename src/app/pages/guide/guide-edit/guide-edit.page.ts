@@ -1,12 +1,13 @@
+import { LoadingController } from '@ionic/angular';
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePicker } from '@ionic-native/date-picker/ngx';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { Guide } from 'src/app/model/guide';
 import { GuideService } from 'src/app/service/guide.service';
 import { FeedbackService } from './../../../service/feedback.service';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-guide-edit',
   templateUrl: './guide-edit.page.html',
@@ -22,7 +23,7 @@ export class GuideEditPage implements OnInit {
     private feedbackService: FeedbackService,
     private route: ActivatedRoute,
     private router: Router,
-    private datePipe: DatePipe,
+    public loadingController: LoadingController,
     private datePicker: DatePicker) { }
 
   ngOnInit() { }
@@ -45,7 +46,14 @@ export class GuideEditPage implements OnInit {
     });
   }
 
-  findOneGuide() {
+  public async findOneGuide() {
+    const loading = await this.loadingController.create({
+      spinner: 'dots',
+      mode: 'ios',
+      cssClass: 'spinner',
+      animated: true
+    });
+    await loading.present();
     let id = this.route.snapshot.params['id'];
     if (id) {
       this.guideService.findOne(id).pipe(takeUntil(this.destroy$))
@@ -54,6 +62,7 @@ export class GuideEditPage implements OnInit {
           guide.timeStart = this.guideService.formatDateFirestore(guide.timeStart);
           guide.timeEnd = this.guideService.formatDateFirestore(guide.timeEnd);
           this.guide = guide;
+          loading.dismiss();
         });
     }
   }

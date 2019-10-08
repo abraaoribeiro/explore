@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ModalController, LoadingController } from '@ionic/angular';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Guide } from 'src/app/model/guide';
@@ -17,22 +17,37 @@ export class GuideListPage implements OnInit {
   public guides = new Array<Guide>();
   private destroy$: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private router: Router, public guideService: GuideService, public modalController: ModalController) { }
+  constructor(
+    private router: Router,
+    public guideService: GuideService,
+    public modalController: ModalController,
+    public loadingController: LoadingController) { }
 
   ngOnInit() {
-    this.guideService.list().pipe(takeUntil(this.destroy$)).subscribe(guides =>{ 
-      this.guides = guides;
-    });
-   }
+    this.findAllGuide();
+  }
 
   ionViewDidEnter() { }
 
+  public async findAllGuide() {
+    const loading = await this.loadingController.create({
+      spinner: 'dots',
+      mode: 'ios',
+      cssClass: 'spinner',
+      animated: true
+    });
+    await loading.present();
+    this.guideService.list().pipe(takeUntil(this.destroy$)).subscribe(guides => {
+      this.guides = guides;
+      loading.dismiss();
+    });
+  }
   ngOnDestroy() {
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
   }
 
-  public routerAddGuide() {this.router.navigate(['/guide-edit']);}
+  public routerAddGuide() { this.router.navigate(['/guide-edit']); }
 
   public async openSelectCardGuide(guide: Guide) {
     const modal = await this.modalController.create({
