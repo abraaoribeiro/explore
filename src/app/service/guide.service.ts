@@ -4,8 +4,6 @@ import { Observable } from 'rxjs';
 import { map, take } from "rxjs/operators";
 import { Guide } from "./../model/guide";
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -16,6 +14,7 @@ export class GuideService {
   private getFireCollection(): AngularFirestoreCollection<Guide> {
     return this.angularFireStore.collection<Guide>("guide", ref => ref.orderBy('createDate', 'desc'));
   }
+
 
   public list(): Observable<Guide[]> {
     return this.getFireCollection()
@@ -66,6 +65,7 @@ export class GuideService {
       });
   }
 
+  
   public delete(id) {
     return this.getFireCollection().doc<Guide>(id).delete();
   }
