@@ -5,11 +5,13 @@ import { Guide } from 'src/app/model/guide';
 import { GuideService } from 'src/app/service/guide.service';
 import { FeedbackService } from './../../../service/feedback.service';
 import { Subject } from 'rxjs';
-import { takeUntil, timestamp } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-guide-edit',
   templateUrl: './guide-edit.page.html',
   styleUrls: ['./guide-edit.page.scss'],
+  providers: [DatePipe]
 })
 export class GuideEditPage implements OnInit {
   guide: Guide = new Guide();
@@ -20,6 +22,7 @@ export class GuideEditPage implements OnInit {
     private feedbackService: FeedbackService,
     private route: ActivatedRoute,
     private router: Router,
+    private datePipe: DatePipe,
     private datePicker: DatePicker) { }
 
   ngOnInit() { }
@@ -56,11 +59,14 @@ export class GuideEditPage implements OnInit {
 
   async createGuide() {
     if (this.guide.id) {
+      this.datePipe.transform(this.guide.date, 'dd-MM-yyyy');
       await this.guideService.update(this.guide);
+      this.feedbackService.localNotification('Lembre-se de seu próximo local de visita', this.guide.date);
       this.feedbackService.presentToastWithOptions('Roteiro atualizado com sucesso');
       this.router.navigate(['/tabs/tab3']);
     } else {
       await this.guideService.create(this.guide);
+      this.feedbackService.localNotification('Lembre-se de seu próximo local de visita', this.guide.date);
       this.feedbackService.presentToastWithOptions('Roteiro criado com sucesso');
       this.router.navigate(['/tabs/tab3']);
     }
@@ -72,9 +78,7 @@ export class GuideEditPage implements OnInit {
       date: new Date,
       mode: 'date',
       androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
-    }).then(date => {
-      this.guide.date = date
-    });
+    }).then(date => this.guide.date = date);
   }
 
   getTimeStart() {

@@ -4,7 +4,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Network } from '@ionic-native/network/ngx';
 import { DatePicker } from '@ionic-native/date-picker/ngx';
-
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 const routes: Routes = [
   {
@@ -22,10 +22,11 @@ const routes: Routes = [
 ];
 
 const PLUGINSIONIC = [
-  Geolocation,
+  LocalNotifications,
   AndroidPermissions,
-  Network,
-  DatePicker
+  Geolocation,
+  DatePicker,
+  Network
 ]
 @NgModule({
   imports: [

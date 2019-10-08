@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PopoverController, ModalController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Guide } from 'src/app/model/guide';
@@ -19,13 +19,13 @@ export class GuideListPage implements OnInit {
 
   constructor(private router: Router, public guideService: GuideService, public modalController: ModalController) { }
 
-  ngOnInit() { }
-
-  ionViewDidEnter() {
+  ngOnInit() {
     this.guideService.list().pipe(takeUntil(this.destroy$)).subscribe(guides =>{ 
       this.guides = guides;
     });
-  }
+   }
+
+  ionViewDidEnter() { }
 
   ngOnDestroy() {
     this.destroy$.next(true);
