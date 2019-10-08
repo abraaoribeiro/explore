@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FavoriteService } from 'src/app/service/favorite.service';
 
 @Component({
   selector: 'app-card-place',
@@ -10,11 +11,15 @@ export class CardPlaceComponent implements OnInit {
 
   @Input() places: [] = [];
   defaultImage = 'assets/img/undraw_empty_xct9.svg'
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute, private favoriteService:FavoriteService) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+
+  createFavorite(place){
+    this.favoriteService.createFavorite(place);
   }
-
+  
   getImagens(imagens: any): string {
     let url: string;
     if (imagens) {

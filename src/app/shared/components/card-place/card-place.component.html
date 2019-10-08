@@ -1,11 +1,6 @@
 <ion-card mode="ios"
-          *ngFor="let place of places" (click)="setPlaceGuide(place)">
-  <!-- <div class="ion-no-padding ion-no-margin">
-    <ion-icon name="heart-empty"
-              color="primary"
-              mode="ios"
-              class="icon-favorite"></ion-icon>
-            </div> -->
+          *ngFor="let place of places"
+          (click)="setPlaceGuide(place)">
   <app-animated-favorite class="icon-favorite"></app-animated-favorite>
   <img style="width: 100%; height: 200pt; object-fit: cover;"
        [defaultImage]="defaultImage"

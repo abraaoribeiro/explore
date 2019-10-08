@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Guide } from "./../model/guide";
+import { Favorite } from "./../model/favorite";
 
 @Injectable({
   providedIn: 'root'
@@ -8,21 +8,20 @@ import { Guide } from "./../model/guide";
 export class FavoriteService {
 
   constructor(private angularFireStore: AngularFirestore) { }
-  private getFireCollectionFavorite(): AngularFirestoreCollection<Guide> {
-    return this.angularFireStore.collection<Guide>("favorites", ref => ref.orderBy('createDate', 'desc'));
+  private getFireCollectionFavorite(): AngularFirestoreCollection<Favorite> {
+    return this.angularFireStore.collection<Favorite>("favorites", ref => ref.orderBy('createDate', 'desc'));
   }
-  public createFavorite(guide:Guide){
+  public createFavorite(favorite:Favorite){
     const id = this.angularFireStore.createId();
-    const item: Guide = {
-      title: guide.title,
-      place: guide.place,
-      date: guide.date,
-      timeStart: guide.timeStart,
-      timeEnd: guide.timeEnd,
-      anotation: guide.anotation,
-      rating: guide.rating,
-      reference: guide.reference,
-      createDate: guide.createDate = new Date() 
+    const item: Favorite = {
+      name: favorite.name,
+      icon: favorite.icon,
+      place_id: favorite.place_id,
+      rating: favorite.rating,
+      reference: favorite.reference,
+      scope: favorite.scope,
+      user_ratings_total: favorite.user_ratings_total,
+      vicinity: favorite.vicinity 
   }
   this.getFireCollectionFavorite().doc(id).set(item);
 }
