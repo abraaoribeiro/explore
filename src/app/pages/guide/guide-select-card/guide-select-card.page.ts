@@ -22,6 +22,12 @@ export class GuideSelectCardPage implements OnInit {
 
   ngOnInit() { }
 
+  ionViewDidEnter() {
+    this.date = this.guideService.formatDateFirestore(this.date);
+    this.timeStart = this.guideService.formatDateFirestore(this.timeStart);
+    this.timeEnd = this.guideService.formatDateFirestore(this.timeEnd);
+  }
+
   public routerNavegationDetail() {
     this.router.navigate(['/place-detail', this.reference]);
     this.modalController.dismiss();

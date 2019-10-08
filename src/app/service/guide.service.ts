@@ -69,4 +69,8 @@ export class GuideService {
     return this.getFireCollection().doc<Guide>(id).delete();
   }
 
+  public formatDateFirestore(date: any) {
+    return new Date(date.seconds * 1000);
+  }
+
 }

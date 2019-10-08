@@ -45,9 +45,9 @@ export class GuideEditPage implements OnInit {
     if (id) {
       this.guideService.findOne(id).pipe(takeUntil(this.destroy$))
         .subscribe(guide => {
-          guide.date = new Date(guide.date.seconds * 1000);
-          guide.timeStart = new Date(guide.timeStart.seconds * 1000);
-          guide.timeEnd = new Date(guide.timeEnd.seconds * 1000);
+          guide.date = this.guideService.formatDateFirestore(guide.date);
+          guide.timeStart = this.guideService.formatDateFirestore(guide.timeStart);
+          guide.timeEnd = this.guideService.formatDateFirestore(guide.timeEnd);
           this.guide = guide;
 
         });
@@ -93,7 +93,4 @@ export class GuideEditPage implements OnInit {
     }).then(time => this.guide.timeEnd = time);
   }
 
-public formatDateFirestore(date:any){
-  return new Date(date.timeEnd.seconds * 1000);
-}
 }
