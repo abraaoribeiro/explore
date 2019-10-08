@@ -17,12 +17,14 @@ export class GuideListPage implements OnInit {
   public guides = new Array<Guide>();
   private destroy$: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private router: Router, private guideService: GuideService, public modalController: ModalController) { }
+  constructor(private router: Router, public guideService: GuideService, public modalController: ModalController) { }
 
   ngOnInit() { }
 
   ionViewDidEnter() {
-    this.guideService.list().pipe(takeUntil(this.destroy$)).subscribe(guides => this.guides = guides);
+    this.guideService.list().pipe(takeUntil(this.destroy$)).subscribe(guides =>{ 
+      this.guides = guides;
+    });
   }
 
   ngOnDestroy() {
