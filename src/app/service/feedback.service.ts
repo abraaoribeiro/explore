@@ -25,12 +25,12 @@ export class FeedbackService {
     toast.present();
   }
 
-  public localNotification(titulo: string, dateTime?: Date, text?: string, img?: string) {
+  public localNotification(titulo: string, date?: Date, timeEnd?:Date, text?: string, img?: string) {
     this.localNotifications.schedule({
       title: titulo,
       text: text,
       icon: 'assets/icon/favicon.png',
-      trigger: { at: dateTime },
+      trigger: { every: { month: date.getMonth(),day: 8, year:date.getFullYear(), hour: timeEnd.getHours(), minute: timeEnd.getMinutes()} },
       attachments: [img],
       led: "FF0000",
       sound: 'file://sound.mp3',

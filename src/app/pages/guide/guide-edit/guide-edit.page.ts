@@ -39,7 +39,9 @@ export class GuideEditPage implements OnInit {
     this.route.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
       this.guide.place = params.place;
       this.guide.reference = params.reference;
-      this.guide.rating = params.rating
+      if(params.rating){
+        this.guide.rating = params.rating;
+      }
     });
   }
 
@@ -52,21 +54,19 @@ export class GuideEditPage implements OnInit {
           guide.timeStart = this.guideService.formatDateFirestore(guide.timeStart);
           guide.timeEnd = this.guideService.formatDateFirestore(guide.timeEnd);
           this.guide = guide;
-
         });
     }
   }
 
   async createGuide() {
     if (this.guide.id) {
-      this.datePipe.transform(this.guide.date, 'dd-MM-yyyy');
       await this.guideService.update(this.guide);
-      this.feedbackService.localNotification('Lembre-se de seu próximo local de visita', this.guide.date);
+      this.feedbackService.localNotification('Lembre-se de seu próximo local de visita', this.guide.date, this.guide.timeEnd);
       this.feedbackService.presentToastWithOptions('Roteiro atualizado com sucesso');
       this.router.navigate(['/tabs/tab3']);
     } else {
       await this.guideService.create(this.guide);
-      this.feedbackService.localNotification('Lembre-se de seu próximo local de visita', this.guide.date);
+      this.feedbackService.localNotification('Lembre-se de seu próximo local de visita', this.guide.date, this.guide.timeEnd);
       this.feedbackService.presentToastWithOptions('Roteiro criado com sucesso');
       this.router.navigate(['/tabs/tab3']);
     }

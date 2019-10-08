@@ -14,7 +14,7 @@ export class GuideService {
   constructor(private angularFireStore: AngularFirestore) { }
 
   private getFireCollection(): AngularFirestoreCollection<Guide> {
-    return this.angularFireStore.collection<Guide>("guide", ref => ref.orderBy('date', 'desc'));
+    return this.angularFireStore.collection<Guide>("guide", ref => ref.orderBy('createDate', 'desc'));
   }
 
   public list(): Observable<Guide[]> {
@@ -48,7 +48,8 @@ export class GuideService {
       timeEnd: guide.timeEnd,
       anotation: guide.anotation,
       rating: guide.rating,
-      reference: guide.reference
+      reference: guide.reference,
+      createDate: guide.createDate = new Date()
     }
     this.getFireCollection().doc(id).set(item);
   }

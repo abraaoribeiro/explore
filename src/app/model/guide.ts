@@ -10,4 +10,5 @@ export class Guide {
     date?: Date;
     timeStart?: Date;
     timeEnd?: Date;
+    createDate?:Date;
 }
