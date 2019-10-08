@@ -5,7 +5,7 @@ import { Guide } from 'src/app/model/guide';
 import { GuideService } from 'src/app/service/guide.service';
 import { FeedbackService } from './../../../service/feedback.service';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, timestamp } from 'rxjs/operators';
 @Component({
   selector: 'app-guide-edit',
   templateUrl: './guide-edit.page.html',
@@ -45,7 +45,11 @@ export class GuideEditPage implements OnInit {
     if (id) {
       this.guideService.findOne(id).pipe(takeUntil(this.destroy$))
         .subscribe(guide => {
+          guide.date = new Date(guide.date.seconds * 1000);
+          guide.timeStart = new Date(guide.timeStart.seconds * 1000);
+          guide.timeEnd = new Date(guide.timeEnd.seconds * 1000);
           this.guide = guide;
+
         });
     }
   }
@@ -55,7 +59,7 @@ export class GuideEditPage implements OnInit {
       await this.guideService.update(this.guide);
       this.feedbackService.presentToastWithOptions('Roteiro atualizado com sucesso');
       this.router.navigate(['/tabs/tab3']);
-    }else{
+    } else {
       await this.guideService.create(this.guide);
       this.feedbackService.presentToastWithOptions('Roteiro criado com sucesso');
       this.router.navigate(['/tabs/tab3']);
@@ -68,7 +72,9 @@ export class GuideEditPage implements OnInit {
       date: new Date,
       mode: 'date',
       androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
-    }).then(date => this.guide.date = date);
+    }).then(date => {
+      this.guide.date = date
+    });
   }
 
   getTimeStart() {
@@ -86,4 +92,8 @@ export class GuideEditPage implements OnInit {
       androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
     }).then(time => this.guide.timeEnd = time);
   }
+
+public formatDateFirestore(date:any){
+  return new Date(date.timeEnd.seconds * 1000);
+}
 }

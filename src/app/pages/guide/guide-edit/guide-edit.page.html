@@ -51,7 +51,7 @@
                 style="position: relative;top: 10px;left: 15px; opacity: 0.5;"></ion-icon>
       <ion-input name="date"
                  required
-                 [value]="guide.date?.toDate() | date: 'dd MMMM'"></ion-input>
+                 [value]="guide.date | date: 'dd MMMM'"></ion-input>
     </ion-item>
     <ion-row>
       <!--Hora de entrada do roteiro-->
@@ -65,7 +65,7 @@
                     style="position: relative;top: 10px;left: 20px; opacity: 0.5;"></ion-icon>
           <ion-input name="timestart"
                      required
-                     [value]="guide.timeStart?.toDate() | date: 'HH:mm'"></ion-input>
+                     [value]="guide.timeStart | date: 'HH:mm'"></ion-input>
         </ion-item>
       </ion-col>
 
@@ -80,7 +80,7 @@
                     style="position: relative;top: 10px;left: 20px; opacity: 0.5;"></ion-icon>
           <ion-input name="timeend"
                      required
-                     [value]="guide.timeEnd?.toDate()  | date: 'HH:mm'"></ion-input>
+                     [value]="guide.timeEnd  | date: 'HH:mm'"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
