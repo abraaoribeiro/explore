@@ -1,7 +1,7 @@
 <ion-card mode="ios"
           *ngFor="let place of places"
           (click)="setPlaceGuide(place)">
-  <app-animated-favorite class="icon-favorite"></app-animated-favorite>
+  <app-animated-favorite class="icon-favorite" [place]="place"></app-animated-favorite>
   <img style="width: 100%; height: 200pt; object-fit: cover;"
        [defaultImage]="defaultImage"
        [lazyLoad]="getImagens(place.photos)" />
