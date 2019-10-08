@@ -27,20 +27,27 @@ export class AnimatedFavoriteComponent implements OnInit {
   @Input() public likeState: string = 'unliked';
   @Input() public iconName: string = 'heart-empty';
   @Input() public place:any;
+
+  public favorite: any;
  
   constructor(private favoriteService:FavoriteService) { }
 
   ngOnInit() {
+   /*  let id
+    this.favoriteService.findOne(id).subscribe(data => {
+      this.favorite = data;
+    }) */
   }
 
   toggleLikeState() {
     if (this.likeState == 'unliked') {
       this.likeState = 'liked';
       this.iconName = 'heart';
-      this.favoriteService.createFavorite(this.place)
+      this.favoriteService.create(this.place);
     } else {
       this.likeState = 'unliked';
       this.iconName = 'heart-empty';
+      this.favoriteService.delete(this.place.id);
     }
 
   }
