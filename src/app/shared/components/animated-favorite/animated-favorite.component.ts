@@ -1,3 +1,5 @@
+import { ActivatedRoute } from '@angular/router';
+import { Favorite } from './../../../model/favorite';
 import { Component, OnInit, Input } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { FavoriteService } from 'src/app/service/favorite.service';
@@ -26,28 +28,22 @@ export class AnimatedFavoriteComponent implements OnInit {
 
   @Input() public likeState: string = 'unliked';
   @Input() public iconName: string = 'heart-empty';
-  @Input() public place:any;
+  @Input() public favorite: Favorite;
 
-  public favorite: any;
- 
-  constructor(private favoriteService:FavoriteService) { }
+    constructor(private favoriteService: FavoriteService, private route:ActivatedRoute) { }
 
-  ngOnInit() {
-   /*  let id
-    this.favoriteService.findOne(id).subscribe(data => {
-      this.favorite = data;
-    }) */
-  }
+  ngOnInit() {}
+
 
   toggleLikeState() {
     if (this.likeState == 'unliked') {
       this.likeState = 'liked';
       this.iconName = 'heart';
-      this.favoriteService.create(this.place);
+      this.favoriteService.create(this.favorite);
     } else {
       this.likeState = 'unliked';
       this.iconName = 'heart-empty';
-      this.favoriteService.delete(this.place.id);
+      this.favoriteService.delete(this.favorite.id);
     }
 
   }

@@ -11,12 +11,9 @@ export class PlaceFavoritePage implements OnInit {
 
   constructor(private favoriteService:FavoriteService, private placeService:PlaceService, private route:ActivatedRoute) { }
 
-  ngOnInit() {
-  /* this.route.queryParams.subscribe(params => {
-    console.log(params);
-    
-    this.placeService.getPlaceDetail('5000', params.reference)
-  }) */
-  }
+  ngOnInit() {}
 
+  ionViewDidEnter() {
+    this.favoriteService.list().subscribe(res => console.log(res))
+  }
 }
