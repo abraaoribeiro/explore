@@ -25,14 +25,14 @@ export class FeedbackService {
     toast.present();
   }
 
-  public localNotification(titulo: string, date?: Date, timeEnd?: Date, text?: string) {
-    let dateTime = new Date(date + '' + timeEnd);
+  public localNotification(titulo: string, img?: string, timeEnd?: Date, text?: string) {
     this.localNotifications.schedule({
       title: titulo,
       text: text,
       icon: 'assets/icon/favicon.png',
-      trigger: { at: dateTime},
+      trigger: { at: timeEnd},
       led: "FF0000",
+      attachments: [img],
       sound: 'file://sound.mp3',
       foreground: true
     });
