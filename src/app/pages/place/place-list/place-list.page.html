@@ -1,29 +1,22 @@
 <ion-header no-border>
   <ion-toolbar>
+    <ion-buttons slot="start" style="padding: 0 !important; 
+    margin: 0 !important;
+    width: 25px !important">
+      <ion-button [routerLink]="['/']">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <app-search-places></app-search-places>
   </ion-toolbar>
-  <ion-chip color="secondary"
-            mode="ios"
-            (click)="openPopoverFiler()">
+  <ion-chip color="secondary" mode="ios" (click)="openPopoverFiler()">
     <ion-icon name="checkmark-circle"></ion-icon>
     <ion-label>{{typeName}} - {{range}} m</ion-label>
-    <ion-icon mode="ios"
-              name="arrow-forward"></ion-icon>
-
+    <ion-icon mode="ios" name="arrow-forward"></ion-icon>
   </ion-chip>
 </ion-header>
 
 <ion-content>
-  <app-card-place [hidden]="!places"
-                  [places]="places"></app-card-place>
-
-  <div class="box"
-       *ngIf="!places">
-    <img class="img-info"
-         src="assets/img/undraw_empty_xct9.svg"
-         alt="">
-    <p>
-      Nada encontrado
-    </p>
-  </div>
+  <app-card-place [hidden]="!places" [places]="places"></app-card-place>
+  <app-feadback-empty *ngIf="!places"></app-feadback-empty>
 </ion-content>

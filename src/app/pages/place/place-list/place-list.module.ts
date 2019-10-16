@@ -6,9 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { CardPlaceModule } from 'src/app/shared/components/card-place/card-place.module';
 import { SearchPlacesModule } from 'src/app/shared/components/search-places/search-places.module';
 import { PlaceListPage } from './place-list.page';
-
-
-
+import { FeadbackEmptyModule } from 'src/app/shared/components/feadback-empty/feadback-empty.module';
 
 const routes: Routes = [
   {
@@ -24,6 +22,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule,
     CardPlaceModule,
+    FeadbackEmptyModule,
     SearchPlacesModule,
     RouterModule.forChild(routes)
   ],

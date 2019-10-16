@@ -5,11 +5,10 @@
 </ion-header>
 
 <ion-content>
-
-  <ion-card mode="ios"
-            *ngFor="let guide of guides" (click)="openSelectCardGuide(guide)">
+  <ion-card mode="ios" (click)="openSelectCardGuide(guide)" *ngFor="let guide of guides">
     <ion-card-header color="tertiary">
-      <ion-card-subtitle class="ion-text-center">{{guideService.formatDateFirestore(guide.date) | date: 'dd MMM'}} às {{guideService.formatDateFirestore(guide.timeStart) | date: 'HH:mm'}}</ion-card-subtitle>
+      <ion-card-subtitle class="ion-text-center">{{guideService.formatDateFirestore(guide.date) | date: 'dd MMM'}} às
+        {{guideService.formatDateFirestore(guide.timeStart) | date: 'HH:mm'}}</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
       <div class="box">
@@ -17,23 +16,17 @@
         <p class="text-card-place ion-text-wrap">{{guide.place}}</p>
       </div>
       <div class="reviwes-start">
-        <ionic4-star-rating activeIcon="ios-star"
-                            defaultIcon="ios-star-outline"
-                            activeColor="#ffb400"
-                            readonly="true"
-                            defaultColor="#ffb400"
-                            [rating]="guide.rating"
-                            fontSize="12px">
+        <ionic4-star-rating activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#ffb400" readonly="true"
+          defaultColor="#ffb400" [rating]="guide.rating" fontSize="12px">
         </ionic4-star-rating>
       </div>
     </ion-card-content>
   </ion-card>
+  <app-feadback-empty *ngIf="guides.length == 0"></app-feadback-empty>
 
-  <ion-fab vertical="bottom"
-           horizontal="end"
-           slot="fixed">
-    <ion-fab-button (click)="routerAddGuide()"
-                    color="secondary">
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="routerAddGuide()" color="secondary">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

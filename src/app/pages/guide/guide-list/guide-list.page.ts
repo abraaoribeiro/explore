@@ -18,16 +18,18 @@ export class GuideListPage implements OnInit {
   private destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(
-    private router: Router,
+    public router: Router,
     public guideService: GuideService,
     public modalController: ModalController,
     public loadingController: LoadingController) { }
 
   ngOnInit() {
-    this.findAllGuide();
+   
   }
 
-  ionViewDidEnter() { }
+  ionViewDidEnter() {
+    this.findAllGuide();
+   }
 
   public async findAllGuide() {
     const loading = await this.loadingController.create({
@@ -39,6 +41,8 @@ export class GuideListPage implements OnInit {
     await loading.present();
     this.guideService.list().pipe(takeUntil(this.destroy$)).subscribe(guides => {
       this.guides = guides;
+      console.log(this.guides);
+      
       loading.dismiss();
     });
   }
@@ -47,7 +51,7 @@ export class GuideListPage implements OnInit {
     this.destroy$.unsubscribe();
   }
 
-  public routerAddGuide() { this.router.navigate(['/guide-edit']); }
+  public routerAddGuide() { this.router.navigate(['/guide-edit']) }
 
   public async openSelectCardGuide(guide: Guide) {
     const modal = await this.modalController.create({

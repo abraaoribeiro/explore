@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { GuideListPage } from './guide-list.page';
 import { intersectionObserverPreset, LazyLoadImageModule } from 'ng-lazyload-image';
+import { FeadbackEmptyModule } from 'src/app/shared/components/feadback-empty/feadback-empty.module';
 
 const routes: Routes = [
   {
@@ -23,7 +24,8 @@ const routes: Routes = [
     IonicModule,
     CardPlaceModule, LazyLoadImageModule.forRoot({
       preset: intersectionObserverPreset
-    }), RouterModule.forChild(routes)
+    }), RouterModule.forChild(routes),
+    FeadbackEmptyModule
   ],
   declarations: [GuideListPage]
 })
