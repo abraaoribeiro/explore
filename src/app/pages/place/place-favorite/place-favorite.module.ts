@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { PlaceFavoritePage } from './place-favorite.page';
+import { CardPlaceModule } from 'src/app/shared/components/card-place/card-place.module';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    CardPlaceModule,
     RouterModule.forChild(routes)
   ],
   declarations: [PlaceFavoritePage]

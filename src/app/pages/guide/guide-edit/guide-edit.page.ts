@@ -74,6 +74,7 @@ export class GuideEditPage implements OnInit {
       this.feedbackService.presentToastWithOptions('Roteiro atualizado com sucesso');
       this.router.navigate(['/tabs/tab3']);
     } else {
+      
       await this.guideService.create(this.guide);
       this.feedbackService.localNotification('Lembre-se de seu próximo local de visita', this.guide.img, this.guide.timeEnd);
       this.feedbackService.presentToastWithOptions('Roteiro criado com sucesso');
@@ -104,6 +105,17 @@ export class GuideEditPage implements OnInit {
       mode: 'time',
       androidTheme: this.datePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
     }).then(time => this.guide.timeEnd = time);
+  }
+
+  getImagens(imagens: any): string {
+    let url: string;
+    if (imagens) {
+      imagens.forEach(image => {
+        url = image.getUrl();
+        return
+      });
+    }
+    return url;
   }
 
 }

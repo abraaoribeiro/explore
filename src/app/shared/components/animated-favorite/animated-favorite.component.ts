@@ -28,7 +28,6 @@ export class AnimatedFavoriteComponent implements OnInit {
   @Input() public iconName: string = 'heart-empty';
   @Input() public place:any;
 
-  public favorite: any;
  
   constructor(private favoriteService:FavoriteService) { }
 
@@ -40,7 +39,7 @@ export class AnimatedFavoriteComponent implements OnInit {
   }
 
   toggleLikeState() {
-    if (this.likeState == 'unliked') {
+    if (this.likeState == 'unliked' && this.place.id == this.place.id) {
       this.likeState = 'liked';
       this.iconName = 'heart';
       this.favoriteService.create(this.place);

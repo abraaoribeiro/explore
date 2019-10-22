@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PlaceFavoritePage implements OnInit {
 
+  favorites: any [];
   constructor(private favoriteService:FavoriteService, private placeService:PlaceService, private route:ActivatedRoute) { }
 
   ngOnInit() {
@@ -17,6 +18,16 @@ export class PlaceFavoritePage implements OnInit {
     
     this.placeService.getPlaceDetail('5000', params.reference)
   }) */
+
+  this.getAllFavorites();
+  }
+
+  getAllFavorites(){
+    this.favoriteService.list().subscribe(favorites => {
+      this.favorites = favorites;
+      console.log(favorites);
+      
+    })
   }
 
 }

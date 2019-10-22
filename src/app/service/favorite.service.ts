@@ -12,7 +12,7 @@ export class FavoriteService {
 
   constructor(private angularFireStore: AngularFirestore) { }
   private getFireCollectionFavorite(): AngularFirestoreCollection<Favorite> {
-    return this.angularFireStore.collection<Favorite>("favorites", ref => ref.orderBy('createDate', 'desc'));
+    return this.angularFireStore.collection<Favorite>("favorites");
   }
 
   public list(): Observable<Favorite[]> {
@@ -44,7 +44,7 @@ export class FavoriteService {
       reference: favorite.reference,
       scope: favorite.scope,
       user_ratings_total: favorite.user_ratings_total,
-      vicinity: favorite.vicinity 
+      vicinity: favorite.vicinity,
   }
   this.getFireCollectionFavorite().doc(id).set(item);
 }
