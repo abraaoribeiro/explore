@@ -88,4 +88,8 @@ export class PlaceHomePage implements OnInit {
   routeCategory() {
     this.router.navigate(['/place-category']);
   }
+
+  routerNewGuide(){
+    this.router.navigate(['/guide-edit']);
+  }
 }

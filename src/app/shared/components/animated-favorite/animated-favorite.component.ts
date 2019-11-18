@@ -9,7 +9,7 @@ import { FavoriteService } from 'src/app/service/favorite.service';
   animations: [
     trigger('heart', [
       state('unliked', style({
-        color: '#FF5A5F',
+        color: '#ffff',
         opacity: '0.5',
         transform: 'scale(1)'
       })),
@@ -39,7 +39,7 @@ export class AnimatedFavoriteComponent implements OnInit {
   }
 
   toggleLikeState() {
-    if (this.likeState == 'unliked' && this.place.id == this.place.id) {
+    if (this.likeState == 'unliked') {
       this.likeState = 'liked';
       this.iconName = 'heart';
       this.favoriteService.create(this.place);

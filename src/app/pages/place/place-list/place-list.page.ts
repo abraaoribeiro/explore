@@ -42,7 +42,6 @@ export class PlaceListPage implements OnInit {
     })
     await loading.present();
     this.route.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
-      console.log(params);
       this.typeName = params.name
       this.type = params.category
       if (params.range) {
@@ -50,7 +49,6 @@ export class PlaceListPage implements OnInit {
       }
     });
     let place = await this.placeService.getPlaces(this.range, this.type);
-    console.log(place);
     this.places = place;
     loading.dismiss();
   }
