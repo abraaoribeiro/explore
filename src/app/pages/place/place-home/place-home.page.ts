@@ -8,6 +8,7 @@ import { PlaceService } from 'src/app/service/place.service';
 import { PlaceCategoryPage } from '../place-category/place-category.page';
 import { Guide } from 'src/app/model/guide';
 import { takeUntil } from 'rxjs/operators';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-place-home',
@@ -18,6 +19,7 @@ export class PlaceHomePage implements OnInit {
   networkType: string;
   placeTypes: any;
   places: [] = [];
+  user:any;
   erroNotGoogleApi: any;
   guides: Guide[];
   destroy$: Subject<boolean> = new Subject<boolean>();
@@ -27,6 +29,7 @@ export class PlaceHomePage implements OnInit {
     public modalController: ModalController,
     private networkService: NetworkService,
     private router: Router,
+    private auth:AuthService,
     private guideService: GuideService) { }
 
   ngOnInit() {
@@ -41,10 +44,19 @@ export class PlaceHomePage implements OnInit {
         this.getGuides();
       }
     })
+
+  
+  }
+
+  getUserInfo(){
+    this.auth.userDetails().then(user => {
+      this.user = user;
+    })
   }
 
   getGuides() {
     this.guideService.list().pipe(takeUntil(this.destroy$)).subscribe(guides => {
+      this.getUserInfo();
       this.guides = guides;
     });
   }

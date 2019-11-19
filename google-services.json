@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "956825431711",
+    "firebase_url": "https://guide-tour-f8f29.firebaseio.com",
+    "project_id": "guide-tour-f8f29",
+    "storage_bucket": "guide-tour-f8f29.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:956825431711:android:c4ecf80f3d2d93d26bbcaa",
+        "android_client_info": {
+          "package_name": "guide.br"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "956825431711-ohhvqmvassd2uovd5lrgp3ks24nql6lm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPUx7iR-Suv6nJE_8T_HD17KjoZzLTU3g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "956825431711-ohhvqmvassd2uovd5lrgp3ks24nql6lm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

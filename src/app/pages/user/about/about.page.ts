@@ -23,4 +23,8 @@ export class AboutPage implements OnInit {
   
   }
 
+  logout(){
+    this.auth.logout();
+  }
+
 }

@@ -5,9 +5,10 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.2'
+        classpath 'com.android.tools.build:gradle:gradle:4.0.0-alpha03'
         classpath 'com.google.gms:google-services:4.2.0'
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -19,7 +20,15 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
     }
+    project.ext {
+        defaultBuildToolsVersion="28.0.3" //String
+        defaultMinSdkVersion=19 //Integer - Minimum requirement is Android 4.4
+        defaultTargetSdkVersion=28 //Integer - We ALWAYS target the latest by default
+        defaultCompileSdkVersion=28 //Integer - We ALWAYS compile with the latest by default
+    }
+
 }
 
 task clean(type: Delete) {

@@ -13,31 +13,35 @@ import { FeedbackService } from './feedback.service';
 export class AuthService {
   userModel: UserModel
   messageErro: string;
-  constructor(private firebasseAuth: AngularFireAuth, 
+  constructor(private firebaseAuth: AngularFireAuth, 
     private feedbackService: FeedbackService, private router:Router) { }
 
 
   public async loginEmail(user: UserModel) {
-    await this.firebasseAuth.auth.signInWithEmailAndPassword(user.email, user.password);
+    await this.firebaseAuth.auth.signInWithEmailAndPassword(user.email, user.password);
   }
 
   public async createLogin(user: UserModel) {
-    let result = await this.firebasseAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
+    let result = await this.firebaseAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
     result.additionalUserInfo.username = user.name;
   }
 
+  public userDetails(): Promise<any> {
+    let user;
+    return new Promise((resolve, reject) => {
+      user = this.firebaseAuth.auth.currentUser;
+      resolve(user), err => reject(err);
+    });
+  }
 
-    public userInfo(): Promise<any> {
-      let user;
-      return new Promise((resolve, reject) => {
-        user = this.firebasseAuth.auth.currentUser;
-        resolve(user), err => reject(err);
-      });
-  
+  public logout(){
+    this.firebaseAuth.auth.signOut().then(() => {
+      this.router.navigate(["logged-outout"]);
+    });
   }
 
   public async stateUser() {
-   this.firebasseAuth.auth.onAuthStateChanged(user => {
+   this.firebaseAuth.auth.onAuthStateChanged(user => {
      if(user){
        this.userModel.email = user.email;
        this.userModel.name = user.displayName;
@@ -50,11 +54,10 @@ export class AuthService {
   }
 
 
-
  public async googleSignIn() {
     let googleUser = await Plugins.GoogleAuth.signIn();
     const credential = auth.GoogleAuthProvider.credential(googleUser.authentication.idToken);
-    return this.firebasseAuth.auth.signInAndRetrieveDataWithCredential(credential);
+    return this.firebaseAuth.auth.signInAndRetrieveDataWithCredential(credential);
 
   }
 
@@ -80,11 +83,5 @@ export class AuthService {
   }
 
 
- public userDetails(): Promise<any> {
-    let user;
-    return new Promise((resolve, reject) => {
-      user = this.firebasseAuth.auth.currentUser;
-      resolve(user), err => reject(err);
-    });
-  }
+
 }

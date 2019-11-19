@@ -4,6 +4,12 @@
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
+  "plugins": {
+    "GoogleAuth": {
+      "scopes": ["profile", "email"],
+      "serverClientId": "956825431711-ohhvqmvassd2uovd5lrgp3ks24nql6lm.apps.googleusercontent.com"
+    }
+  },
   "cordova": {
     "preferences": {
       "ScrollEnabled": "false",
