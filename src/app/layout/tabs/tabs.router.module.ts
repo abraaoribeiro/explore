@@ -1,3 +1,4 @@
+import { AboutPageModule } from './../../pages/user/about/about.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
@@ -33,6 +34,15 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('src/app/pages/guide/guide-list/guide-list.module').then(m => m.GuideListPageModule)
+          }
+        ]
+      },
+      {
+        path: 'tab4',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('src/app/pages/user/about/about.module').then( m => m.AboutPageModule)
           }
         ]
       },
