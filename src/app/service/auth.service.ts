@@ -1,7 +1,11 @@
-import { FeedbackService } from './feedback.service';
-import { UserModel } from './../model/user-model';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { Injectable } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+import { Plugins } from '@capacitor/core';
+import "@codetrix-studio/capacitor-google-auth";
+import { auth } from 'firebase';
+import { UserModel } from './../model/user-model';
+import { FeedbackService } from './feedback.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +13,8 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   userModel: UserModel
   messageErro: string;
-  constructor(private firebasseAuth: AngularFireAuth, private feedbackService: FeedbackService) { }
+  constructor(private firebasseAuth: AngularFireAuth, 
+    private feedbackService: FeedbackService, private router:Router) { }
 
 
   public async loginEmail(user: UserModel) {
@@ -21,14 +26,36 @@ export class AuthService {
     result.additionalUserInfo.username = user.name;
   }
 
-  public async loginProvider(provider) {
-    await this.firebasseAuth.auth.signInWithPopup(provider).then(() => {
-      return this.firebasseAuth.auth.getRedirectResult();
-    });
+
+    public userInfo(): Promise<any> {
+      let user;
+      return new Promise((resolve, reject) => {
+        user = this.firebasseAuth.auth.currentUser;
+        resolve(user), err => reject(err);
+      });
+  
   }
 
   public async stateUser() {
-    return await this.firebasseAuth.authState.toPromise()
+   this.firebasseAuth.auth.onAuthStateChanged(user => {
+     if(user){
+       this.userModel.email = user.email;
+       this.userModel.name = user.displayName;
+       this.userModel.img = user.photoURL;
+       this.router.navigate(['tabs/tab1']);
+      }else {
+        this.router.navigate(['logged-out']);
+     }
+   })
+  }
+
+
+
+ public async googleSignIn() {
+    let googleUser = await Plugins.GoogleAuth.signIn();
+    const credential = auth.GoogleAuthProvider.credential(googleUser.authentication.idToken);
+    return this.firebasseAuth.auth.signInAndRetrieveDataWithCredential(credential);
+
   }
 
   public validCredential(erro) {
@@ -52,4 +79,12 @@ export class AuthService {
     this.feedbackService.presentToastWithOptions(this.messageErro).then();
   }
 
+
+ public userDetails(): Promise<any> {
+    let user;
+    return new Promise((resolve, reject) => {
+      user = this.firebasseAuth.auth.currentUser;
+      resolve(user), err => reject(err);
+    });
+  }
 }

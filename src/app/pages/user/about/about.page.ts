@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserModel } from 'src/app/model/user-model';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-about',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutPage implements OnInit {
 
-  constructor() { }
+  user: any;
+  constructor(private auth:AuthService) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+  
+  ionViewWillEnter() {
+    this.auth.userDetails().then(user => {
+      this.user = user;
+      console.log(user);
+      //this.user.email = user.email;
+    })
+  
   }
 
 }

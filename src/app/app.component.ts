@@ -4,6 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+import { AuthService } from './service/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,7 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     public androidPermissions: AndroidPermissions,
+    private authService:AuthService
   ) {
     this.initializeApp();
   }
@@ -27,14 +29,14 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.statusBar.backgroundColorByHexString("#ffffff");
       this.splashScreen.hide();
-      
+      this.authService.stateUser();
       this.androidPermissions.requestPermissions([
         this.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION,
         this.androidPermissions.PERMISSION.WRITE_EXTERNAL_STORAGE,
         this.androidPermissions.PERMISSION.READ_EXTERNAL_STORAGE,
       ]).catch();
     });
-
+    
   }
 
 }

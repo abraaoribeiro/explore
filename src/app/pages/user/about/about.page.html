@@ -1,9 +1,24 @@
 <ion-header no-border>
   <ion-toolbar>
-    <ion-title>about</ion-title>
+    <ion-title>Sobre</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content>  
+    <ion-avatar  class="photo">
+        <img [src]="user?.photoURL">
+      </ion-avatar> 
+  
+  <ion-list>
+    <div class="">
+      <ion-item>
+        <ion-icon name="contact" slot="start"></ion-icon>
+        <ion-label>{{user?.displayName}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="mail" slot="start"></ion-icon>
+        <ion-label>{{user?.email}}</ion-label>
+      </ion-item>
+    </div>
+  </ion-list>
 </ion-content>

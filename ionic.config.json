@@ -1,7 +1,8 @@
 {
   "name": "guide-tour",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }
