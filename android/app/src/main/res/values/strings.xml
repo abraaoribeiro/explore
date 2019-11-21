@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">Explore</string>
-    <string name="title_activity_main">Explore</string>
-    <string name="package_name">guide.br</string>
-    <string name="custom_url_scheme">guide.br</string>
-    <string name="server_client_id">956825431711-ohhvqmvassd2uovd5lrgp3ks24nql6lm.apps.googleusercontent.com</string>
-
-</resources>
