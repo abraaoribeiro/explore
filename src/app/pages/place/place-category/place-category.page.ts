@@ -48,8 +48,6 @@ export class PlaceCategoryPage implements OnInit {
   }
 
   onScroll(event) {
-    if (event.detail.deltaY > 0 && this.footerHidden) return;
-    if (event.detail.deltaY < 0 && !this.footerHidden) return;
     if (event.detail.deltaY > 0) {
       this.footerHidden = true;
     } else {
