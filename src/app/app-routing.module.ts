@@ -5,11 +5,13 @@ import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Network } from '@ionic-native/network/ngx';
 import { DatePicker } from '@ionic-native/date-picker/ngx';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { AuthGuard } from './@core/guard/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./layout/tabs/tabs.module').then(m => m.TabsPageModule)
+    loadChildren: () => import('./layout/tabs/tabs.module').then(m => m.TabsPageModule),
+    canActivate: [AuthGuard]
   },
   { path: 'logged-out', loadChildren: () => import('./pages/user/logged-out/logged-out.module').then(m => m.LoggedOutPageModule) },
   { path: 'login', loadChildren: () => import('./pages/user/login/login.module').then(m => m.LoginPageModule) },
@@ -19,7 +21,7 @@ const routes: Routes = [
   { path: 'place-category', loadChildren: () => import('./pages/place/place-category/place-category.module').then(m => m.PlaceCategoryPageModule) },
   { path: 'guide-edit', loadChildren: () => import('./pages/guide/guide-edit/guide-edit.module').then(m => m.GuideEditPageModule) },
   { path: 'guide-edit/:id', loadChildren: () => import('./pages/guide/guide-edit/guide-edit.module').then(m => m.GuideEditPageModule) },
- 
+
 ];
 
 const PLUGINSIONIC = [

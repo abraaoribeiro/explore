@@ -13,8 +13,9 @@ import { FeedbackService } from './feedback.service';
 export class AuthService {
   userModel: UserModel
   messageErro: string;
-  constructor(private firebaseAuth: AngularFireAuth, 
-    private feedbackService: FeedbackService, private router:Router) { }
+
+  constructor(private firebaseAuth: AngularFireAuth,
+    private feedbackService: FeedbackService, private router: Router) { }
 
 
   public async loginEmail(user: UserModel) {
@@ -34,27 +35,27 @@ export class AuthService {
     });
   }
 
-  public logout(){
+  public logout() {
     this.firebaseAuth.auth.signOut().then(() => {
       this.router.navigate(["logged-outout"]);
     });
   }
 
   public async stateUser() {
-   this.firebaseAuth.auth.onAuthStateChanged(user => {
-     if(user){
-       this.userModel.email = user.email;
-       this.userModel.name = user.displayName;
-       this.userModel.img = user.photoURL;
-       this.router.navigate(['tabs/tab1']);
-      }else {
+    this.firebaseAuth.auth.onAuthStateChanged(user => {
+      if (user) {
+        this.userModel.email = user.email;
+        this.userModel.name = user.displayName;
+        this.userModel.img = user.photoURL;
+        this.router.navigate(['tabs/tab1']);
+      } else {
         this.router.navigate(['logged-out']);
-     }
-   })
+      }
+    })
   }
 
 
- public async googleSignIn() {
+  public async googleSignIn() {
     let googleUser = await Plugins.GoogleAuth.signIn();
     const credential = auth.GoogleAuthProvider.credential(googleUser.authentication.idToken);
     return this.firebaseAuth.auth.signInAndRetrieveDataWithCredential(credential);
@@ -81,7 +82,6 @@ export class AuthService {
   public showMessageValid() {
     this.feedbackService.presentToastWithOptions(this.messageErro).then();
   }
-
 
 
 }

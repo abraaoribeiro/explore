@@ -29,7 +29,6 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.statusBar.backgroundColorByHexString("#ffffff");
       this.splashScreen.hide();
-      this.authService.stateUser();
       this.androidPermissions.requestPermissions([
         this.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION,
         this.androidPermissions.PERMISSION.WRITE_EXTERNAL_STORAGE,
