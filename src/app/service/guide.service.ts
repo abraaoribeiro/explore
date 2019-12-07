@@ -2,17 +2,21 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from "@angular/fire/firestore";
 import { Observable } from 'rxjs';
 import { map, take } from "rxjs/operators";
+
 import { Guide } from "./../model/guide";
+import { SecurityService } from '../@core/security/security.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class GuideService {
   guide: Guide = new Guide();
-  constructor(private angularFireStore: AngularFirestore) { }
+  constructor(private angularFireStore: AngularFirestore, private securityService : SecurityService) { }
 
   private getFireCollection(): AngularFirestoreCollection<Guide> {
-    return this.angularFireStore.collection<Guide>("guide", ref => ref.orderBy('createDate', 'desc'));
+    return this.angularFireStore.collection<Guide>("guides", ref =>
+      ref.where('userId', '==', this.securityService.getUserId()).orderBy('createDate', 'desc'));
   }
 
 
@@ -48,7 +52,9 @@ export class GuideService {
       anotation: guide.anotation,
       rating: guide.rating,
       reference: guide.reference,
-      createDate: guide.createDate = new Date()
+      createDate: guide.createDate = new Date(),
+      userId: this.securityService.getUserId()
+
     }
     this.getFireCollection().doc(id).set(item);
   }
@@ -65,7 +71,7 @@ export class GuideService {
       });
   }
 
-  
+
   public delete(id) {
     return this.getFireCollection().doc<Guide>(id).delete();
   }

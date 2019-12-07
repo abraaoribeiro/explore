@@ -7,7 +7,7 @@ import "firebase/auth";
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -16,9 +16,7 @@ export class AuthGuard implements CanActivate {
       firebase.auth().onAuthStateChanged((user: firebase.User) => {
         if (user) {
           resolve(true);
-          console.log("AuthGuard:", "Usuario Logado...");
         } else {
-          console.log("AuthGuard:", "Usuario não logado...");
           this.router.navigate(["/logged-out"]);
           resolve(false);
         }

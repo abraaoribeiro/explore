@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-
-import { Platform } from '@ionic/angular';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+import { Platform } from '@ionic/angular';
 import { AuthService } from './service/auth.service';
+
 
 @Component({
   selector: 'app-root',

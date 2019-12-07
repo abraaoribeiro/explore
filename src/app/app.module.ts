@@ -1,7 +1,7 @@
 import { registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import localePt from '@angular/common/locales/pt';
-import { ErrorHandler, LOCALE_ID, NgModule } from '@angular/core';
+import { ErrorHandler, LOCALE_ID, NgModule, APP_INITIALIZER } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -20,13 +20,18 @@ import { GuideSelectCardPageModule } from './pages/guide/guide-select-card/guide
 import { GuideSelectCardPage } from './pages/guide/guide-select-card/guide-select-card.page';
 import { PopoverFilterComponent } from './shared/components/popover-filter/popover-filter.component';
 import { PopoverFilterModule } from './shared/components/popover-filter/popover-filter.module';
+import { SecurityService } from './@core/security/security.service';
 
 
 registerLocaleData(localePt, 'pt-BR');
 
+export function securityInit(securityService: SecurityService) {
+  return () => securityService.init();
+}
+
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [PopoverFilterComponent,GuideSelectCardPage],
+  entryComponents: [PopoverFilterComponent, GuideSelectCardPage],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -41,11 +46,18 @@ registerLocaleData(localePt, 'pt-BR');
     AngularFireModule.initializeApp(environment.firebaseConfig)],
   providers: [
     StatusBar,
+    SecurityService,
     SplashScreen,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: securityInit,
+      deps: [SecurityService],
+      multi: true
+    },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: ErrorHandler, useClass: ErrorHandlerException }, ErrorHandlerException,
     { provide: LOCALE_ID, useValue: "pt-BR" },
-    { provide: ErrorHandler, useClass: ErrorHandlerException }, ErrorHandlerException
+    { provide: ErrorHandler, useClass: ErrorHandlerException }, ErrorHandlerException,
   ],
   bootstrap: [AppComponent]
 })
