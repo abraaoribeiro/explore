@@ -16,7 +16,7 @@ export class GuideService {
 
   private getFireCollection(): AngularFirestoreCollection<Guide> {
     return this.angularFireStore.collection<Guide>("guides", ref =>
-      ref.where('userId', '==', this.securityService.getUserId()).orderBy('createDate', 'desc'));
+      ref.where('userId', '==', this.securityService.getUserId()));
   }
 
 
@@ -42,21 +42,18 @@ export class GuideService {
   }
 
   public create(guide: Guide) {
-    const id = this.angularFireStore.createId();
-    const item: Guide = {
-      title: guide.title,
-      place: guide.place,
-      date: guide.date,
-      timeStart: guide.timeStart,
-      timeEnd: guide.timeEnd,
-      anotation: guide.anotation,
-      rating: guide.rating,
-      reference: guide.reference,
-      createDate: guide.createDate = new Date(),
-      userId: this.securityService.getUserId()
-
-    }
-    this.getFireCollection().doc(id).set(item);
+   this.getFireCollection().add({
+     title: guide.title,
+     place: guide.place,
+     date: guide.date,
+     timeStart: guide.timeStart,
+     timeEnd: guide.timeEnd,
+     anotation: guide.anotation,
+     rating: guide.rating,
+     reference: guide.reference,
+     createDate: guide.createDate = new Date(),
+     userId: this.securityService.getUserId()
+   })
   }
 
   public update(guide: Guide): Promise<void> {
