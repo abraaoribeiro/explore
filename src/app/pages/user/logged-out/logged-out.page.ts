@@ -32,6 +32,8 @@ export class LoggedOutPage implements OnInit {
     this.authService.googleSignIn().then((res) => {
       this.router.navigate(['tabs/tab1']);
       loading.dismiss();
+    }).catch(err => {
+        loading.dismiss();
     });
   }
 }
