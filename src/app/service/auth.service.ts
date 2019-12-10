@@ -81,7 +81,7 @@ export class AuthService {
   }
 
   public showMessageValid() {
-    this.feedbackService.presentToastWithOptions(this.messageErro).then();
+    this.feedbackService.presentToastWithOptions(this.messageErro, "danger").then();
   }
 
 

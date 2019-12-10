@@ -13,9 +13,14 @@ import { LoadingController } from '@ionic/angular';
 export class CreateLoginPage implements OnInit {
   userModel: UserModel = new UserModel();
 
-  constructor(private authService: AuthService, public loadingController: LoadingController) { }
+  constructor(
+    private authService: AuthService, 
+    public loadingController: LoadingController, 
+    private feedbackService: FeedbackService) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.feedbackService.statusBarHeader();
+  }
 
 
   public async createLogin() {

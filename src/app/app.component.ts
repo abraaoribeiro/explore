@@ -3,7 +3,6 @@ import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Platform } from '@ionic/angular';
-import { AuthService } from './service/auth.service';
 
 
 @Component({
@@ -18,7 +17,6 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     public androidPermissions: AndroidPermissions,
-    private authService:AuthService
   ) {
     this.initializeApp();
   }

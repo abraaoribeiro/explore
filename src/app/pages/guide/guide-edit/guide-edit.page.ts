@@ -71,13 +71,13 @@ export class GuideEditPage implements OnInit {
     if (this.guide.id) {
       await this.guideService.update(this.guide);
       this.feedbackService.localNotification('Lembre-se de seu próximo local de visita', this.guide.img, this.guide.timeEnd);
-      this.feedbackService.presentToastWithOptions('Roteiro atualizado com sucesso');
+      this.feedbackService.presentToastWithOptions('Roteiro atualizado com sucesso', "success");
       this.router.navigate(['/tabs/tab3']);
     } else {
       
       await this.guideService.create(this.guide);
       this.feedbackService.localNotification('Lembre-se de seu próximo local de visita', this.guide.img, this.guide.timeEnd);
-      this.feedbackService.presentToastWithOptions('Roteiro criado com sucesso');
+      this.feedbackService.presentToastWithOptions('Roteiro criado com sucesso',"success");
       this.router.navigate(['/tabs/tab3']);
     }
   }

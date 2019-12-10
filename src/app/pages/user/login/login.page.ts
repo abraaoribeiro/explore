@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/service/auth.service';
 import { UserModel } from './../../../model/user-model';
+import { FeedbackService } from 'src/app/service/feedback.service';
 
 @Component({
   selector: 'app-login',
@@ -11,10 +12,13 @@ import { UserModel } from './../../../model/user-model';
 })
 export class LoginPage implements OnInit {
   userModel: UserModel = new UserModel();
-  constructor(private authService: AuthService, private router: Router, public loadingController: LoadingController) { }
+  constructor(private authService: AuthService,
+    private router: Router,
+    public loadingController: LoadingController,
+    private feedbackService: FeedbackService) { }
 
   ngOnInit() {
-
+    this.feedbackService.statusBarHeader();
   }
 
   public async login() {
