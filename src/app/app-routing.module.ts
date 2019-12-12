@@ -5,6 +5,7 @@ import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Network } from '@ionic-native/network/ngx';
 import { DatePicker } from '@ionic-native/date-picker/ngx';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+
 import { AuthGuard } from './@core/guard/auth.guard';
 
 const routes: Routes = [

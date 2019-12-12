@@ -18,7 +18,7 @@ export class LoginPage implements OnInit {
     private feedbackService: FeedbackService) { }
 
   ngOnInit() {
-    this.feedbackService.statusBarHeader();
+   // this.feedbackService.statusBarHeader();
   }
 
   public async login() {

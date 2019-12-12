@@ -2,7 +2,8 @@ import { LoadingController } from '@ionic/angular';
 import { PlaceService } from 'src/app/service/place.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { Plugins } from '@capacitor/core';
+const Share = Plugins.Share;
 @Component({
   selector: 'app-place-detail',
   templateUrl: './place-detail.page.html',
@@ -16,7 +17,8 @@ export class PlaceDetailPage implements OnInit {
   constructor(private placeService: PlaceService,
     public loadingController: LoadingController,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+  ) { }
 
   ngOnInit() {
     this.getPlaceDetail();
@@ -51,5 +53,12 @@ export class PlaceDetailPage implements OnInit {
 
   buttonBack() {
     this.router.navigateByUrl('/tabs/tab1')
+  }
+
+  async  shared() {
+    await Share.share({
+      url: this.place.url,
+      dialogTitle: 'Compartilhar',
+    })
   }
 }

@@ -45,8 +45,7 @@ export class FeedbackService {
 
 
   public statusBarHeader() {
-    this.statusBar.styleLightContent();
-    this.statusBar.backgroundColorByHexString("#00868b");
-    this.statusBar.hide();
+  //  this.statusBar.styleDefault();
+   // this.statusBar.backgroundColorByHexString("#00868b");
   }
 }

@@ -19,7 +19,7 @@ export class CreateLoginPage implements OnInit {
     private feedbackService: FeedbackService) { }
 
   ngOnInit() { 
-    this.feedbackService.statusBarHeader();
+    //this.feedbackService.statusBarHeader();
   }
 
 

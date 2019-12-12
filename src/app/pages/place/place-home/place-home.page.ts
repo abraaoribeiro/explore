@@ -1,14 +1,14 @@
-import { Subject } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController, ModalController } from '@ionic/angular';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { Guide } from 'src/app/model/guide';
+import { AuthService } from 'src/app/service/auth.service';
 import { GuideService } from 'src/app/service/guide.service';
 import { NetworkService } from 'src/app/service/network.service';
 import { PlaceService } from 'src/app/service/place.service';
 import { PlaceCategoryPage } from '../place-category/place-category.page';
-import { Guide } from 'src/app/model/guide';
-import { takeUntil } from 'rxjs/operators';
-import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-place-home',
