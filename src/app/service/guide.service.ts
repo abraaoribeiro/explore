@@ -53,7 +53,7 @@ export class GuideService {
      reference: guide.reference,
      createDate: guide.createDate = new Date(),
      userId: this.securityService.getUserId()
-   })
+   }).catch()
   }
 
   public update(guide: Guide): Promise<void> {
@@ -65,7 +65,7 @@ export class GuideService {
         timeStart: guide.timeStart,
         timeEnd: guide.timeEnd,
         anotation: guide.anotation,
-      });
+      }).catch();
   }
 
 
