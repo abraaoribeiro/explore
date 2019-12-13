@@ -40,7 +40,9 @@ export class GuideEditPage implements OnInit {
     this.route.queryParams.pipe(takeUntil(this.destroy$)).subscribe(params => {
       this.guide.place = params.place;
       this.guide.reference = params.reference;
-      if(params.rating){
+      console.log(params);
+      
+      if (params.rating) {
         this.guide.rating = params.rating;
       }
     });
@@ -74,13 +76,14 @@ export class GuideEditPage implements OnInit {
       this.feedbackService.presentToastWithOptions('Roteiro atualizado com sucesso', "success");
       this.router.navigate(['/tabs/tab3']);
     } else {
-      
+
       await this.guideService.create(this.guide);
       this.feedbackService.localNotification('Lembre-se de seu próximo local de visita', this.guide.img, this.guide.timeEnd);
-      this.feedbackService.presentToastWithOptions('Roteiro criado com sucesso',"success");
+      this.feedbackService.presentToastWithOptions('Roteiro criado com sucesso', "success");
       this.router.navigate(['/tabs/tab3']);
     }
   }
+
 
 
   getDate() {

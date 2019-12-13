@@ -7,6 +7,7 @@ import { auth } from 'firebase';
 import { UserModel } from './../model/user-model';
 import { FeedbackService } from './feedback.service';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -57,7 +58,7 @@ export class AuthService {
 
 
   public async googleSignIn() {
-    let googleUser = await Plugins.GoogleAuth.signIn();
+    const googleUser = await Plugins.GoogleAuth.signIn();
     const credential = auth.GoogleAuthProvider.credential(googleUser.authentication.idToken);
     return this.firebaseAuth.auth.signInAndRetrieveDataWithCredential(credential);
 

@@ -3,6 +3,7 @@ import { PlaceService } from 'src/app/service/place.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Plugins } from '@capacitor/core';
+import { GuideService } from 'src/app/service/guide.service';
 const Share = Plugins.Share;
 @Component({
   selector: 'app-place-detail',
@@ -24,6 +25,11 @@ export class PlaceDetailPage implements OnInit {
     this.getPlaceDetail();
   }
 
+  addNewGuide() {
+    let reference = this.route.snapshot.params['id'];
+    this.router.navigate(['/guide-edit'], { queryParams: { 'place': this.place.name, 'reference': reference }, queryParamsHandling: 'merge' });
+  }
+
   public async getPlaceDetail() {
     let loading = await this.loadingController.create({
       spinner: 'dots',
@@ -34,7 +40,6 @@ export class PlaceDetailPage implements OnInit {
     await loading.present();
     let place_id = this.route.snapshot.params['id'];
     await this.placeService.getPlaceDetail('', place_id).then(placeDetail => {
-      console.log(placeDetail);
       this.place = placeDetail;
       loading.dismiss();
     }).catch(err => loading.dismiss())

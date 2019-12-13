@@ -19,7 +19,9 @@ export class PlaceHomePage implements OnInit {
   networkType: string;
   placeTypes: any;
   places: [] = [];
-  user:any;
+  user: any = {
+    displayName: ''
+  };
   erroNotGoogleApi: any;
   guides: Guide[];
   destroy$: Subject<boolean> = new Subject<boolean>();
@@ -29,7 +31,7 @@ export class PlaceHomePage implements OnInit {
     public modalController: ModalController,
     private networkService: NetworkService,
     private router: Router,
-    private auth:AuthService,
+    private auth: AuthService,
     private guideService: GuideService) { }
 
   ngOnInit() {
@@ -45,10 +47,16 @@ export class PlaceHomePage implements OnInit {
       }
     })
 
-  
+
   }
 
-  getUserInfo(){
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }
+
+
+  getUserInfo() {
     this.auth.userDetails().then(user => {
       this.user = user;
     })
@@ -61,10 +69,6 @@ export class PlaceHomePage implements OnInit {
     });
   }
 
-  ngOnDestroy(): void {
-    this.destroy$.next(true);
-    this.destroy$.unsubscribe();
-  }
   public async getPlaces() {
     const loading = await this.loadingController.create({
       spinner: 'dots',
@@ -101,7 +105,7 @@ export class PlaceHomePage implements OnInit {
     this.router.navigate(['/place-category']);
   }
 
-  routerNewGuide(){
+  routerNewGuide() {
     this.router.navigate(['/guide-edit']);
   }
 }

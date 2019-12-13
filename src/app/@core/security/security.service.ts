@@ -25,4 +25,5 @@ export class SecurityService {
   getUserId(): string {
     return this.userId;
   }
+  
 }
