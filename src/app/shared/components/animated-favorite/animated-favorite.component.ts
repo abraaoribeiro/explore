@@ -31,12 +31,7 @@ export class AnimatedFavoriteComponent implements OnInit {
  
   constructor(private favoriteService:FavoriteService) { }
 
-  ngOnInit() {
-   /*  let id
-    this.favoriteService.findOne(id).subscribe(data => {
-      this.favorite = data;
-    }) */
-  }
+  ngOnInit() { }
 
   toggleLikeState() {
     if (this.likeState == 'unliked') {
