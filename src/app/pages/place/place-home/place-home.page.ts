@@ -1,3 +1,4 @@
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController, ModalController } from '@ionic/angular';
@@ -25,6 +26,7 @@ export class PlaceHomePage implements OnInit {
   erroNotGoogleApi: any;
   guides: Guide[];
   destroy$: Subject<boolean> = new Subject<boolean>();
+  clickSub: any;/*  */
   constructor(
     private placeService: PlaceService,
     public loadingController: LoadingController,
@@ -32,6 +34,7 @@ export class PlaceHomePage implements OnInit {
     private networkService: NetworkService,
     private router: Router,
     private auth: AuthService,
+    private localNotifications:LocalNotifications,
     private guideService: GuideService) { }
 
   ngOnInit() {
@@ -44,6 +47,7 @@ export class PlaceHomePage implements OnInit {
         this.getPlaces();
         this.getTypes();
         this.getGuides();
+        this.simpleNotif()
       }
     })
 
@@ -55,6 +59,17 @@ export class PlaceHomePage implements OnInit {
     this.destroy$.unsubscribe();
   }
 
+  unsub() {
+    this.clickSub.unsubscribe();
+  }
+
+  simpleNotif() {
+    this.clickSub = this.localNotifications.on('click').subscribe(data => {
+      console.log(data);
+      this.router.navigate(['tabs/tab3'])
+      this.unsub();
+    });
+  }
 
   getUserInfo() {
     this.auth.userDetails().then(user => {
