@@ -24,11 +24,10 @@ export class GuideListPage implements OnInit {
     public loadingController: LoadingController) { }
 
   ngOnInit() {
-   
   }
 
   ionViewDidEnter() {
-    this.findAllGuide();
+  this.findAllGuide();
    }
 
   public async findAllGuide() {
@@ -41,8 +40,6 @@ export class GuideListPage implements OnInit {
     await loading.present();
     this.guideService.list().pipe(takeUntil(this.destroy$)).subscribe(guides => {
       this.guides = guides;
-      console.log(this.guides);
-      
       loading.dismiss();
     });
   }

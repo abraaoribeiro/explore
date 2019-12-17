@@ -18,7 +18,7 @@ export class GuideSelectCardPage implements OnInit {
   @Input() timeEnd: Date;
   @Input() reference: string;
 
-  constructor(private router: Router, public modalController: ModalController, private guideService: GuideService) { }
+  constructor(private router: Router, public modalController: ModalController, public guideService: GuideService) { }
 
   ngOnInit() { }
 

@@ -12,8 +12,8 @@
   <ion-icon slot="start"
             name="calendar"
             mode="ios"></ion-icon>
-  <p style="margin-left: auto;">Programação para {{date.toDate() | date: 'dd MMM'}} às
-    {{timeStart.toDate() | date: 'HH:mm'}}</p>
+  <p style="margin-left: auto;">Programação para {{guideService.formatDateFirestore(date) | date: 'dd MMM'}} às
+    {{ guideService.formatDateFirestore(timeEnd) | date: 'HH:mm'}}</p>
 </ion-item>
 <ion-footer no-border>
   <div style="text-align: center;">
