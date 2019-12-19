@@ -41,6 +41,8 @@ export class PlaceDetailPage implements OnInit {
     let place_id = this.route.snapshot.params['id'];
     await this.placeService.getPlaceDetail('', place_id).then(placeDetail => {
       this.place = placeDetail;
+      console.log(this.place);
+      
       loading.dismiss();
     }).catch(err => loading.dismiss())
   }
