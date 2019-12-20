@@ -31,7 +31,9 @@ export class AnimatedFavoriteComponent implements OnInit {
  
   constructor(private favoriteService:FavoriteService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.list()
+   }
 
   toggleLikeState() {
     if (this.likeState == 'unliked') {
@@ -44,6 +46,20 @@ export class AnimatedFavoriteComponent implements OnInit {
       this.favoriteService.delete(this.place.id);
     }
 
+  }
+
+  list(){
+    this.favoriteService.list().subscribe(res => {
+      res.forEach(f => {
+        if (this.place.place_id === f.place_id) {
+          this.likeState = 'liked';
+          this.iconName = 'heart';
+        } else {
+          this.likeState = 'unliked';
+          this.iconName = 'heart-empty';
+        }
+      })
+    })
   }
 
 }

@@ -26,8 +26,12 @@ export class PlaceDetailPage implements OnInit {
   }
 
   addNewGuide() {
-    let reference = this.route.snapshot.params['id'];
-    this.router.navigate(['/guide-edit'], { queryParams: { 'place': this.place.name, 'reference': reference }, queryParamsHandling: 'merge' });
+    try {
+      let reference = this.route.snapshot.params['id'];
+      this.router.navigate(['/guide-edit'], { queryParams: { 'place': this.place.name, 'reference': reference }, queryParamsHandling: 'merge' });
+    } catch (error) {
+      
+    }
   }
 
   public async getPlaceDetail() {
@@ -39,12 +43,18 @@ export class PlaceDetailPage implements OnInit {
     });
     await loading.present();
     let place_id = this.route.snapshot.params['id'];
-    await this.placeService.getPlaceDetail('', place_id).then(placeDetail => {
-      this.place = placeDetail;
-      console.log(this.place);
+    try {
+      await this.placeService.getPlaceDetail('', place_id).then(placeDetail => {
+        this.place = placeDetail;
+        console.log(this.place);
+        
+        loading.dismiss();
+      }).catch(err => loading.dismiss())
       
-      loading.dismiss();
-    }).catch(err => loading.dismiss())
+    } catch (error) {
+      
+    }
+          
   }
 
   public toggleGroup(group) {

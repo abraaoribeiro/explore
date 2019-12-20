@@ -37,7 +37,7 @@ export class FavoriteService {
       }));
   }
   public create(favorite: Favorite) {
-    const id = this.angularFireStore.createId();
+    const id = favorite.place_id;
     const item: Favorite = {
       name: favorite.name,
       icon: favorite.icon,
