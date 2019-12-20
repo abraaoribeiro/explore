@@ -7,6 +7,7 @@ export class Guide {
     rating?: string = '';
     img?: string = '';
     place?: string = '';
+    place_id?: string = ''; 
     date?: Date;
     timeStart?: Date;
     timeEnd?: Date;

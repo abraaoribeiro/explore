@@ -43,7 +43,8 @@ export class GuideService {
 
   public create(guide: Guide) {
    this.getFireCollection().add({
-     title: guide.title,
+    place_id: guide.place_id, 
+    title: guide.title,
      place: guide.place,
      date: guide.date,
      timeStart: guide.timeStart,

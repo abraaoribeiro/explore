@@ -1,3 +1,4 @@
+import { SecurityService } from './../@core/security/security.service';
 import { take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -10,9 +11,10 @@ import { map } from 'rxjs/operators';
 })
 export class FavoriteService {
 
-  constructor(private angularFireStore: AngularFirestore) { }
+  constructor(private angularFireStore: AngularFirestore, private securityService: SecurityService) { }
   private getFireCollectionFavorite(): AngularFirestoreCollection<Favorite> {
-    return this.angularFireStore.collection<Favorite>("favorites");
+    return this.angularFireStore.collection<Favorite>("favorites", ref =>
+      ref.where('userId', '==', this.securityService.getUserId()));
   }
 
   public list(): Observable<Favorite[]> {
@@ -34,7 +36,7 @@ export class FavoriteService {
         return favorite;
       }));
   }
-  public create(favorite:Favorite){
+  public create(favorite: Favorite) {
     const id = this.angularFireStore.createId();
     const item: Favorite = {
       name: favorite.name,
@@ -45,12 +47,13 @@ export class FavoriteService {
       scope: favorite.scope,
       user_ratings_total: favorite.user_ratings_total,
       vicinity: favorite.vicinity,
+      userId: this.securityService.getUserId()
+    }
+    this.getFireCollectionFavorite().doc(id).set(item);
   }
-  this.getFireCollectionFavorite().doc(id).set(item);
-}
 
-public delete(id) {
-  return this.getFireCollectionFavorite().doc<Favorite>(id).delete();
-}
+  public delete(id) {
+    return this.getFireCollectionFavorite().doc<Favorite>(id).delete();
+  }
 
 }

@@ -8,5 +8,6 @@ export class Favorite {
     scope?: string = "GOOGLE";
     user_ratings_total?: number;
     vicinity?: number;
+    userId?: string = '';
 
 }
