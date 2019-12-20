@@ -18,7 +18,7 @@ import { FavoriteService } from 'src/app/service/favorite.service';
         opacity: '1',
         transform: 'scale(1.1)'
       })),
-      transition('unliked <=> liked', animate('100ms ease-out'))
+      transition('unliked <=> liked', animate('200ms ease-out'))
     ])
   ]
 })
@@ -31,7 +31,9 @@ export class AnimatedFavoriteComponent implements OnInit {
  
   constructor(private favoriteService:FavoriteService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+  this.listFavorite() 
+  }
 
   toggleLikeState() {
     if (this.likeState == 'unliked') {
@@ -41,9 +43,19 @@ export class AnimatedFavoriteComponent implements OnInit {
     } else {
       this.likeState = 'unliked';
       this.iconName = 'heart-empty';
-      this.favoriteService.delete(this.place.id);
+    this.favoriteService.delete(this.place.id);
     }
 
   }
 
+
+  listFavorite(){
+    if(this.place.place_id == this.place.id){
+      this.likeState = 'liked';
+      this.iconName = 'heart';
+  } else {
+    this.likeState = 'unliked';
+    this.iconName = 'heart-empty';
+  }
+}
 }
