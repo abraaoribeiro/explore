@@ -37,6 +37,7 @@ export class FavoriteService {
   }
   public create(favorite: Favorite) {
     const id = favorite.place_id;
+    let photo =  this.getImagens(favorite.photos),
     const item: Favorite = {
       name: favorite.name,
       icon: favorite.icon,
@@ -46,6 +47,7 @@ export class FavoriteService {
       scope: favorite.scope,
       user_ratings_total: favorite.user_ratings_total,
       vicinity: favorite.vicinity,
+      photo: photo,
       userId: this.securityService.getUserId()
     }
     this.getFireCollectionFavorite().doc(id).set(item);
@@ -54,5 +56,17 @@ export class FavoriteService {
   public delete(id) {
     return this.getFireCollectionFavorite().doc<Favorite>(id).delete();
   }
+
+    getImagens(imagens: any): string {
+    let url: string;
+    if (imagens) {
+      imagens.forEach(image => {
+        url = image.getUrl();
+        return
+      });
+    }
+    return url;
+  }
+
 
 }

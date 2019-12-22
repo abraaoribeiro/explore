@@ -1,3 +1,4 @@
+import { Favorite } from './../../../model/favorite';
 import { Component, OnInit, Input } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { FavoriteService } from 'src/app/service/favorite.service';
@@ -32,7 +33,9 @@ export class AnimatedFavoriteComponent implements OnInit {
   constructor(private favoriteService: FavoriteService) { }
 
   ngOnInit() {
-    this.list()
+    this.list();
+    console.log(this.place);
+    
 
   }
 
@@ -43,7 +46,7 @@ export class AnimatedFavoriteComponent implements OnInit {
     if (this.likeState == 'unliked') {
       this.likeState = 'liked';
       this.iconName = 'heart';
-      this.favoriteService.create(this.place);
+     this.favoriteService.create(this.place);
     } else {
       this.likeState = 'unliked';
       this.iconName = 'heart-empty';
@@ -62,4 +65,7 @@ export class AnimatedFavoriteComponent implements OnInit {
       })
     })
   }
+
+  
+
 }

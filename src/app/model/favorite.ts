@@ -9,5 +9,6 @@ export class Favorite {
     user_ratings_total?: number;
     vicinity?: number;
     userId?: string = '';
-
+    photos?:any;
+    photo?: any;
 }
