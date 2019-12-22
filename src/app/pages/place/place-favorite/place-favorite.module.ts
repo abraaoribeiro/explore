@@ -1,3 +1,4 @@
+import { FeadbackEmptyModule } from './../../../shared/components/feadback-empty/feadback-empty.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -21,6 +22,7 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     CardPlaceModule,
+    FeadbackEmptyModule,
     RouterModule.forChild(routes)
   ],
   declarations: [PlaceFavoritePage]

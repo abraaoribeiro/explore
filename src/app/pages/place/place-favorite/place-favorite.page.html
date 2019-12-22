@@ -6,4 +6,5 @@
 
 <ion-content>
 <app-card-place [places]="favorites"></app-card-place>
+<app-feadback-empty *ngIf="favorites?.length == 0" ></app-feadback-empty>
 </ion-content>
