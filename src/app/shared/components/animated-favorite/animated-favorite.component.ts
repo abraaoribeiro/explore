@@ -26,14 +26,18 @@ export class AnimatedFavoriteComponent implements OnInit {
 
   @Input() public likeState: string = 'unliked';
   @Input() public iconName: string = 'heart-empty';
-  @Input() public place:any;
+  @Input() public place: any;
 
- 
-  constructor(private favoriteService:FavoriteService) { }
+
+  constructor(private favoriteService: FavoriteService) { }
 
   ngOnInit() {
     this.list()
-   }
+
+  }
+
+  ionViewDidEnter() {
+  }
 
   toggleLikeState() {
     if (this.likeState == 'unliked') {
@@ -43,23 +47,19 @@ export class AnimatedFavoriteComponent implements OnInit {
     } else {
       this.likeState = 'unliked';
       this.iconName = 'heart-empty';
-      this.favoriteService.delete(this.place.id);
+      this.favoriteService.delete(this.place.place_id);
     }
 
   }
 
-  list(){
+  list() {
     this.favoriteService.list().subscribe(res => {
-      res.forEach(f => {
-        if (this.place.place_id === f.place_id) {
+      res.forEach(favorite => {
+        if (this.place.place_id == favorite.place_id) {
           this.likeState = 'liked';
           this.iconName = 'heart';
-        } else {
-          this.likeState = 'unliked';
-          this.iconName = 'heart-empty';
         }
       })
     })
   }
-
 }

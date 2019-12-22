@@ -13,8 +13,7 @@ export class FavoriteService {
 
   constructor(private angularFireStore: AngularFirestore, private securityService: SecurityService) { }
   private getFireCollectionFavorite(): AngularFirestoreCollection<Favorite> {
-    return this.angularFireStore.collection<Favorite>("favorites", ref =>
-      ref.where('userId', '==', this.securityService.getUserId()));
+    return this.angularFireStore.collection<Favorite>("favorites", ref => ref.where('userId', '==', this.securityService.getUserId()));
   }
 
   public list(): Observable<Favorite[]> {

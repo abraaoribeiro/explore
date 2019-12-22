@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserModel } from 'src/app/model/user-model';
 import { AuthService } from 'src/app/service/auth.service';
@@ -16,7 +17,8 @@ export class CreateLoginPage implements OnInit {
   constructor(
     private authService: AuthService, 
     public loadingController: LoadingController, 
-    private feedbackService: FeedbackService) { }
+    private feedbackService: FeedbackService,
+    private router:Router) { }
 
   ngOnInit() { 
     //this.feedbackService.statusBarHeader();
@@ -32,6 +34,8 @@ export class CreateLoginPage implements OnInit {
     await this.authService.createLogin({ email: this.userModel.email, password: this.userModel.password, name: this.userModel.name })
       .then(() => {
         //TODO REDIRECIONAR
+        this.feedbackService.presentToastWithOptions("Usuário cadastrado com sucesso", "success");
+        this.router.navigate(["/tabs/tab1"])
         loading.dismiss();
       }).catch(erro => {
         this.authService.validCredential(erro.code);
