@@ -43,7 +43,7 @@ export class AnimatedFavoriteComponent implements OnInit {
     if (this.likeState == 'unliked') {
       this.likeState = 'liked';
       this.iconName = 'heart';
-     this.favoriteService.create(this.place);
+      this.favoriteService.create(this.place);
     } else {
       this.likeState = 'unliked';
       this.iconName = 'heart-empty';
@@ -55,6 +55,8 @@ export class AnimatedFavoriteComponent implements OnInit {
   list() {
     this.favoriteService.list().subscribe(res => {
       res.forEach(favorite => {
+        console.log(this.place.name);
+        
         if (this.place.name == favorite.name) {
           this.likeState = 'liked';
           this.iconName = 'heart';
@@ -63,6 +65,6 @@ export class AnimatedFavoriteComponent implements OnInit {
     })
   }
 
-  
+
 
 }

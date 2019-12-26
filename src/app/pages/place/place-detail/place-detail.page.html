@@ -2,7 +2,7 @@
   <ion-header no-border>
     <ion-toolbar>
       <div class="ion-no-padding ion-no-margin">
-        <app-animated-favorite class="icon-favorite"></app-animated-favorite>
+        <app-animated-favorite [likeState]="likeState" [iconName]="iconName" class="icon-favorite"></app-animated-favorite>
         <ion-icon name="share"
                   color="light"
                   class="icon-share"
