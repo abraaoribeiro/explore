@@ -34,9 +34,6 @@ export class AnimatedFavoriteComponent implements OnInit {
 
   ngOnInit() {
     this.list();
-    console.log(this.place);
-    
-
   }
 
   ionViewDidEnter() {
@@ -50,7 +47,7 @@ export class AnimatedFavoriteComponent implements OnInit {
     } else {
       this.likeState = 'unliked';
       this.iconName = 'heart-empty';
-      this.favoriteService.delete(this.place.place_id);
+      this.favoriteService.delete(this.place.name);
     }
 
   }
@@ -58,7 +55,7 @@ export class AnimatedFavoriteComponent implements OnInit {
   list() {
     this.favoriteService.list().subscribe(res => {
       res.forEach(favorite => {
-        if (this.place.place_id == favorite.place_id) {
+        if (this.place.name == favorite.name) {
           this.likeState = 'liked';
           this.iconName = 'heart';
         }

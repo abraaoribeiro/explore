@@ -1,14 +1,14 @@
 export class Favorite {
-    id?: string;
-    icon?: string;
-    name?: string;
+    id?: string = '';
+    icon?: string = '';
+    name?: string = '';
     place_id?: string
-    rating?: number;
-    reference?: string;
+    rating?: number = null;
+    reference?: string = '';
     scope?: string = "GOOGLE";
-    user_ratings_total?: number;
-    vicinity?: number;
+    user_ratings_total?: number = null;
+    vicinity?: number = null;
     userId?: string = '';
-    photos?:any;
-    photo?: any;
+    photos?:any = '';
+    photo?: any = '';
 }

@@ -36,8 +36,12 @@ export class FavoriteService {
       }));
   }
   public create(favorite: Favorite) {
-    const id = favorite.place_id;
-    let photo =  this.getImagens(favorite.photos),
+    const id = favorite.name;
+    if(!favorite.rating){
+      favorite.rating = 0;
+      favorite.user_ratings_total= null
+    }
+    let photo =  this.getImagens(favorite.photos);
     const item: Favorite = {
       name: favorite.name,
       icon: favorite.icon,
