@@ -1,12 +1,15 @@
 {
-  "appId": "guide.br",
+  "appId": "explore.com.br",
   "appName": "Explore",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
   "plugins": {
     "GoogleAuth": {
-      "scopes": ["profile", "email"],
+      "scopes": [
+        "profile",
+        "email"
+      ],
       "serverClientId": "956825431711-ohhvqmvassd2uovd5lrgp3ks24nql6lm.apps.googleusercontent.com"
     }
   },

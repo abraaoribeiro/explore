@@ -5,10 +5,12 @@
 </ion-header>
 
 <ion-content>  
-    <ion-avatar  class="photo">
+    <ion-avatar *ngIf="user?.photoURL"  class="photo">
         <img [src]="user?.photoURL">
       </ion-avatar> 
-  
+      <ion-avatar  *ngIf="!user?.photoURL" class="photo">
+        <img  src="assets/img/user.png">
+      </ion-avatar> 
   <ion-list>
     <div class="">
       <ion-item>
