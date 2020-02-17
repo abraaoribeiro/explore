@@ -1,4 +1,12 @@
-# Guide-tuor
+# Explore
+
+![Login](./screenshot/login.png)
+
+![Home](./screenshot/home.png)
+
+![Guide](./screenshot/guide.png)
+
+![Guide](./screenshot/filtro.png)
 
 # Finalidade 
   Aplicativo para criação de roteiros de passeios. 
