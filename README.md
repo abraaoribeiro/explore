@@ -4,9 +4,9 @@
 
 ![Home](./screenshot/home.png)
 
-![Guide](./screenshot/guide.png)
-
 ![Guide](./screenshot/filtro.png)
+
+![Guide](./screenshot/guide.png)
 
 # Finalidade 
   Aplicativo para criação de roteiros de passeios. 
