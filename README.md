@@ -10,6 +10,13 @@
 
 # Finalidade 
   Aplicativo para criação de roteiros de passeios. 
+# Tecnologias 
+- Angular
+- Ionic 4
+- Firebase Storage 
+- Firebase Auth
+- GoogleMaps
+- GooglePlaces
 
 # Funcionalidades
 
