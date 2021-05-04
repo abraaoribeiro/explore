@@ -15,7 +15,6 @@
 - Ionic 4
 - Firebase Storage 
 - Firebase Auth
-- GoogleMaps
 - GooglePlaces
 
 # Funcionalidades
